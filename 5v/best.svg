@@ -1,13 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2380" height="2380" viewBox="0 0 2380 2380">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="2150" viewBox="0 0 880 2150">
 <title>Kitchen lighting: 5 V APA102 best-practice breadboard layout</title>
 <desc>Nano 33 IoT powered through its USB socket. J0 supplies the positive and ground rails for an SN74AHCT125N logic buffer and one to five APA102 pixels. Both rail pairs are linked, with wire bridges across all four midpoint breaks. Nano VIN and VUSB are unconnected. Every jumper is drawn from hole to hole; crossings are insulated.</desc>
-<rect x="0" y="0" width="2380" height="2380" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
-<text x="40" y="58" font-family="DejaVu Sans,sans-serif" font-size="35" font-weight="700" fill="#192c3a" text-anchor="start">Kitchen lighting · 5 V APA102 · best practice</text>
-<text x="40" y="94" font-family="DejaVu Sans,sans-serif" font-size="22" font-weight="400" fill="#536775" text-anchor="start">Nano 33 IoT · USB at top · + rails = 5 V · − rails = GND · every jumper drawn</text>
-<text x="2340" y="55" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#007d80" text-anchor="end">5 V · SHORT-STRIP PoC</text>
-<rect x="40" y="117" width="2300" height="77" rx="7" fill="#fff3dd" stroke="#e4cf9f" stroke-width="2"/>
-<text x="58" y="146" font-family="DejaVu Sans,sans-serif" font-size="22" font-weight="700" fill="#192c3a" text-anchor="start">Connect 1–5 pixels for this prototype, about 8.3 cm maximum at 60 LEDs/m. Keep the full 160-inch strip disconnected.</text>
-<text x="58" y="176" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#192c3a" text-anchor="start">Budget up to 0.30 A for 5 LEDs, plus the Nano. Use a regulated 5 V USB supply rated at least 1 A for this small test.</text>
+<rect x="0" y="0" width="880" height="2150" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
+<text x="40" y="58" font-family="DejaVu Sans,sans-serif" font-size="32" font-weight="700" fill="#192c3a" text-anchor="start">5 V APA102 · Best practice</text>
+<text x="40" y="94" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">1–5 pixels · 0.30 A maximum LED load</text>
+<text x="40" y="123" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">Regulated 5 V supply · 1 A minimum</text>
 <rect x="220" y="214" width="562" height="1717" rx="18" fill="#e8e9e5" stroke="#a9b6ba" stroke-width="2"/>
 <rect x="314" y="233" width="158" height="1680" rx="4" fill="#fdfcf8" stroke="#d2d5d0" stroke-width="2"/>
 <rect x="514" y="233" width="150" height="1680" rx="4" fill="#fdfcf8" stroke="#d2d5d0" stroke-width="2"/>
@@ -1069,7 +1066,6 @@
 <rect x="380" y="237" width="200" height="404" rx="6" fill="#087e7b" stroke="#006763" stroke-width="2"/>
 <rect x="450" y="201" width="61" height="56" rx="3" fill="#c4cbce" stroke="#60747f" stroke-width="2"/>
 <rect x="459" y="207" width="43" height="17" rx="2" fill="#425862" stroke="#647b84" stroke-width="2"/>
-<text x="480" y="195" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#536775" text-anchor="middle">USB ↑</text>
 <rect x="452" y="345" width="57" height="69" rx="2" fill="#244956" stroke="#244956" stroke-width="2"/>
 <rect x="434" y="536" width="93" height="64" rx="3" fill="#a1b2ba" stroke="#718b94" stroke-width="2"/>
 <text x="480" y="436" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">NANO</text>
@@ -1134,9 +1130,11 @@
 <rect x="553" y="619" width="10" height="10" rx="1" fill="#d6ae5a" stroke="#a78140" stroke-width="2"/>
 <text x="412" y="628" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="400" fill="white" text-anchor="start">VIN</text>
 <text x="548" y="628" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="400" fill="white" text-anchor="end">TX</text>
-<rect x="467" y="769" width="50" height="178" rx="5" fill="#253b46" stroke="#132c38" stroke-width="2"/>
-<path d="M 479 769 a 13 9 0 0 0 26 0" fill="#c6cbc9" stroke="#132c38"/>
-<text x="492" y="861" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">U1</text>
+<rect x="467" y="758" width="50" height="200" rx="5" fill="#253b46" stroke="#132c38" stroke-width="2"/>
+<path d="M 479 758 a 13 9 0 0 0 26 0" fill="#c6cbc9" stroke="#132c38"/>
+<g transform="rotate(-90 500 859)">
+<text x="500" y="859" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="white" text-anchor="middle">SN74AHCT125N</text>
+</g>
 <line x1="454" y1="780" x2="467" y2="780" stroke="#b3bec3" stroke-width="5"/>
 <circle cx="454" cy="780" r="4" fill="#d1bb7a" stroke="#192c3a" stroke-width="1"/>
 <text x="460" y="784" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="400" fill="#192c3a" text-anchor="end">1</text>
@@ -1214,7 +1212,7 @@
 <line x1="370" y1="833" x2="382" y2="833" stroke="#df781e" stroke-width="3"/>
 <circle cx="376" cy="806" r="4" fill="#258450" stroke="white" stroke-width="1"/>
 <circle cx="376" cy="858" r="4" fill="#258450" stroke="white" stroke-width="1"/>
-<text x="365" y="829" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#258450" text-anchor="end">R1</text>
+<text x="362" y="830" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#192c3a" text-anchor="end">10kΩ</text>
 <line x1="376" y1="884" x2="376" y2="936" stroke="#286bbb" stroke-width="2"/>
 <rect x="369" y="890.0" width="14" height="26" rx="2" fill="#edce8c" stroke="#192c3a" stroke-width="2"/>
 <line x1="370" y1="895" x2="382" y2="895" stroke="#673b26" stroke-width="3"/>
@@ -1222,7 +1220,7 @@
 <line x1="370" y1="911" x2="382" y2="911" stroke="#df781e" stroke-width="3"/>
 <circle cx="376" cy="884" r="4" fill="#286bbb" stroke="white" stroke-width="1"/>
 <circle cx="376" cy="936" r="4" fill="#286bbb" stroke="white" stroke-width="1"/>
-<text x="365" y="907" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#286bbb" text-anchor="end">R2</text>
+<text x="362" y="908" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#192c3a" text-anchor="end">10kΩ</text>
 <line x1="402" y1="832" x2="402" y2="962" stroke="#258450" stroke-width="2"/>
 <rect x="395" y="870.0" width="14" height="54" rx="2" fill="#edce8c" stroke="#192c3a" stroke-width="2"/>
 <line x1="396" y1="889.0" x2="408" y2="889.0" stroke="#e77c22" stroke-width="3"/>
@@ -1230,7 +1228,9 @@
 <line x1="396" y1="905.0" x2="408" y2="905.0" stroke="#171717" stroke-width="3"/>
 <circle cx="402" cy="832" r="4" fill="#258450" stroke="white" stroke-width="1"/>
 <circle cx="402" cy="962" r="4" fill="#258450" stroke="white" stroke-width="1"/>
-<text x="391" y="901.0" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#258450" text-anchor="end">R3</text>
+<g transform="rotate(-90 427 895)">
+<text x="427" y="895" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#192c3a" text-anchor="middle">33Ω</text>
+</g>
 <line x1="428" y1="910" x2="428" y2="1040" stroke="#286bbb" stroke-width="2"/>
 <rect x="421" y="948.0" width="14" height="54" rx="2" fill="#edce8c" stroke="#192c3a" stroke-width="2"/>
 <line x1="422" y1="967.0" x2="434" y2="967.0" stroke="#e77c22" stroke-width="3"/>
@@ -1238,19 +1238,24 @@
 <line x1="422" y1="983.0" x2="434" y2="983.0" stroke="#171717" stroke-width="3"/>
 <circle cx="428" cy="910" r="4" fill="#286bbb" stroke="white" stroke-width="1"/>
 <circle cx="428" cy="1040" r="4" fill="#286bbb" stroke="white" stroke-width="1"/>
-<text x="417" y="979.0" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#286bbb" text-anchor="end">R4</text>
+<g transform="rotate(-90 420 975)">
+<text x="420" y="975" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#192c3a" text-anchor="middle">33Ω</text>
+</g>
 <line x1="584" y1="780" x2="584" y2="832" stroke="#aa5217" stroke-width="2"/>
 <rect x="577" y="793.0" width="14" height="26" rx="3" fill="#bb914e" stroke="#8d6c35" stroke-width="2"/>
 <circle cx="584" cy="780" r="4" fill="#aa5217" stroke="white" stroke-width="1"/>
 <circle cx="584" cy="832" r="4" fill="#aa5217" stroke="white" stroke-width="1"/>
-<text x="596" y="811.0" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#536775" text-anchor="start">C1</text>
+<g transform="rotate(-90 618 806.0)">
+<text x="618" y="806.0" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="700" fill="#192c3a" text-anchor="middle">100nF</text>
+</g>
 <circle cx="610" cy="1378" r="51" fill="#244b5d" stroke="#192c3a" stroke-width="2"/>
 <path d="M 581 1415 Q 610 1436 639 1415" fill="none" stroke="#d0dce1" stroke-width="10"/>
 <circle cx="610" cy="1352" r="4" fill="#d5c289" stroke="#192c3a" stroke-width="1"/>
 <circle cx="610" cy="1404" r="4" fill="#d5c289" stroke="#192c3a" stroke-width="1"/>
 <text x="610" y="1344" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">+</text>
 <text x="610" y="1425" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">−</text>
-<text x="610" y="1311" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="700" fill="#536775" text-anchor="middle">C2</text>
+<text x="610" y="1377" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">1000µF</text>
+<text x="610" y="1398" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="white" text-anchor="middle">10V</text>
 <rect x="331" y="1733" width="90" height="145" rx="5" fill="#303a43" stroke="#192c3a" stroke-width="2"/>
 <rect x="348" y="1859" width="56" height="23" rx="4" fill="#141c22" stroke="#53636c" stroke-width="2"/>
 <circle cx="376" cy="1742" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
@@ -1261,13 +1266,13 @@
 <text x="438" y="1773" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#536775" text-anchor="start">3 NC</text>
 <rect x="358" y="1882" width="36" height="51" rx="4" fill="#363e43" stroke="#192c3a" stroke-width="2"/>
 <line x1="376" y1="1933" x2="376" y2="1980" stroke="#aa5217" stroke-width="6"/>
-<text x="446" y="1938" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="700" fill="#192c3a" text-anchor="start">J0 · opening ↓</text>
-<text x="376" y="2008" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="middle">5 V USB → barrel cable</text>
+<text x="440" y="1827" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="start">PJ-102AH</text>
+<text x="440" y="1851" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">5.5 × 2.1 mm</text>
+<text x="376" y="2008" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="middle">5 V · centre positive</text>
 <line x1="450" y1="218" x2="175" y2="218" stroke="#687a85" stroke-width="3"/>
-<text x="167" y="210" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#192c3a" text-anchor="end">USB ← PSU / PC</text>
-<text x="167" y="233" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="#536775" text-anchor="end">to Nano</text>
+<text x="167" y="210" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="end">USB power</text>
 <rect x="62" y="1259" width="103" height="382" rx="4" fill="#f5eee0" stroke="#bbae8f" stroke-width="2"/>
-<text x="112" y="1242" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="700" fill="#192c3a" text-anchor="middle">1–5 APA102</text>
+<text x="112" y="1242" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="700" fill="#192c3a" text-anchor="middle">APA102</text>
 <rect x="137" y="1267" width="23" height="14" rx="2" fill="#c6a764" stroke="#192c3a" stroke-width="2"/>
 <text x="94" y="1279" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="700" fill="#192c3a" text-anchor="middle">GND</text>
 <polyline points="350,1274 160,1274" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1302,11 +1307,10 @@
 <rect x="103" y="1523" width="19" height="14" rx="2" fill="#f2d75e" stroke="#cbb547" stroke-width="2"/>
 <rect x="91" y="1558" width="43" height="28" rx="3" fill="#e4e4d9" stroke="#978c74" stroke-width="2"/>
 <rect x="103" y="1565" width="19" height="14" rx="2" fill="#f2d75e" stroke="#cbb547" stroke-width="2"/>
-<text x="112" y="1664" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="400" fill="#536775" text-anchor="middle">CO / DO unused</text>
 <g id="jumper-P1" data-start="a1" data-end="a25">
 <title>P1: a1 → a25. Nano D13 → U1 clock input pin 5</title>
-<polyline points="350,260 326,260 326,884 350,884" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="350,260 326,260 326,884 350,884" fill="none" stroke="#286bbb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,260 310,260 310,884 350,884" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,260 310,260 310,884 350,884" fill="none" stroke="#286bbb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="350" cy="260" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="884" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 </g>
@@ -1528,185 +1532,5 @@
 <circle cx="714" cy="1534" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="284" cy="1586" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="740" cy="1586" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<rect x="333" y="468" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="335" y="480" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#286bbb" text-anchor="start">P1</text>
-<rect x="599" y="681" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="601" y="693" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#258450" text-anchor="start">P2</text>
-<rect x="398" y="1160" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="400" y="1172" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#286bbb" text-anchor="start">O1</text>
-<rect x="448" y="1212" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="450" y="1224" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#258450" text-anchor="start">O2</text>
-<rect x="563" y="1721" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="565" y="1733" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#aa5217" text-anchor="start">V0</text>
-<rect x="646" y="759" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="648" y="771" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#aa5217" text-anchor="start">V1</text>
-<rect x="294" y="1357" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="296" y="1369" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#aa5217" text-anchor="start">V2</text>
-<rect x="647" y="1253" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="649" y="1265" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#aa5217" text-anchor="start">V3</text>
-<rect x="646" y="785" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="648" y="797" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#aa5217" text-anchor="start">V4</text>
-<rect x="646" y="863" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="648" y="875" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#aa5217" text-anchor="start">V5</text>
-<rect x="563" y="1773" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="565" y="1785" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#192c3a" text-anchor="start">N0</text>
-<rect x="287" y="577" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="289" y="589" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#192c3a" text-anchor="start">N1</text>
-<rect x="287" y="915" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="289" y="927" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#192c3a" text-anchor="start">N2</text>
-<rect x="287" y="1227" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="289" y="1239" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#192c3a" text-anchor="start">N3</text>
-<rect x="646" y="1435" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="648" y="1447" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#192c3a" text-anchor="start">N4</text>
-<rect x="287" y="837" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="289" y="849" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#192c3a" text-anchor="start">N5</text>
-<rect x="287" y="759" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="289" y="771" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#192c3a" text-anchor="start">N6</text>
-<rect x="646" y="889" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="648" y="901" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#192c3a" text-anchor="start">N7</text>
-<rect x="646" y="811" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="648" y="823" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#192c3a" text-anchor="start">N8</text>
-<rect x="226" y="1080" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="228" y="1092" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#aa5217" text-anchor="start">B1</text>
-<rect x="308" y="1067" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="310" y="1079" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#192c3a" text-anchor="start">B2</text>
-<rect x="672" y="1067" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="674" y="1079" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#aa5217" text-anchor="start">B3</text>
-<rect x="746" y="1080" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="748" y="1092" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#192c3a" text-anchor="start">B4</text>
-<rect x="478" y="1513" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="480" y="1525" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#aa5217" text-anchor="start">B5</text>
-<rect x="478" y="1565" width="24" height="16" rx="2" fill="#f5f7fa" stroke="none" stroke-width="2"/>
-<text x="480" y="1577" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#192c3a" text-anchor="start">B6</text>
-<text x="502" y="2054" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="700" fill="#536775" text-anchor="middle">+ rails: 5 V · − rails: GND · B1–B4 bridge breaks</text>
-<rect x="850" y="214" width="1490" height="687" rx="10" fill="white" stroke="#d2dce3" stroke-width="2"/>
-<text x="872" y="248" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#192c3a" text-anchor="start">Component locations · physical top view</text>
-<line x1="872" y1="262" x2="2318" y2="262" stroke="#d2dce3" stroke-width="1"/>
-<text x="875" y="289" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#192c3a" text-anchor="start">Colored lines are actual jumpers. Dots mark plugged ends; crossings do not connect.</text>
-<text x="875" y="325" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#192c3a" text-anchor="start">a–e connect within each row; f–j connect within each row. The trench separates them.</text>
-<text x="875" y="361" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#192c3a" text-anchor="start">Nano: c1–c15 / g1–g15, USB at top. VIN (c15) and VUSB (c12) stay unconnected.</text>
-<text x="875" y="397" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#192c3a" text-anchor="start">U1 = SN74AHCT125N, DIP14. Notch faces UP; use AHCT, not a plain 74HC125.</text>
-<text x="875" y="433" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#192c3a" text-anchor="start">U1 left: pin 1 e21, 2 e22, 3 e23, 4 e24, 5 e25, 6 e26, 7 e27.</text>
-<text x="875" y="469" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#192c3a" text-anchor="start">U1 right: pin 8 f27, 9 f26, 10 f25, 11 f24, 12 f23, 13 f22, 14 f21.</text>
-<text x="875" y="505" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#192c3a" text-anchor="start">R1 10 kΩ: b22 ↔ b24.  R2 10 kΩ: b25 ↔ b27. Stand these two upright.</text>
-<text x="875" y="541" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#192c3a" text-anchor="start">R3 33 Ω: c23 ↔ c28 (data).  R4 33 Ω: d26 ↔ d31 (clock). Mount flat.</text>
-<text x="875" y="577" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#192c3a" text-anchor="start">C1 100 nF ceramic: h21 ↔ h23. Nonpolarized; keep close to U1.</text>
-<text x="875" y="613" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#192c3a" text-anchor="start">C2 1000 µF / 10 V: positive i43, negative i45. Stripe is the negative lead.</text>
-<text x="875" y="649" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#192c3a" text-anchor="start">C2: Panasonic EEU-FC1A102B, 10 mm diameter / 5 mm lead pitch.</text>
-<text x="875" y="685" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">J0 Adafruit 373 / PJ-102AH: + b58, sleeve b60, unused switch d59.</text>
-<text x="875" y="721" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">Jack opening faces DOWN. Its leads need gentle forming to match the 2.54 mm grid.</text>
-<text x="875" y="757" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">Keep all other a–e59 holes empty. Leave U1 output pins 8 and 11 unconnected.</text>
-<text x="875" y="793" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">Output a40 GND, a41 CLOCK → CI, a42 DATA → DI, a43 +5 V.</text>
-<text x="875" y="829" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">Connect the strip INPUT end. Labels CO / DO identify its onward output end.</text>
-<rect x="850" y="922" width="1490" height="483" rx="10" fill="white" stroke="#d2dce3" stroke-width="2"/>
-<text x="872" y="956" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#192c3a" text-anchor="start">Jumper list · L / R = left / right rail · + = 5 V · − = GND</text>
-<line x1="872" y1="970" x2="2318" y2="970" stroke="#d2dce3" stroke-width="1"/>
-<text x="880" y="1003" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#286bbb" text-anchor="start">P1</text>
-<text x="929" y="1003" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start">  a1 ↔ a25 </text>
-<text x="1097" y="1003" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Nano D13 → U1 clock input pin 5</text>
-<text x="880" y="1033" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#258450" text-anchor="start">P2</text>
-<text x="929" y="1033" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start">  i2 ↔ a22 </text>
-<text x="1097" y="1033" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Nano D11 → U1 data input pin 2</text>
-<text x="880" y="1063" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#286bbb" text-anchor="start">O1</text>
-<text x="929" y="1063" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> e31 ↔ e41 </text>
-<text x="1097" y="1063" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">R4 → strip CI / clock</text>
-<text x="880" y="1093" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#258450" text-anchor="start">O2</text>
-<text x="929" y="1093" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> e28 ↔ e42 </text>
-<text x="1097" y="1093" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">R3 → strip DI / data</text>
-<text x="880" y="1123" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#aa5217" text-anchor="start">V0</text>
-<text x="929" y="1123" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> e58 ↔ R+58</text>
-<text x="1097" y="1123" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">J0 +5 V → right + rail</text>
-<text x="880" y="1153" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#aa5217" text-anchor="start">V1</text>
-<text x="929" y="1153" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> j21 ↔ R+21</text>
-<text x="1097" y="1153" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">+5 V → U1 VCC pin 14 / C1</text>
-<text x="880" y="1183" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#aa5217" text-anchor="start">V2</text>
-<text x="929" y="1183" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> b43 ↔ L+44</text>
-<text x="1097" y="1183" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">+5 V → strip positive</text>
-<text x="880" y="1213" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#aa5217" text-anchor="start">V3</text>
-<text x="929" y="1213" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> f43 ↔ R+40</text>
-<text x="1097" y="1213" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">+5 V → C2 positive</text>
-<text x="880" y="1243" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#aa5217" text-anchor="start">V4</text>
-<text x="929" y="1243" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> j22 ↔ R+22</text>
-<text x="1097" y="1243" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Unused OE: pin 13 HIGH</text>
-<text x="880" y="1273" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#aa5217" text-anchor="start">V5</text>
-<text x="929" y="1273" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> j25 ↔ R+25</text>
-<text x="1097" y="1273" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Unused OE: pin 10 HIGH</text>
-<text x="880" y="1303" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">N0</text>
-<text x="929" y="1303" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> e60 ↔ R-60</text>
-<text x="1097" y="1303" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">J0 sleeve → right − rail</text>
-<text x="880" y="1333" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">N1</text>
-<text x="929" y="1333" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> a14 ↔ L-14</text>
-<text x="1097" y="1333" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Shared ground → Nano GND</text>
-<text x="880" y="1363" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">N2</text>
-<text x="929" y="1363" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> a27 ↔ L-27</text>
-<text x="1097" y="1363" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Ground → U1 pin 7</text>
-<text x="1595" y="1003" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">N3</text>
-<text x="1644" y="1003" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> b40 ↔ L-39</text>
-<text x="1812" y="1003" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Ground → strip GND</text>
-<text x="1595" y="1033" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">N4</text>
-<text x="1644" y="1033" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> f45 ↔ R-47</text>
-<text x="1812" y="1033" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Ground → C2 negative</text>
-<text x="1595" y="1063" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">N5</text>
-<text x="1644" y="1063" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> a24 ↔ L-24</text>
-<text x="1812" y="1063" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Clock OE: pin 4 LOW</text>
-<text x="1595" y="1093" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">N6</text>
-<text x="1644" y="1093" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> a21 ↔ L-21</text>
-<text x="1812" y="1093" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Data OE: pin 1 LOW</text>
-<text x="1595" y="1123" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">N7</text>
-<text x="1644" y="1123" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> j26 ↔ R-26</text>
-<text x="1812" y="1123" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Input pin 9 → ground</text>
-<text x="1595" y="1153" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">N8</text>
-<text x="1644" y="1153" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start"> j23 ↔ R-23</text>
-<text x="1812" y="1153" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Input pin 12 / C1 → ground</text>
-<text x="1595" y="1183" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#aa5217" text-anchor="start">B1</text>
-<text x="1644" y="1183" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start">L+31 ↔ L+34</text>
-<text x="1812" y="1183" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Bridge left + rail midpoint break</text>
-<text x="1595" y="1213" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">B2</text>
-<text x="1644" y="1213" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start">L-31 ↔ L-34</text>
-<text x="1812" y="1213" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Bridge left − rail midpoint break</text>
-<text x="1595" y="1243" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#aa5217" text-anchor="start">B3</text>
-<text x="1644" y="1243" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start">R+31 ↔ R+34</text>
-<text x="1812" y="1243" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Bridge right + rail midpoint break</text>
-<text x="1595" y="1273" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">B4</text>
-<text x="1644" y="1273" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start">R-31 ↔ R-34</text>
-<text x="1812" y="1273" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Bridge right − rail midpoint break</text>
-<text x="1595" y="1303" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#aa5217" text-anchor="start">B5</text>
-<text x="1644" y="1303" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start">L+50 ↔ R+50</text>
-<text x="1812" y="1303" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Link left and right +5 V rails</text>
-<text x="1595" y="1333" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">B6</text>
-<text x="1644" y="1333" font-family="DejaVu Sans Mono,sans-serif" font-size="17" font-weight="400" fill="#192c3a" text-anchor="start">L-52 ↔ R-52</text>
-<text x="1812" y="1333" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Link left and right ground rails</text>
-<rect x="850" y="1426" width="1490" height="628" rx="10" fill="white" stroke="#d2dce3" stroke-width="2"/>
-<text x="872" y="1460" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#192c3a" text-anchor="start">Power and operation</text>
-<line x1="872" y1="1474" x2="2318" y2="1474" stroke="#d2dce3" stroke-width="1"/>
-<text x="875" y="1502" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#192c3a" text-anchor="start">The Nano receives power through its own USB socket.</text>
-<text x="875" y="1537" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#192c3a" text-anchor="start">J0 feeds the right + / − rails. B5 / B6 link them to the left + / − rails.</text>
-<text x="875" y="1572" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#192c3a" text-anchor="start">B1–B4 bridge all four rail breaks at rows 31–34; check rail continuity before power.</text>
-<text x="875" y="1607" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#192c3a" text-anchor="start">N1 joins Nano GND to the − rail. Neither VIN nor VUSB carries strip power.</text>
-<text x="875" y="1642" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#192c3a" text-anchor="start">Assumed J0 cable: USB-A → 5.5 × 2.1 mm barrel, center positive, 5 V only.</text>
-<text x="875" y="1677" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#192c3a" text-anchor="start">Use two charger outputs, or PC USB for Nano plus a separate 5 V LED supply.</text>
-<text x="875" y="1712" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#192c3a" text-anchor="start">U1 translates 3.3 V Nano data/clock to 5 V logic for the strip.</text>
-<text x="875" y="1747" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#192c3a" text-anchor="start">Set every pixel to the same RGB value and brightness in the firmware loop.</text>
-<text x="875" y="1782" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">Start with 1 pixel, then at most 5. Measure current before increasing the load.</text>
-<text x="875" y="1817" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">Budget up to 60 mA per pixel: 5 pixels ≈0.30 A, plus Nano/buffer current.</text>
-<text x="875" y="1852" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">A 160-inch strip at 60 LEDs/m is about 244 pixels: up to 14.6 A by this estimate.</text>
-<text x="875" y="1887" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">The full strip needs a separate current-rated power build; never feed it through Nano.</text>
-<text x="875" y="1922" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">The breadboard is only for this small test, not the full strip current.</text>
-<a href="https://www.ti.com/lit/ds/symlink/sn74ahct125.pdf">
-<text x="875" y="1985" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#286bbb" text-anchor="start">Sources: TI SN74AHCT125 datasheet</text>
-</a>
-<a href="https://learn.adafruit.com/adafruit-dotstar-leds/power-and-connections">
-<text x="875" y="2020" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#286bbb" text-anchor="start">Adafruit APA102 power guidance</text>
-</a>
-<a href="https://docs.arduino.cc/resources/pinouts/ABX00027-full-pinout.pdf">
-<text x="1450" y="2020" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#286bbb" text-anchor="start">Arduino Nano 33 IoT pinout</text>
-</a>
-<rect x="40" y="2080" width="2300" height="237" rx="10" fill="white" stroke="#d2dce3" stroke-width="2"/>
-<text x="62" y="2114" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#192c3a" text-anchor="start">Before connecting power</text>
-<line x1="62" y1="2128" x2="2318" y2="2128" stroke="#d2dce3" stroke-width="1"/>
-<text x="64" y="2152" font-family="DejaVu Sans,sans-serif" font-size="21" font-weight="700" fill="#192c3a" text-anchor="start">Use 5 V only. Disconnect power before changing wires; check for shorts and verify C2 polarity and the barrel cable center-positive voltage.</text>
-<text x="64" y="2192" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#192c3a" text-anchor="start">Power the Nano by USB. Keep Nano VIN and VUSB unconnected. Connect a40–a43 to the strip input marked GND / CI / DI / +5 V.</text>
-<text x="64" y="2232" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#192c3a" text-anchor="start">Start with one pixel. Five pixels is a small-load test; the charger rating is available capacity, not a breadboard short-circuit current limit.</text>
-<text x="64" y="2272" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">This build is the 5 V APA102 stage only. The 12 V strip, MOSFET circuit and L7805CV regulators are not connected.</text>
-<text x="42" y="2353" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#536775" text-anchor="start">5 V REV B · 12 OCT 2026 · Standalone SVG · Full jumper routes with linked 5 V / GND rails and midpoint bridges.</text>
+<text x="440" y="2072" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#536775" text-anchor="middle">+ rails: 5 V     − rails: GND</text>
 </svg>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="2150" viewBox="0 0 880 2150">
 <title>Kitchen lighting: 12 V RGB minimum breadboard layout</title>
-<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three TN0702N3-G logic-level N-channel MOSFETs, and barrel jack J0. Nano D3, D5 and D6 directly control red, green and blue MOSFET gates. No gate drivers, resistors or capacitors are installed. J0 feeds Nano VIN and strip positive in parallel through the lower right power rails. The strip returns through the MOSFETs, never through Nano GPIO. All wires are drawn.</desc>
+<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three TN0702N3-G logic-level N-channel MOSFETs, and barrel jack J0. Nano D3, D5 and D6 directly control red, green and blue MOSFET gates. No gate drivers, resistors or capacitors are installed. Strip positive connects directly to J0 pin 1 by a soldered pigtail; row 40 is unused. The lower right power rails supply Nano VIN and common ground. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. All wires are drawn.</desc>
 <rect x="0" y="0" width="880" height="2150" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
 <text x="40" y="62" font-family="DejaVu Sans,sans-serif" font-size="34" font-weight="700" fill="#192c3a" text-anchor="start">12 V · Minimum</text>
 <text x="40" y="108" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">RGB strip · ≤25 cm · ≤0.30 A total LED current</text>
@@ -1124,13 +1124,7 @@
 <rect x="553" y="619" width="10" height="10" rx="1" fill="#d6ae5a" stroke="#a78140" stroke-width="2"/>
 <text x="412" y="628" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="400" fill="white" text-anchor="start">VIN</text>
 <text x="548" y="628" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="400" fill="white" text-anchor="end">TX</text>
-<rect x="333" y="1263" width="139" height="22" rx="3" fill="#fff0ce" stroke="#aa5217" stroke-width="2"/>
-<circle cx="350" cy="1274" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
-<circle cx="376" cy="1274" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
-<circle cx="402" cy="1274" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
-<circle cx="428" cy="1274" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
-<circle cx="454" cy="1274" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
-<text x="476" y="1279" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="700" fill="#aa5217" text-anchor="start">+12 V</text>
+<text x="476" y="1279" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="400" fill="#536775" text-anchor="start">unused</text>
 <rect x="333" y="1289" width="139" height="22" rx="3" fill="#fff0ce" stroke="#258450" stroke-width="2"/>
 <circle cx="350" cy="1300" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
 <circle cx="376" cy="1300" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
@@ -1200,10 +1194,12 @@
 <text x="115" y="1242" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="middle">RGB strip</text>
 <rect x="137" y="1267" width="23" height="14" rx="2" fill="#c6a764" stroke="#aa5217" stroke-width="2"/>
 <text x="93" y="1279" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#aa5217" text-anchor="middle">+</text>
-<polyline points="350,1274 180,1274 160,1274" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="350,1274 180,1274 160,1274" fill="none" stroke="#aa5217" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="350" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<g id="strip-positive-bypass" data-start="J0.1" data-end="Strip +"><title>Soldered pigtail from actual J0 pin 1 to strip +; not a breadboard jumper</title>
+<polyline points="376,1742 210,1742 210,1274 160,1274" fill="none" stroke="#f5f7fa" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="376,1742 210,1742 210,1274 160,1274" fill="none" stroke="#aa5217" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="376" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="160" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+</g>
 <rect x="137" y="1293" width="23" height="14" rx="2" fill="#c6a764" stroke="#258450" stroke-width="2"/>
 <text x="93" y="1305" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#258450" text-anchor="middle">G</text>
 <polyline points="350,1300 191,1300 160,1300" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1303,13 +1299,6 @@
 <circle cx="350" cy="624" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="714" cy="1170" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-V2" data-start="e40" data-end="R+40">
-<title>V2: e40 → R+40. +12 V rail → strip +</title>
-<polyline points="454,1274 454,1258 714,1258 714,1274" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="454,1274 454,1258 714,1258 714,1274" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="454" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="714" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-</g>
 <g id="jumper-N0" data-start="e60" data-end="R-60">
 <title>N0: e60 → R-60. J0 sleeve → ground rail</title>
 <polyline points="454,1794 740,1794" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1346,8 +1335,6 @@
 <circle cx="714" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="624" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="714" cy="1170" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="454" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="714" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="740" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="610" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
@@ -1364,4 +1351,6 @@
 <text x="856" y="1483" transform="rotate(-90 856 1483)" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#286bbb">TN0702N3-G</text>
 <text x="558" y="1538" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">face ←</text>
 <text x="558" y="1538" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#536775">face ←</text>
+<text x="40" y="2096" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#536775" text-anchor="start">Positive bypass only; RGB returns still use the breadboard.</text>
+<text x="40" y="2126" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">TN0702 MOSFETs and return wiring remain for the short test load only.</text>
 </svg>

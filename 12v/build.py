@@ -4,6 +4,7 @@
 From the project root: python3 12v/build.py
 Both SVGs are written beside this script. Only Python's standard library is used.
 The minimum uses three TN0702N3-G MOSFETs and the lower right power rails.
+Both layouts feed strip positive directly from a soldered pigtail on J0 pin 1.
 """
 from html import escape
 from pathlib import Path
@@ -159,7 +160,9 @@ def drivers():
 
 
 def output_rows(labelsize=15):
-    for row,label,color in [(40,'+12 V',POWER),(41,'G',GREEN),(42,'R',RED),(43,'B',BLUE)]:
+    # Row 40 is unused: strip positive bypasses all breadboard contacts.
+    text(476,yy(40)+5,'unused',11,MUTED)
+    for row,label,color in [(41,'G',GREEN),(42,'R',RED),(43,'B',BLUE)]:
         rect(333,yy(row)-11,139,22,'#fff0ce',color,3)
         for col in 'abcde': circle(*hole(col,row),3.8,'#636d6e','#a1aaa9',1)
         text(476,yy(row)+5,label,labelsize,color,True)
@@ -182,15 +185,21 @@ def barrel_jack():
 
 
 def led_strip():
-    # An actual short LED segment, the only output load outside this board.
+    # Solder the positive pigtail to the actual jack terminal, not a row-58 hole.
     rect(65,yy(40)-15,101,224,'#f5eee0','#bbae8f',4)
     text(115,yy(40)-32,'RGB strip',17,INK,True,'middle')
     for idx,(label,color) in enumerate([('+',POWER),('G',GREEN),('R',RED),('B',BLUE)]):
         ry=yy(40+idx)
         rect(137,ry-7,23,14,'#c6a764',color,2)
         text(93,ry+5,label,15,color,True,'middle')
-        start=f'a{40+idx}'; record('LED '+label,start,'Strip '+label,'Short segment only; + / G / R / B order verified from strip photo')
-        wire([parse_hole(start),(180+idx*11,ry),(160,ry)],color,3)
+        if label == '+':
+            record('LED +','J0.1','Strip +','Insulated wire soldered directly to jack pin 1 / center-positive terminal; bypasses breadboard contacts; row 40 unused')
+            s.append('<g id="strip-positive-bypass" data-start="J0.1" data-end="Strip +"><title>Soldered pigtail from actual J0 pin 1 to strip +; not a breadboard jumper</title>')
+            wire([hole('b',58),(210,yy(58)),(210,ry),(160,ry)],color,5)
+            s.append('</g>')
+        else:
+            start=f'a{40+idx}'; record('LED '+label,start,'Strip '+label,'Short segment only; colour return still passes through breadboard contacts')
+            wire([parse_hole(start),(180+idx*11,ry),(160,ry)],color,3)
     for dy in [122,168]:
         rect(94,yy(40)+dy-13,43,28,'#e4e4d9','#978c74',3)
         rect(106,yy(40)+dy-6,19,14,'#f2d75e','#cbb547',2)
@@ -225,7 +234,6 @@ def draw_best_jumpers():
         'V2': [(584,yy(58)-13),(808,yy(58)-13),(808,yy(16)),(310,yy(16)),(310,yy(15))],
         'V3': [(610,yy(57)),(796,yy(57)),(796,yy(23))],
         'V4': [(636,yy(58)+13),(784,yy(58)+13),(784,yy(33))],
-        'V5': [(558,yy(60)-13),(772,yy(60)-13),(772,yy(39)),(454,yy(39))],
         'N0': [(478,yy(60)),(478,yy(56))],
         'N1': [(820,yy(56)),(820,yy(16)+13),(298,yy(16)+13),(298,yy(14))],
         'N2': [(584,yy(56)-13),(748,yy(56)-13),(748,yy(29)),(326,yy(29)),(326,yy(28))],
@@ -245,7 +253,7 @@ def build():
     global s, wiring, occupied
     s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
          '<title>Kitchen lighting: 12 V RGB best-practice breadboard proof of concept</title>',
-         '<desc>Nano 33 IoT, two TC4427ACPA drivers, three IRFZ44NPBF MOSFETs and a breadboard barrel jack. Every jumper is drawn as a continuous wire. Output a40 +12 V, a41 green, a42 red, a43 blue. Only a short 12 V strip segment is connected.</desc>']
+         '<desc>Nano 33 IoT, two TC4427ACPA drivers, three IRFZ44NPBF MOSFETs and barrel jack J0. A soldered pigtail connects J0 pin 1 directly to strip positive, bypassing all breadboard contacts. Row 40 is unused; a41 green, a42 red and a43 blue are the strip returns. Return current still passes through the breadboard; only a short strip segment is connected.</desc>']
     wiring=[]; occupied={}; flags.clear(); annotations.clear()
     rect(0,0,W,H,'#f4f7fa','#f4f7fa',0)
     text(40,62,'12 V · Best practice',34,bold=True)
@@ -294,7 +302,6 @@ def build():
         ('V2','h58','a15',POWER,'+12 V → Nano VIN'),
         ('V3','i58','j23',POWER,'+12 V → U1 pin 6'),
         ('V4','j58','j33',POWER,'+12 V → U2 pin 6'),
-        ('V5','g60','e40',POWER,'+12 V → strip output'),
         ('N0','e60','f56',INK,'Jack unswitched sleeve → common ground'),
         ('N1','g56','a14',INK,'Common ground → Nano GND'),
         ('N2','h56','b28',INK,'Common ground → U1 ground bank'),
@@ -307,10 +314,12 @@ def build():
     draw_best_jumpers()
     s.extend(annotations)
     text(40,2096,'USB programming with 12 V off: disconnect D3, D5 and D6.',17,MUTED)
+    text(40,2126,'Positive bypass only; RGB returns still use the breadboard. Not a 4 A layout.',16,MUTED)
     record('Load limit','12 V 6 A PSU','One cut segment initially; no more than 25 cm','14.4 W/m × 0.25 m ÷ 12 V = 0.30 A LED current; plus Nano/drivers. PSU capacity is not fault protection. Verify actual current.')
     record('USB-only programming','12 V off','Unplug i10 / i8 / i7','Avoid driving unpowered TC4427A inputs')
     record('J0 polarity check','PSU plug center','Positive 12 V relative to sleeve','Check with meter before connection; reverse-polarity adapters cannot be used as drawn')
     record('Mechanical fit','TO-220 and barrel jack leads','No force; form gently / use suitable pin adapters','J0 is not an exact 2.54 mm grid footprint. 10 kΩ and 100 Ω resistors mount upright. Jack feeds at e58/e60 clear its body; verify mechanical fit before wiring.')
+    check_strip_positive_bypass()
     s.append('</svg>')
     target = OUT / (NAME + '.svg')
     target.write_text('\n'.join(s), encoding='utf-8')
@@ -346,7 +355,6 @@ def draw_minimum_jumpers():
         'D3': [(584,yy(49)+13),(506,yy(49)+13),(506,yy(43)-13),(454,yy(43)-13)],
         'S1': [(454,yy(45))],
         'V1': [(310,yy(15)),(310,yy(36))],
-        'V2': [(454,yy(40)-16),(714,yy(40)-16)],
         'N1': [(794,yy(12)),(794,yy(38))],
     }
     for label,start,end,color,note in minimum_jumpers:
@@ -362,7 +370,7 @@ def build_minimum():
     global s,wiring,occupied
     s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
        '<title>Kitchen lighting: 12 V RGB minimum breadboard layout</title>',
-       '<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three TN0702N3-G logic-level N-channel MOSFETs, and barrel jack J0. Nano D3, D5 and D6 directly control red, green and blue MOSFET gates. No gate drivers, resistors or capacitors are installed. J0 feeds Nano VIN and strip positive in parallel through the lower right power rails. The strip returns through the MOSFETs, never through Nano GPIO. All wires are drawn.</desc>']
+       '<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three TN0702N3-G logic-level N-channel MOSFETs, and barrel jack J0. Nano D3, D5 and D6 directly control red, green and blue MOSFET gates. No gate drivers, resistors or capacitors are installed. Strip positive connects directly to J0 pin 1 by a soldered pigtail; row 40 is unused. The lower right power rails supply Nano VIN and common ground. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. All wires are drawn.</desc>']
     wiring=[]; occupied={}; flags.clear(); annotations.clear(); minimum_jumpers.clear()
     rect(0,0,W,H,'#f4f7fa','#f4f7fa',0)
     text(40,62,'12 V · Minimum',34,bold=True)
@@ -384,7 +392,6 @@ def build_minimum():
         ('S3','j47','R-47',INK,'Q3 source → ground rail'),
         ('V0','e58','R+58',POWER,'J0 center → +12 V rail'),
         ('V1','a15','R+36',POWER,'+12 V rail → Nano VIN'),
-        ('V2','e40','R+40',POWER,'+12 V rail → strip +'),
         ('N0','e60','R-60',INK,'J0 sleeve → ground rail'),
         ('N1','i12','R-38',INK,'Nano GND → ground rail'),
     ]:
@@ -392,13 +399,25 @@ def build_minimum():
         minimum_jumpers.append((label,start,end,color,note))
     draw_minimum_jumpers()
     s.extend(annotations)
+    text(40,2096,'Positive bypass only; RGB returns still use the breadboard.',17,MUTED)
+    text(40,2126,'TN0702 MOSFETs and return wiring remain for the short test load only.',16,MUTED)
     record('Load limit','12 V 6 A PSU','One cut segment initially; no more than 25 cm','14.4 W/m × 0.25 m ÷ 12 V = 0.30 A total LED current; about 0.10 A per colour. TN0702 is only selected for this short load.')
     record('J0 polarity check','PSU plug center','Positive 12 V relative to sleeve','Check before connecting; J0 feeds Nano VIN and strip + in parallel')
+    check_strip_positive_bypass()
     s.append('</svg>')
     target=OUT/(MINIMUM_NAME+'.svg')
     target.write_text('\n'.join(s),encoding='utf-8')
     print(f'Generated {target}; {len(occupied)} unique occupied holes checked.')
     return target
+
+
+def check_strip_positive_bypass():
+    """Keep strip positive off board contacts when regenerating either layout."""
+    assert [(start,end) for label,start,end,_ in wiring if label == 'LED +'] == [('J0.1','Strip +')]
+    assert not any(re.fullmatch(r'[a-j]40',endpoint) for _,start,end,_ in wiring for endpoint in (start,end))
+    assert ('J0 pin 1 / center','b58','J0.1') in [entry[:3] for entry in wiring]
+    for colour,row in [('G',41),('R',42),('B',43)]:
+        assert any(label == 'LED '+colour and start == f'a{row}' and end == 'Strip '+colour for label,start,end,_ in wiring)
 
 
 if __name__ == '__main__':

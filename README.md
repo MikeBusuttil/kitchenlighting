@@ -19,3 +19,6 @@ Each `build.py` generates both SVGs using only the Python standard library. Asse
 ## Contributing
 
 - markdown tables: `|`s should line up
+- diagram labelling:
+  - label directly (avoid using a legend)
+  - avoid redundancy (ie. explaining a connection that the diagram clearly displays)

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="2150" viewBox="0 0 880 2150">
 <title>Kitchen lighting: 12 V RGB best-practice breadboard proof of concept</title>
-<desc>Nano 33 IoT, two TC4427ACPA drivers, three IRFZ44NPBF MOSFETs and a breadboard barrel jack. Every jumper is drawn as a continuous wire. Output a40 +12 V, a41 green, a42 red, a43 blue. Only a short 12 V strip segment is connected.</desc>
+<desc>Nano 33 IoT, two TC4427ACPA drivers, three IRFZ44NPBF MOSFETs and barrel jack J0. A soldered pigtail connects J0 pin 1 directly to strip positive, bypassing all breadboard contacts. Row 40 is unused; a41 green, a42 red and a43 blue are the strip returns. Return current still passes through the breadboard; only a short strip segment is connected.</desc>
 <rect x="0" y="0" width="880" height="2150" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
 <text x="40" y="62" font-family="DejaVu Sans,sans-serif" font-size="34" font-weight="700" fill="#192c3a" text-anchor="start">12 V · Best practice</text>
 <text x="40" y="108" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">RGB strip · ≤25 cm · ≤0.30 A total LED current</text>
@@ -1257,13 +1257,7 @@
 <line x1="614" y1="1107.0" x2="614" y2="1129.0" stroke="#d2dde3" stroke-width="3"/>
 <circle cx="610" cy="1092" r="4" fill="#aa5217" stroke="white" stroke-width="1"/>
 <circle cx="610" cy="1144" r="4" fill="#aa5217" stroke="white" stroke-width="1"/>
-<rect x="333" y="1263" width="139" height="22" rx="3" fill="#fff0ce" stroke="#aa5217" stroke-width="2"/>
-<circle cx="350" cy="1274" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
-<circle cx="376" cy="1274" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
-<circle cx="402" cy="1274" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
-<circle cx="428" cy="1274" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
-<circle cx="454" cy="1274" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
-<text x="476" y="1279" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#aa5217" text-anchor="start">+12 V</text>
+<text x="476" y="1279" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="400" fill="#536775" text-anchor="start">unused</text>
 <rect x="333" y="1289" width="139" height="22" rx="3" fill="#fff0ce" stroke="#258450" stroke-width="2"/>
 <circle cx="350" cy="1300" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
 <circle cx="376" cy="1300" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
@@ -1368,10 +1362,12 @@
 <text x="115" y="1242" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="middle">RGB strip</text>
 <rect x="137" y="1267" width="23" height="14" rx="2" fill="#c6a764" stroke="#aa5217" stroke-width="2"/>
 <text x="93" y="1279" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#aa5217" text-anchor="middle">+</text>
-<polyline points="350,1274 180,1274 160,1274" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="350,1274 180,1274 160,1274" fill="none" stroke="#aa5217" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="350" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<g id="strip-positive-bypass" data-start="J0.1" data-end="Strip +"><title>Soldered pigtail from actual J0 pin 1 to strip +; not a breadboard jumper</title>
+<polyline points="376,1742 210,1742 210,1274 160,1274" fill="none" stroke="#f5f7fa" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="376,1742 210,1742 210,1274 160,1274" fill="none" stroke="#aa5217" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="376" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="160" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+</g>
 <rect x="137" y="1293" width="23" height="14" rx="2" fill="#c6a764" stroke="#258450" stroke-width="2"/>
 <text x="93" y="1305" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#258450" text-anchor="middle">G</text>
 <polyline points="350,1300 191,1300 160,1300" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1496,12 +1492,6 @@
 <circle cx="636" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="636" cy="1092" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-V5" data-start="g60" data-end="e40"><title>+12 V → strip output</title>
-<polyline points="558,1794 558,1781 772,1781 772,1248 454,1248 454,1274" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="558,1794 558,1781 772,1781 772,1248 454,1248 454,1274" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="558" cy="1794" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="454" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-</g>
 <g id="jumper-N0" data-start="e60" data-end="f56"><title>Jack unswitched sleeve → common ground</title>
 <polyline points="454,1794 478,1794 478,1690 532,1690" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
 <polyline points="454,1794 478,1794 478,1690 532,1690" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1566,8 +1556,6 @@
 <circle cx="636" cy="832" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="636" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="636" cy="1092" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="558" cy="1794" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="454" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="532" cy="1690" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="558" cy="1690" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
@@ -1645,4 +1633,5 @@
 <text x="628" y="1820.0" transform="rotate(-90 628 1820.0)" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">optional</text>
 <text x="628" y="1820.0" transform="rotate(-90 628 1820.0)" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#536775">optional</text>
 <text x="40" y="2096" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#536775" text-anchor="start">USB programming with 12 V off: disconnect D3, D5 and D6.</text>
+<text x="40" y="2126" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Positive bypass only; RGB returns still use the breadboard. Not a 4 A layout.</text>
 </svg>

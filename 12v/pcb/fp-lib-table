@@ -1,0 +1,11 @@
+(fp_lib_table
+  (lib (name "Capacitor_SMD")(type "KiCad")(uri "${KICAD7_FOOTPRINT_DIR}/Capacitor_SMD.pretty")(options "")(descr ""))
+  (lib (name "Connector_BarrelJack")(type "KiCad")(uri "${KICAD7_FOOTPRINT_DIR}/Connector_BarrelJack.pretty")(options "")(descr ""))
+  (lib (name "Diode_SMD")(type "KiCad")(uri "${KICAD7_FOOTPRINT_DIR}/Diode_SMD.pretty")(options "")(descr ""))
+  (lib (name "Fuse")(type "KiCad")(uri "${KICAD7_FOOTPRINT_DIR}/Fuse.pretty")(options "")(descr ""))
+  (lib (name "MountingHole")(type "KiCad")(uri "${KICAD7_FOOTPRINT_DIR}/MountingHole.pretty")(options "")(descr ""))
+  (lib (name "Package_SO")(type "KiCad")(uri "${KICAD7_FOOTPRINT_DIR}/Package_SO.pretty")(options "")(descr ""))
+  (lib (name "Package_TO_SOT_SMD")(type "KiCad")(uri "${KICAD7_FOOTPRINT_DIR}/Package_TO_SOT_SMD.pretty")(options "")(descr ""))
+  (lib (name "Resistor_SMD")(type "KiCad")(uri "${KICAD7_FOOTPRINT_DIR}/Resistor_SMD.pretty")(options "")(descr ""))
+  (lib (name "pcb")(type "KiCad")(uri "${KIPRJMOD}/pcb.pretty")(options "")(descr ""))
+)

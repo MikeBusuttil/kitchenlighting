@@ -9,8 +9,10 @@
 
 - Create the specs & draw the schematic for a PCB with all the best practice components already soldered on that can be submitted online for easy fabrication.  The PCB should expose:
   - a female header for allowing plug-in of the nano (however many pins that is)
-  - 2 RJ-11 female jacks where the 4 primary conductors of the jack are connected to +12V, R, G, B
-  - a 12v barrel jack
+  - 4 RJ-11 female jacks (top-entry) where the 4 primary conductors of the jack are connected to +12V, R, G, B
+  - the 12v barrel jack next to USB jack of the Nano coming out of the short side of the PCB
+- the width of the board cannot exceed 2.3"
+- the height of the board cannot exceed 4"
 
 ### files
 

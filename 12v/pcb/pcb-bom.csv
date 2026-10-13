@@ -1,0 +1,25 @@
+Designator,Quantity,Value,Manufacturer Part Number,Footprint,Assembly,Notes
+J1,1,12 V IN / centre +,PJ-063AH,Connector_BarrelJack:BarrelJack_CUI_PJ-063AH_Horizontal,THT factory solder,8 A jack; 5.5 x 2.1 mm mating plug; plated slots required
+J2,1,Nano left / USB up,SSQ-115-01-G-S,pcb:Socket_Samtec_SSQ-115-01-G-S,THT factory solder,2.54 mm pitch; two rows 15.24 mm apart; socket body height 8.51 mm
+J3,1,Nano right / USB up,SSQ-115-01-G-S,pcb:Socket_Samtec_SSQ-115-01-G-S,THT factory solder,2.54 mm pitch; two rows 15.24 mm apart; socket body height 8.51 mm
+"J4,J5,J6,J7",4,RJ11 vertical / + R G B,615004144121,pcb:RJ11_Wuerth_615004144121,THT factory solder,"Top-entry 6P4C; 1.5 A/contact; 1.25 m maximum strip at 14.4 W/m, 12 V"
+F1,1,6.3 A / 125 V fast,045106.3MRL,Fuse:Fuse_Littelfuse-NANO2-451_453,Top SMT,
+Q4,1,AOD4185 / reverse polarity,AOD4185,Package_TO_SOT_SMD:TO-252-3_TabPin2,Top SMT,
+R13,1,10k,RC0805FR-0710KL,Resistor_SMD:R_0805_2012Metric,Top SMT,
+D1,1,12 V gate clamp,BZT52C12-7-F,Diode_SMD:D_SOD-123,Top SMT,
+D2,1,SMBJ15A,SMBJ15A,Diode_SMD:D_SMB,Top SMT,
+C1,1,470u / 35 V,EEHZL1V471P,Capacitor_SMD:CP_Elec_10x10.5,Top SMT,
+"F2,F3,F4,F5",4,3.15 A / 125 V fast,04513.15MRL,Fuse:Fuse_Littelfuse-NANO2-451_453,Top SMT,Short-circuit fuse; does NOT protect the 1.5 A RJ11 contact from overload
+U3,1,L78M09 / 9 V,L78M09CDT-TR,Package_TO_SOT_SMD:TO-252-3_TabPin2,Top SMT,
+C2,1,330n / 50 V,GRM21BR71H334KA01L,Capacitor_SMD:C_0805_2012Metric,Top SMT,
+C3,1,10u / 25 V,EEEFK1E100R,Capacitor_SMD:CP_Elec_4x5.8,Top SMT,
+"C4,C5,C7",3,100n / 50 V,GRM21BR71H104KA01L,Capacitor_SMD:C_0805_2012Metric,Top SMT,
+R14,1,1k8 / minimum load,RC0805FR-071K8L,Resistor_SMD:R_0805_2012Metric,Top SMT,
+D3,1,SS14 / USB isolation,SS14-E3/61T,Diode_SMD:D_SMA,Top SMT,
+"U1,U2",2,UCC27524A,UCC27524ADR,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,Top SMT,"Dual noninverting driver; input voltage independent of supply; used enables high, unused channel grounded"
+"C6,C8",2,4.7u / 50 V,GRM32ER71H475KA88L,Capacitor_SMD:C_1210_3225Metric,Top SMT,
+"Q1,Q2,Q3",3,AOD4184A,AOD4184A,Package_TO_SOT_SMD:TO-252-3_TabPin2,Top SMT,
+"R1,R2,R3",3,1k,RC0805FR-071KL,Resistor_SMD:R_0805_2012Metric,Top SMT,
+"R4,R10,R5,R11,R6,R12",6,100k,RC0805FR-07100KL,Resistor_SMD:R_0805_2012Metric,Top SMT,
+"R7,R8,R9",3,33R,RC0805FR-0733RL,Resistor_SMD:R_0805_2012Metric,Top SMT,
+"D4,D5,D6",3,SS54 / cable clamp,SSC54-E3/57T,Diode_SMD:D_SMC,Top SMT,

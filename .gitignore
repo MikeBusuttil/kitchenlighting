@@ -3,3 +3,10 @@ __pycache__/
 .venv/
 venv/
 .DS_Store
+*.kicad_prl
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*-backups/
+12v/pcb/pcb.dsn
+12v/pcb/pcb.ses
+logs/

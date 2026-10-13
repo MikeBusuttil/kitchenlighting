@@ -1,0 +1,65 @@
+{
+  "kicad_version": "7.0.11",
+  "parts": 51,
+  "nets": 26,
+  "board_pin_map": "PASS",
+  "schematic_pin_map": "PASS",
+  "drc": {
+    "DRC violations": 0,
+    "unconnected pads": 0,
+    "Footprint errors": 0
+  },
+  "board_mm": [
+    50,
+    100
+  ],
+  "output_count": 4,
+  "full_strip_A": 4.8768,
+  "equal_branch_length_m": 1.016,
+  "equal_branch_A": 1.2192,
+  "connector_rating_A": 1.5,
+  "full_strip_within_connector_rating": true,
+  "browser_documents": {
+    "pcb.pdf": [
+      "pcb.html",
+      "pcb.svg"
+    ],
+    "pcb-layout.pdf": [
+      "pcb-layout.html",
+      "pcb-layout.svg"
+    ],
+    "pcb-NPTH-drl_map.pdf": [
+      "pcb-NPTH-drl_map.html",
+      "pcb-NPTH-drl_map.svg"
+    ],
+    "pcb-PTH-drl_map.pdf": [
+      "pcb-PTH-drl_map.html",
+      "pcb-PTH-drl_map.svg"
+    ]
+  },
+  "hardware_validation": "NOT PERFORMED; prototype only",
+  "sha256": {
+    "pcb.kicad_pcb": "bcdfa2941c96aa6c86c0919d514f2521824468147fa6eaf11e497ee1a598885e",
+    "pcb.kicad_sch": "345e17efb6c3f687b00bdfa3665de14db666ecb86915434cf6c899c3cbbf298e",
+    "pcb.kicad_pro": "7e0959d228a7adb995deec1a7aa1e122abe13909c47a056256fe2a9a2440848b",
+    "pcb.net": "c63cc0741089995e67f86c15a2938f09c63a117dc7797870eefeba666b125778",
+    "pcb-bom.csv": "cac32a412ec760b79c7f00777146b8f03bbf05fedbe2c7638a8b91549030e5a2",
+    "pcb-positions.csv": "3ba9c5d80822e8ba6b24d0f04fdbc605ea136e32f1518507a149514d72506beb",
+    "pcb-gerbers.zip": "d8a83f94206e25590c9a1bfd45bc444dc1773bd3005e5c28cd65db7e0860e4e1",
+    "pcb-notes.md": "fd81775764105d81a190b425bbaabaa2a236c10a6e48f8dcfe2a7ed4517e245f",
+    "pcb-cost-estimate.md": "5e90198fef91f43e82761d2897c39d00868cf69e9aeab06b6df06207f214e4b2",
+    "pcb-drc.txt": "215090ae0354decc20674e8725258697976f5c3811d5efd05687fdb2bc53f5a8",
+    "pcb.pdf": "9237bc202c11a3ab346111e445090aae31fe6156a08096b06770b045ac5a357e",
+    "pcb-layout.pdf": "7d291d165a6f52851fc0b2f8d8c1712c82ea68855cb019ad87db9196dfe53eec",
+    "pcb-NPTH-drl_map.pdf": "2e009b7b86437bfa39aa7083036d11cac45431382188727c20cc145b566e70bb",
+    "pcb-PTH-drl_map.pdf": "644df6cf65dd1dcf3606f3915666fd82fd07afac9a16ad0a50495e0f02012be7",
+    "pcb.html": "efed1953940ee4d6f34dd52ad9215288135173f900c618f77d5f893ef1f9d065",
+    "pcb.svg": "70ba91c49363d883eeabb7e6359a29f602218eb57918488f53caa4437e4235f1",
+    "pcb-layout.html": "1ab13b88309e461cbdff37d45c0865da88f953b53aaff143a20707b0727bd908",
+    "pcb-layout.svg": "5a47fb69bcaf3ef18a0e48b0db96889d18085ef9624e93d8eadbcfeac50a8f08",
+    "pcb-NPTH-drl_map.html": "e9cf0e26431109e42a24a06de4c43a14d50f8e2850157b95f88d4ca513e4473a",
+    "pcb-NPTH-drl_map.svg": "61babbf9fa218f3bbb09891fee33421929f1661b103bd58ff10186483bb63b1d",
+    "pcb-PTH-drl_map.html": "df3896806aa944077e005c6b8568a24cae18ae2c7613107a140096e1220553ea",
+    "pcb-PTH-drl_map.svg": "1d02ad10850bf6a83b3fb78ca96a07a715c1e116ce4c6d510d430b16dc2be6d7"
+  }
+}

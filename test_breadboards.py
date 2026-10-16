@@ -58,7 +58,10 @@ EXPECTED_TERMINALS = {
         | passive_terminals("R", range(1, 10))
         | passive_terminals("C", range(3, 8))
     ),
-    ("12v", "min"): NANO | JACK | MOSFETS | RJ11_OUTPUTS,
+    ("12v", "min"): (
+        NANO | JACK | MOSFETS | RJ11_OUTPUTS
+        | passive_terminals("R", range(1, 4))
+    ),
     ("5v", "best"): (
         NANO | USB_C_BREAKOUT | APA102_STRIP
         | {f"U1.{pin}" for pin in range(1, 15)}
@@ -94,12 +97,15 @@ EXPECTED_CONNECTIONS = {
     ("12v", "min"): [
         ("J0.1", "Nano VIN", "J1.2", "J2.2"),
         ("J0.2", "Nano GND", "Q1.S", "Q2.S", "Q3.S"),
-        ("Nano D3", "Q1.G"),
-        ("Nano D5", "Q2.G"),
-        ("Nano D6", "Q3.G"),
+        ("Nano D3", "R1.1"),
+        ("Nano D5", "R2.1"),
+        ("Nano D6", "R3.1"),
         ("Q1.D", "J1.3", "J2.3"),
         ("Q2.D", "J1.4", "J2.4"),
         ("Q3.D", "J1.5", "J2.5"),
+        ("Q1.G", "R1.2"),
+        ("Q2.G", "R2.2"),
+        ("Q3.G", "R3.2"),
     ],
     ("5v", "best"): [
         ("C1.1", "C2.1", "J0.VBUS", "Nano VIN", "Strip +5V", "U1.10", "U1.13", "U1.14"),
@@ -268,7 +274,8 @@ class PurchaseExportTests(unittest.TestCase):
     def test_build_clis_generate_digikey_orders_from_another_directory(self):
         expected_parts = {
             ("12v", "min"): {
-                "TN0702N3-G": 3,
+                "AO3400A": 3,
+                "CF14JT2K20": 10,
                 "PJ-102AH": 1,
                 "615004144121": 2,
             },
@@ -334,7 +341,8 @@ class PurchaseExportTests(unittest.TestCase):
                         if (voltage, layout) == ("12v", "min"):
                             self.assertEqual(
                                 {row["DigiKey Part Number"] for row in rows},
-                                {"TN0702N3-G-ND", "CP-102AH-ND", "732-3172-ND"},
+                                {"785-1000-1-ND", "CF14JT2K20CT-ND",
+                                 "CP-102AH-ND", "732-3172-ND"},
                             )
                         if (voltage, layout) == ("5v", "best"):
                             self.assertIn("1528-2873-ND", {

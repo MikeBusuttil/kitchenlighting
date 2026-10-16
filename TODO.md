@@ -1,8 +1,11 @@
-- generate SVG & HTML as well as PDF
-- dockerize all those random packages
-- is there a way to open HTML files in github readmes?
-- fix the readme so the links all work nice
-- figure out how to make it WAY more economical
+
+what are the key flaws/limitations of 12v/min.svg?
+
+- design control circuit
+  - generate SVG & HTML as well as PDF
+    - fix the readme so the links all work nice
+      - is there a way to open HTML files in github readmes?
+  - dockerize all those random packages
 
 ## v1
 

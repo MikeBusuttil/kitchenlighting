@@ -3,15 +3,19 @@
 
 Run from the project root: python3 -m unittest -v test_breadboards.py
 Builds go to a temporary directory and never rewrite the checked-in diagrams.
-The expected terminal nets preserve the circuits before the wire-shortening
-change; their physical holes and jumper paths may change freely.
+The expected terminal nets preserve each circuit, including the two parallel
+RJ11 outputs on the 12 V minimum layout; holes and jumper paths may change.
 """
 from collections import defaultdict
 from contextlib import redirect_stdout
+import csv
 import importlib.util
 import io
 from pathlib import Path
 import re
+import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
 import xml.etree.ElementTree as ET
@@ -35,6 +39,7 @@ NANO = {
 JACK = {"J0.1", "J0.2", "J0.3"}
 MOSFETS = {f"Q{q}.{pin}" for q in range(1, 4) for pin in "GDS"}
 RGB_STRIP = {"Strip +", "Strip R", "Strip G", "Strip B"}
+RJ11_OUTPUTS = {f"J{port}.{pin}" for port in (1, 2) for pin in (2, 3, 4, 5)}
 APA102_STRIP = {"Strip +5V", "Strip GND", "Strip CI", "Strip DI"}
 
 
@@ -49,7 +54,7 @@ EXPECTED_TERMINALS = {
         | passive_terminals("R", range(1, 10))
         | passive_terminals("C", range(3, 8))
     ),
-    ("12v", "min"): NANO | JACK | MOSFETS | RGB_STRIP,
+    ("12v", "min"): NANO | JACK | MOSFETS | RJ11_OUTPUTS,
     ("5v", "best"): (
         NANO | JACK | APA102_STRIP
         | {f"U1.{pin}" for pin in range(1, 15)}
@@ -58,6 +63,7 @@ EXPECTED_TERMINALS = {
     ),
     ("5v", "min"): NANO | JACK | APA102_STRIP,
 }
+KNOWN_TERMINALS = set().union(*EXPECTED_TERMINALS.values())
 
 # All omitted terminals must remain separate singleton nets. A passive's .1
 # and .2 identify its From and To leads; resistors/capacitors are not jumpers.
@@ -82,14 +88,14 @@ EXPECTED_CONNECTIONS = {
         ("R6.1", "U2.7"),
     ],
     ("12v", "min"): [
-        ("J0.1", "Nano VIN", "Strip +"),
+        ("J0.1", "Nano VIN", "J1.2", "J2.2"),
         ("J0.2", "Nano GND", "Q1.S", "Q2.S", "Q3.S"),
         ("Nano D3", "Q1.G"),
         ("Nano D5", "Q2.G"),
         ("Nano D6", "Q3.G"),
-        ("Q1.D", "Strip R"),
-        ("Q2.D", "Strip G"),
-        ("Q3.D", "Strip B"),
+        ("Q1.D", "J1.3", "J2.3"),
+        ("Q2.D", "J1.4", "J2.4"),
+        ("Q3.D", "J1.5", "J2.5"),
     ],
     ("5v", "best"): [
         ("C1.1", "C2.1", "J0.1", "Strip +5V", "U1.10", "U1.13", "U1.14"),
@@ -143,7 +149,8 @@ class Circuit:
             if PASSIVE.fullmatch(label):
                 self.connect(start, label + ".1")
                 self.connect(end, label + ".2")
-            elif HOLE.fullmatch(start) or HOLE.fullmatch(end) or label == "LED +":
+            elif (HOLE.fullmatch(start) or HOLE.fullmatch(end)
+                  or (start in KNOWN_TERMINALS and end in KNOWN_TERMINALS)):
                 self.connect(start, end)
             # Remaining records describe assembly/power instructions, not leads.
 
@@ -232,6 +239,96 @@ class BreadboardTests(unittest.TestCase):
                         self.assertEqual(points[0], module.parse_hole(drawn[label][0]), label)
                         self.assertEqual(points[-1], module.parse_hole(drawn[label][1]), label)
                 self.assertEqual(drawn, jumpers)
+
+    def test_minimum_rj11_positive_bypasses_breadboard_contacts(self):
+        wiring, _, _ = self.layouts["12v", "min"]
+        direct_connections = Circuit([
+            item for item in wiring
+            if item[1] in KNOWN_TERMINALS and item[2] in KNOWN_TERMINALS
+        ])
+        for port in ("J1", "J2"):
+            with self.subTest(port=port):
+                self.assertEqual(
+                    direct_connections.find("J0.1"), direct_connections.find(port + ".2")
+                )
+
+
+class PurchaseExportTests(unittest.TestCase):
+    def test_build_clis_generate_digikey_orders_from_another_directory(self):
+        expected_parts = {
+            ("12v", "min"): {
+                "TN0702N3-G": 3,
+                "PJ-102AH": 1,
+                "615004144121": 2,
+            },
+            ("12v", "best"): {
+                "IRFZ44NPBF": 3,
+                "TC4427ACPA": 2,
+                "CF14JT100R": 10,
+                "CF14JT10K0": 10,
+                "K104K15X7RF5TH5": 2,
+                "ECE-A1EKS4R7B": 2,
+                "ECA-1EM101B": 1,
+                "PJ-102AH": 1,
+            },
+            ("5v", "min"): {
+                "PJ-102AH": 1,
+                "2697": 1,
+            },
+            ("5v", "best"): {
+                "PJ-102AH": 1,
+                "2697": 1,
+                "SN74AHCT125N": 1,
+                "CF14JT33R0": 2,
+                "CF14JT10K0": 2,
+                "K104K15X7RF5TH5": 1,
+                "EEU-FC1A102B": 1,
+            },
+        }
+        with tempfile.TemporaryDirectory(prefix="breadboard-purchase-tests-") as temporary:
+            root = Path(temporary)
+            project = root / "project"
+            project.mkdir()
+            shutil.copy2(ROOT / "purchasing.py", project / "purchasing.py")
+            # Copy inputs only: checked-in exports must not mask a missing build.
+            for voltage in ("12v", "5v"):
+                for source in (ROOT / voltage).rglob("*"):
+                    if source.suffix not in {".py", ".csv"} or source.name in {"min.csv", "best.csv"}:
+                        continue
+                    target = project / voltage / source.relative_to(ROOT / voltage)
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(source, target)
+            workdir = root / "unrelated-directory"
+            workdir.mkdir()
+            for voltage in ("12v", "5v"):
+                copied = project / voltage
+                result = subprocess.run(
+                    [sys.executable, str(copied / "build.py")], cwd=workdir,
+                    capture_output=True, text=True, timeout=30,
+                )
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                self.assertEqual(list(workdir.iterdir()), [])
+                for layout in ("best", "min"):
+                    with self.subTest(voltage=voltage, layout=layout):
+                        self.assertEqual(ET.parse(copied / f"{layout}.svg").getroot().tag, SVG + "svg")
+                        with (copied / f"{layout}.csv").open(encoding="utf-8", newline="") as source:
+                            reader = csv.DictReader(source)
+                            self.assertIn("Quantity", reader.fieldnames)
+                            self.assertIn("DigiKey Part Number", reader.fieldnames)
+                            rows = list(reader)
+                        expected = expected_parts[voltage, layout]
+                        self.assertEqual(len(rows), len(expected))
+                        self.assertTrue(all(row["DigiKey Part Number"] for row in rows))
+                        # Exact contents exclude already-owned and future-upgrade parts.
+                        self.assertEqual(
+                            {row["Manufacturer Part Number"]: int(row["Quantity"]) for row in rows},
+                            expected,
+                        )
+                        if (voltage, layout) == ("12v", "min"):
+                            self.assertEqual(
+                                {row["DigiKey Part Number"] for row in rows},
+                                {"TN0702N3-G-ND", "CP-102AH-ND", "732-3172-ND"},
+                            )
 
 
 if __name__ == "__main__":

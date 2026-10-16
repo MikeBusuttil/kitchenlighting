@@ -2,10 +2,11 @@
 """Generate best-practice and minimum 12 V kitchen-lighting SVG diagrams.
 
 From the project root: python3 12v/build.py
-Both SVGs and shopping.html are written beside this script.
+Both SVGs and min.csv/best.csv (DigiKey purchase lists) are written beside this script.
 Only Python's standard library is used.
 The minimum uses three TN0702N3-G MOSFETs. Both layouts use linked power rails.
-Both layouts feed strip positive directly from a soldered pigtail on J0 pin 1.
+Both layouts feed output positive from a soldered pigtail on J0 pin 1.
+The minimum adds two parallel RJ11 outputs with conceptual breadboard mounting.
 """
 from html import escape
 from pathlib import Path
@@ -330,6 +331,54 @@ def build():
 minimum_jumpers=[]
 
 
+def minimum_rj11_outputs():
+    """Draw two top-entry jacks; their pin fan-outs are conceptual, not footprints."""
+    # Contact numbering matches the PCB: 2=+12 V, 3=R, 4=G, 5=B.
+    # The socket pads are deliberately off the hole grid. Short leads stand in
+    # for a breakout/formed pins; only the listed RGB holes occupy the board.
+    pads={}
+    pad_y=yy(40)-13
+    for ref,x,holes in [
+        ('J1',354,{3:'b42',4:'c41',5:'d43'}),
+        ('J2',536,{3:'h42',4:'i41',5:'j43'}),
+    ]:
+        s.append(f'<g id="connector-{ref}" data-part="615004144121" data-mounting="conceptual">')
+        s.append('<title>Würth 615004144121 top-entry 6P4C female RJ11; conceptual breadboard placement and pin fan-out</title>')
+        text(x+53,yy(33)-9,f'{ref} · RJ11',17,INK,True,'middle')
+        text(x+53,yy(34)-10,'615004144121',12,MUTED,anchor='middle')
+        rect(x,yy(34),106,122,'#deddd6','#69777f',5)
+        rect(x+12,yy(34)+12,82,83,'#29353b','#63747c',3)
+        rect(x+33,yy(34)+86,40,18,'#29353b','#29353b',1)
+        for idx,(pin,name,color) in enumerate([(2,'+',POWER),(3,'R',RED),(4,'G',GREEN),(5,'B',BLUE)]):
+            px=x+14+26*idx
+            pads[f'{ref}.{pin}']=(px,pad_y)
+            # Gold contacts visible inside the top-facing socket.
+            line(x+33+13*idx,yy(34)+20,x+33+13*idx,yy(34)+58,'#c9ae6b',4)
+            line(px,yy(34)+114,px,pad_y,'#b3a16a',3)
+            component_label(px,pad_y-8,f'{pin} {name}',11,color,'middle')
+            circle(px,pad_y,5,color,'white',1)
+            if pin!=2:
+                endpoint=holes[pin]
+                record(f'{ref} pin {pin}',endpoint,f'{ref}.{pin}',
+                       f'615004144121; {name} output; conceptual pin fan-out')
+                hx,hy=parse_hole(endpoint)
+                s.append(f'<g id="lead-{ref}-{pin}" data-start="{endpoint}" data-end="{ref}.{pin}">')
+                wire([(hx,hy),(px,hy),(px,pad_y)],color,3)
+                s.append('</g>')
+        s.append('</g>')
+    for label,start,end,points in [
+        ('RJ11 positive J1','J0.1','J1.2',
+         [hole('b',58),(210,yy(58)),(210,pad_y),pads['J1.2']]),
+        ('RJ11 positive J2','J1.2','J2.2',
+         [pads['J1.2'],(pads['J1.2'][0],yy(44)),(pads['J2.2'][0],yy(44)),pads['J2.2']]),
+    ]:
+        record(label,start,end,'Insulated soldered positive pigtail; bypasses breadboard contacts')
+        s.append(f'<g id="{label.lower().replace(" ","-")}" data-start="{start}" data-end="{end}">')
+        s.append('<title>Soldered +12 V connection between actual jack terminals; no breadboard contact</title>')
+        wire(points,POWER,4)
+        s.append('</g>')
+
+
 def minimum_mosfets():
     # TN0702 front-view pin order is S-G-D, unlike the IRFZ44N's G-D-S.
     # Flat face toward board left makes S-G-D run from smaller to larger row.
@@ -368,17 +417,17 @@ def build_minimum():
     global s,wiring,occupied
     s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
        '<title>Kitchen lighting: 12 V RGB minimum breadboard layout</title>',
-       '<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three TN0702N3-G logic-level N-channel MOSFETs, and barrel jack J0. Nano D3, D5 and D6 directly control red, green and blue MOSFET gates. No gate drivers, resistors or capacitors are installed. Strip positive connects directly to J0 pin 1 by a soldered pigtail; row 40 is unused. Both +12 V rails and both ground rails are linked at the top, with bridges across all four midpoint breaks. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. All wires are drawn.</desc>']
+       '<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three TN0702N3-G logic-level N-channel MOSFETs, barrel jack J0, and two Würth 615004144121 female RJ11 output jacks J1/J2. RJ11 mounting and pin fan-outs are conceptual, not a physical breadboard footprint. Both jacks connect in parallel: pin 2 positive, pin 3 red, pin 4 green, pin 5 blue. Nano D3, D5 and D6 directly control the red, green and blue MOSFET gates. No gate drivers, resistors or capacitors are installed. Output positive connects to J0 pin 1 by soldered pigtails, bypassing breadboard contacts; row 40 is unused. Both +12 V rails and both ground rails are linked at the top, with bridges across all four midpoint breaks. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. The two ports share a combined 25 cm / 0.30 A LED load limit. All wires are drawn.</desc>']
     wiring=[]; occupied={}; flags.clear(); annotations.clear(); minimum_jumpers.clear()
     rect(0,0,W,H,'#f4f7fa','#f4f7fa',0)
     text(40,62,'12 V · Minimum',34,bold=True)
-    text(40,108,'RGB strip · ≤25 cm · ≤0.30 A total LED current',20,MUTED)
+    text(40,108,'RGB outputs · ≤25 cm combined · ≤0.30 A total',20,MUTED)
     board(minimum=True)
     rail_bridges()
     output_rows(labelsize=13)
     minimum_mosfets()
     barrel_jack()
-    led_strip()
+    minimum_rj11_outputs()
     for label,start,end,color,note in [
         ('P1','i10','a48',RED,'Nano D3 → Q1 gate / red'),
         ('P2','i8','a53',GREEN,'Nano D5 → Q2 gate / green'),
@@ -386,6 +435,9 @@ def build_minimum():
         ('D1','e49','e42',RED,'Q1 drain → strip R'),
         ('D2','e54','e41',GREEN,'Q2 drain → strip G'),
         ('D3','h49','e43',BLUE,'Q3 drain → strip B'),
+        ('O1','d42','f42',RED,'Link both RJ11 red outputs'),
+        ('O2','d41','f41',GREEN,'Link both RJ11 green outputs'),
+        ('O3','c43','f43',BLUE,'Link both RJ11 blue outputs'),
         ('S1','a47','L-47',INK,'Q1 source → ground rail'),
         ('S2','a52','L-52',INK,'Q2 source → ground rail'),
         ('S3','j47','R-47',INK,'Q3 source → ground rail'),
@@ -398,11 +450,11 @@ def build_minimum():
         minimum_jumpers.append((label,start,end,color,note))
     draw_minimum_jumpers()
     s.extend(annotations)
-    text(40,2096,'Positive bypass only; RGB returns still use the breadboard.',17,MUTED)
-    text(40,2126,'TN0702 MOSFETs and return wiring remain for the short test load only.',16,MUTED)
-    record('Load limit','12 V 6 A PSU','One cut segment initially; no more than 25 cm','14.4 W/m × 0.25 m ÷ 12 V = 0.30 A total LED current; about 0.10 A per colour. TN0702 is only selected for this short load.')
+    text(40,2096,'RJ11 mounting and pin fan-outs are conceptual.',17,MUTED)
+    text(40,2126,'Positive bypass only; RGB returns use the breadboard. 0.30 A combined.',16,MUTED)
+    record('Load limit','12 V 6 A PSU','One cut segment initially; no more than 25 cm across both RJ11 ports','14.4 W/m × 0.25 m ÷ 12 V = 0.30 A combined LED current; about 0.10 A per colour. Adding a second port does not increase this limit.')
     record('J0 polarity check','PSU plug center','Positive 12 V relative to sleeve','Check before connecting; J0 feeds Nano VIN and strip + in parallel')
-    check_strip_positive_bypass()
+    check_strip_positive_bypass(rj11=True)
     s.append('</svg>')
     target=OUT/(MINIMUM_NAME+'.svg')
     target.write_text('\n'.join(s),encoding='utf-8')
@@ -410,11 +462,17 @@ def build_minimum():
     return target
 
 
-def check_strip_positive_bypass():
+def check_strip_positive_bypass(rj11=False):
     """Keep strip positive off board contacts when regenerating either layout."""
-    assert [(start,end) for label,start,end,_ in wiring if label == 'LED +'] == [('J0.1','Strip +')]
     assert not any(re.fullmatch(r'[a-j]40',endpoint) for _,start,end,_ in wiring for endpoint in (start,end))
     assert ('J0 pin 1 / center','b58','J0.1') in [entry[:3] for entry in wiring]
+    if rj11:
+        assert [(start,end) for label,start,end,_ in wiring if label.startswith('RJ11 positive ')] == [('J0.1','J1.2'),('J1.2','J2.2')]
+        for ref,holes in [('J1',{3:'b42',4:'c41',5:'d43'}),('J2',{3:'h42',4:'i41',5:'j43'})]:
+            for pin,endpoint in holes.items():
+                assert (f'{ref} pin {pin}',endpoint,f'{ref}.{pin}') in [entry[:3] for entry in wiring]
+        return
+    assert [(start,end) for label,start,end,_ in wiring if label == 'LED +'] == [('J0.1','Strip +')]
     for colour,row in [('G',41),('R',42),('B',43)]:
         assert any(label == 'LED '+colour and start == f'a{row}' and end == 'Strip '+colour for label,start,end,_ in wiring)
 
@@ -423,6 +481,7 @@ if __name__ == '__main__':
     build()
     build_minimum()
     import sys
-    sys.path.insert(0,str(OUT/'pcb'))
-    from browser_exports import export_csv_view
-    export_csv_view(OUT/'shopping.csv')
+    sys.path.insert(0,str(OUT.parent))
+    from purchasing import export_purchase_csvs
+    for path in export_purchase_csvs(OUT):
+        print(f'Generated {path} for DigiKey Canada upload.')

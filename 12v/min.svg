@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="2150" viewBox="0 0 880 2150">
 <title>Kitchen lighting: 12 V RGB minimum breadboard layout</title>
-<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three TN0702N3-G logic-level N-channel MOSFETs, and barrel jack J0. Nano D3, D5 and D6 directly control red, green and blue MOSFET gates. No gate drivers, resistors or capacitors are installed. Strip positive connects directly to J0 pin 1 by a soldered pigtail; row 40 is unused. Both +12 V rails and both ground rails are linked at the top, with bridges across all four midpoint breaks. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. All wires are drawn.</desc>
+<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three TN0702N3-G logic-level N-channel MOSFETs, barrel jack J0, and two Würth 615004144121 female RJ11 output jacks J1/J2. RJ11 mounting and pin fan-outs are conceptual, not a physical breadboard footprint. Both jacks connect in parallel: pin 2 positive, pin 3 red, pin 4 green, pin 5 blue. Nano D3, D5 and D6 directly control the red, green and blue MOSFET gates. No gate drivers, resistors or capacitors are installed. Output positive connects to J0 pin 1 by soldered pigtails, bypassing breadboard contacts; row 40 is unused. Both +12 V rails and both ground rails are linked at the top, with bridges across all four midpoint breaks. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. The two ports share a combined 25 cm / 0.30 A LED load limit. All wires are drawn.</desc>
 <rect x="0" y="0" width="880" height="2150" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
 <text x="40" y="62" font-family="DejaVu Sans,sans-serif" font-size="34" font-weight="700" fill="#192c3a" text-anchor="start">12 V · Minimum</text>
-<text x="40" y="108" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">RGB strip · ≤25 cm · ≤0.30 A total LED current</text>
+<text x="40" y="108" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">RGB outputs · ≤25 cm combined · ≤0.30 A total</text>
 <rect x="220" y="214" width="562" height="1717" rx="18" fill="#e8e9e5" stroke="#a9b6ba" stroke-width="2"/>
 <rect x="314" y="233" width="158" height="1680" rx="4" fill="#fdfcf8" stroke="#d2d5d0" stroke-width="2"/>
 <rect x="514" y="233" width="150" height="1680" rx="4" fill="#fdfcf8" stroke="#d2d5d0" stroke-width="2"/>
@@ -1232,38 +1232,96 @@
 <line x1="376" y1="1933" x2="376" y2="1981" stroke="#192c3a" stroke-width="6"/>
 <text x="444" y="1940" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="start">PJ-102AH</text>
 <text x="376" y="2007" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="middle">12 V · centre positive</text>
-<rect x="65" y="1259" width="101" height="224" rx="4" fill="#f5eee0" stroke="#bbae8f" stroke-width="2"/>
-<text x="115" y="1242" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="middle">RGB strip</text>
-<rect x="137" y="1267" width="23" height="14" rx="2" fill="#c6a764" stroke="#aa5217" stroke-width="2"/>
-<text x="93" y="1279" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#aa5217" text-anchor="middle">+</text>
-<g id="strip-positive-bypass" data-start="J0.1" data-end="Strip +"><title>Soldered pigtail from actual J0 pin 1 to strip +; not a breadboard jumper</title>
-<polyline points="376,1742 210,1742 210,1274 160,1274" fill="none" stroke="#f5f7fa" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="376,1742 210,1742 210,1274 160,1274" fill="none" stroke="#aa5217" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="376" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="160" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<g id="connector-J1" data-part="615004144121" data-mounting="conceptual">
+<title>Würth 615004144121 top-entry 6P4C female RJ11; conceptual breadboard placement and pin fan-out</title>
+<text x="407" y="1083" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="middle">J1 · RJ11</text>
+<text x="407" y="1108" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#536775" text-anchor="middle">615004144121</text>
+<rect x="354" y="1118" width="106" height="122" rx="5" fill="#deddd6" stroke="#69777f" stroke-width="2"/>
+<rect x="366" y="1130" width="82" height="83" rx="3" fill="#29353b" stroke="#63747c" stroke-width="2"/>
+<rect x="387" y="1204" width="40" height="18" rx="1" fill="#29353b" stroke="#29353b" stroke-width="2"/>
+<line x1="387" y1="1138" x2="387" y2="1176" stroke="#c9ae6b" stroke-width="4"/>
+<line x1="368" y1="1232" x2="368" y2="1261" stroke="#b3a16a" stroke-width="3"/>
+<circle cx="368" cy="1261" r="5" fill="#aa5217" stroke="white" stroke-width="1"/>
+<line x1="400" y1="1138" x2="400" y2="1176" stroke="#c9ae6b" stroke-width="4"/>
+<line x1="394" y1="1232" x2="394" y2="1261" stroke="#b3a16a" stroke-width="3"/>
+<circle cx="394" cy="1261" r="5" fill="#c0383c" stroke="white" stroke-width="1"/>
+<g id="lead-J1-3" data-start="b42" data-end="J1.3">
+<polyline points="376,1326 394,1326 394,1261" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="376,1326 394,1326 394,1261" fill="none" stroke="#c0383c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="376" cy="1326" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
+<circle cx="394" cy="1261" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
 </g>
-<rect x="137" y="1293" width="23" height="14" rx="2" fill="#c6a764" stroke="#258450" stroke-width="2"/>
-<text x="93" y="1305" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#258450" text-anchor="middle">G</text>
-<polyline points="350,1300 191,1300 160,1300" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="350,1300 191,1300 160,1300" fill="none" stroke="#258450" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="350" cy="1300" r="6" fill="#258450" stroke="white" stroke-width="2"/>
-<circle cx="160" cy="1300" r="6" fill="#258450" stroke="white" stroke-width="2"/>
-<rect x="137" y="1319" width="23" height="14" rx="2" fill="#c6a764" stroke="#c0383c" stroke-width="2"/>
-<text x="93" y="1331" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#c0383c" text-anchor="middle">R</text>
-<polyline points="350,1326 202,1326 160,1326" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="350,1326 202,1326 160,1326" fill="none" stroke="#c0383c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="350" cy="1326" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
-<circle cx="160" cy="1326" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
-<rect x="137" y="1345" width="23" height="14" rx="2" fill="#c6a764" stroke="#286bbb" stroke-width="2"/>
-<text x="93" y="1357" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#286bbb" text-anchor="middle">B</text>
-<polyline points="350,1352 213,1352 160,1352" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="350,1352 213,1352 160,1352" fill="none" stroke="#286bbb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="350" cy="1352" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
-<circle cx="160" cy="1352" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
-<rect x="94" y="1383" width="43" height="28" rx="3" fill="#e4e4d9" stroke="#978c74" stroke-width="2"/>
-<rect x="106" y="1390" width="19" height="14" rx="2" fill="#f2d75e" stroke="#cbb547" stroke-width="2"/>
-<rect x="94" y="1429" width="43" height="28" rx="3" fill="#e4e4d9" stroke="#978c74" stroke-width="2"/>
-<rect x="106" y="1436" width="19" height="14" rx="2" fill="#f2d75e" stroke="#cbb547" stroke-width="2"/>
+<line x1="413" y1="1138" x2="413" y2="1176" stroke="#c9ae6b" stroke-width="4"/>
+<line x1="420" y1="1232" x2="420" y2="1261" stroke="#b3a16a" stroke-width="3"/>
+<circle cx="420" cy="1261" r="5" fill="#258450" stroke="white" stroke-width="1"/>
+<g id="lead-J1-4" data-start="c41" data-end="J1.4">
+<polyline points="402,1300 420,1300 420,1261" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="402,1300 420,1300 420,1261" fill="none" stroke="#258450" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="402" cy="1300" r="6" fill="#258450" stroke="white" stroke-width="2"/>
+<circle cx="420" cy="1261" r="6" fill="#258450" stroke="white" stroke-width="2"/>
+</g>
+<line x1="426" y1="1138" x2="426" y2="1176" stroke="#c9ae6b" stroke-width="4"/>
+<line x1="446" y1="1232" x2="446" y2="1261" stroke="#b3a16a" stroke-width="3"/>
+<circle cx="446" cy="1261" r="5" fill="#286bbb" stroke="white" stroke-width="1"/>
+<g id="lead-J1-5" data-start="d43" data-end="J1.5">
+<polyline points="428,1352 446,1352 446,1261" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="428,1352 446,1352 446,1261" fill="none" stroke="#286bbb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="428" cy="1352" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+<circle cx="446" cy="1261" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+</g>
+</g>
+<g id="connector-J2" data-part="615004144121" data-mounting="conceptual">
+<title>Würth 615004144121 top-entry 6P4C female RJ11; conceptual breadboard placement and pin fan-out</title>
+<text x="589" y="1083" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="middle">J2 · RJ11</text>
+<text x="589" y="1108" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#536775" text-anchor="middle">615004144121</text>
+<rect x="536" y="1118" width="106" height="122" rx="5" fill="#deddd6" stroke="#69777f" stroke-width="2"/>
+<rect x="548" y="1130" width="82" height="83" rx="3" fill="#29353b" stroke="#63747c" stroke-width="2"/>
+<rect x="569" y="1204" width="40" height="18" rx="1" fill="#29353b" stroke="#29353b" stroke-width="2"/>
+<line x1="569" y1="1138" x2="569" y2="1176" stroke="#c9ae6b" stroke-width="4"/>
+<line x1="550" y1="1232" x2="550" y2="1261" stroke="#b3a16a" stroke-width="3"/>
+<circle cx="550" cy="1261" r="5" fill="#aa5217" stroke="white" stroke-width="1"/>
+<line x1="582" y1="1138" x2="582" y2="1176" stroke="#c9ae6b" stroke-width="4"/>
+<line x1="576" y1="1232" x2="576" y2="1261" stroke="#b3a16a" stroke-width="3"/>
+<circle cx="576" cy="1261" r="5" fill="#c0383c" stroke="white" stroke-width="1"/>
+<g id="lead-J2-3" data-start="h42" data-end="J2.3">
+<polyline points="584,1326 576,1326 576,1261" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="584,1326 576,1326 576,1261" fill="none" stroke="#c0383c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="584" cy="1326" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
+<circle cx="576" cy="1261" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
+</g>
+<line x1="595" y1="1138" x2="595" y2="1176" stroke="#c9ae6b" stroke-width="4"/>
+<line x1="602" y1="1232" x2="602" y2="1261" stroke="#b3a16a" stroke-width="3"/>
+<circle cx="602" cy="1261" r="5" fill="#258450" stroke="white" stroke-width="1"/>
+<g id="lead-J2-4" data-start="i41" data-end="J2.4">
+<polyline points="610,1300 602,1300 602,1261" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="610,1300 602,1300 602,1261" fill="none" stroke="#258450" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="610" cy="1300" r="6" fill="#258450" stroke="white" stroke-width="2"/>
+<circle cx="602" cy="1261" r="6" fill="#258450" stroke="white" stroke-width="2"/>
+</g>
+<line x1="608" y1="1138" x2="608" y2="1176" stroke="#c9ae6b" stroke-width="4"/>
+<line x1="628" y1="1232" x2="628" y2="1261" stroke="#b3a16a" stroke-width="3"/>
+<circle cx="628" cy="1261" r="5" fill="#286bbb" stroke="white" stroke-width="1"/>
+<g id="lead-J2-5" data-start="j43" data-end="J2.5">
+<polyline points="636,1352 628,1352 628,1261" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="636,1352 628,1352 628,1261" fill="none" stroke="#286bbb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="636" cy="1352" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+<circle cx="628" cy="1261" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+</g>
+</g>
+<g id="rj11-positive-j1" data-start="J0.1" data-end="J1.2">
+<title>Soldered +12 V connection between actual jack terminals; no breadboard contact</title>
+<polyline points="376,1742 210,1742 210,1261 368,1261" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="376,1742 210,1742 210,1261 368,1261" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="376" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="368" cy="1261" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+</g>
+<g id="rj11-positive-j2" data-start="J1.2" data-end="J2.2">
+<title>Soldered +12 V connection between actual jack terminals; no breadboard contact</title>
+<polyline points="368,1261 368,1378 550,1378 550,1261" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="368,1261 368,1378 550,1378 550,1261" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="368" cy="1261" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="550" cy="1261" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+</g>
 <g id="jumper-P1" data-start="i10" data-end="a48">
 <title>P1: i10 → a48. Nano D3 → Q1 gate / red</title>
 <polyline points="610,494 650,494 650,676 326,676 326,1482 350,1482" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1305,6 +1363,27 @@
 <polyline points="584,1508 584,1521 506,1521 506,1339 454,1339 454,1352" fill="none" stroke="#286bbb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="584" cy="1508" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1352" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+</g>
+<g id="jumper-O1" data-start="d42" data-end="f42">
+<title>O1: d42 → f42. Link both RJ11 red outputs</title>
+<polyline points="428,1326 532,1326" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="428,1326 532,1326" fill="none" stroke="#c0383c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="428" cy="1326" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
+<circle cx="532" cy="1326" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
+</g>
+<g id="jumper-O2" data-start="d41" data-end="f41">
+<title>O2: d41 → f41. Link both RJ11 green outputs</title>
+<polyline points="428,1300 532,1300" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="428,1300 532,1300" fill="none" stroke="#258450" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="428" cy="1300" r="6" fill="#258450" stroke="white" stroke-width="2"/>
+<circle cx="532" cy="1300" r="6" fill="#258450" stroke="white" stroke-width="2"/>
+</g>
+<g id="jumper-O3" data-start="c43" data-end="f43">
+<title>O3: c43 → f43. Link both RJ11 blue outputs</title>
+<polyline points="402,1352 532,1352" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="402,1352 532,1352" fill="none" stroke="#286bbb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="402" cy="1352" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+<circle cx="532" cy="1352" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 </g>
 <g id="jumper-S1" data-start="a47" data-end="L-47">
 <title>S1: a47 → L-47. Q1 source → ground rail</title>
@@ -1367,6 +1446,12 @@
 <circle cx="454" cy="1300" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="584" cy="1508" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1352" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+<circle cx="428" cy="1326" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
+<circle cx="532" cy="1326" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
+<circle cx="428" cy="1300" r="6" fill="#258450" stroke="white" stroke-width="2"/>
+<circle cx="532" cy="1300" r="6" fill="#258450" stroke="white" stroke-width="2"/>
+<circle cx="402" cy="1352" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+<circle cx="532" cy="1352" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="1456" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="284" cy="1456" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="1586" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
@@ -1393,6 +1478,22 @@
 <text x="856" y="1483" transform="rotate(-90 856 1483)" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#286bbb">TN0702N3-G</text>
 <text x="558" y="1538" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">face ←</text>
 <text x="558" y="1538" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#536775">face ←</text>
-<text x="40" y="2096" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#536775" text-anchor="start">Positive bypass only; RGB returns still use the breadboard.</text>
-<text x="40" y="2126" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">TN0702 MOSFETs and return wiring remain for the short test load only.</text>
+<text x="368" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2 +</text>
+<text x="368" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#aa5217">2 +</text>
+<text x="394" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">3 R</text>
+<text x="394" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#c0383c">3 R</text>
+<text x="420" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">4 G</text>
+<text x="420" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#258450">4 G</text>
+<text x="446" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">5 B</text>
+<text x="446" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#286bbb">5 B</text>
+<text x="550" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2 +</text>
+<text x="550" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#aa5217">2 +</text>
+<text x="576" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">3 R</text>
+<text x="576" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#c0383c">3 R</text>
+<text x="602" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">4 G</text>
+<text x="602" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#258450">4 G</text>
+<text x="628" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">5 B</text>
+<text x="628" y="1253" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#286bbb">5 B</text>
+<text x="40" y="2096" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#536775" text-anchor="start">RJ11 mounting and pin fan-outs are conceptual.</text>
+<text x="40" y="2126" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Positive bypass only; RGB returns use the breadboard. 0.30 A combined.</text>
 </svg>

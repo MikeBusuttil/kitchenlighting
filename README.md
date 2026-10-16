@@ -12,10 +12,12 @@ python3 12v/pcb/pcb.py
 
 ## Project files
 
-| Design     | Spec                   | Shopping list                    | Best practice            | Minimum                |
-| ---------- | ---------------------- | -------------------------------- | ------------------------ | ---------------------- |
-| 12 V RGB   | [spec.md](12v/spec.md) | [shopping.csv](12v/shopping.csv) | [best.svg](12v/best.svg) | [min.svg](12v/min.svg) |
-| 5 V APA102 | [spec.md](5v/spec.md)  | [shopping.csv](5v/shopping.csv)  | [best.svg](5v/best.svg)  | [min.svg](5v/min.svg)  |
+| Design     | Spec                   | Shopping lists                                    | Best practice            | Minimum                |
+| ---------- | ---------------------- | ------------------------------------------------- | ------------------------ | ---------------------- |
+| 12 V RGB   | [spec.md](12v/spec.md) | [min.csv](12v/min.csv) · [best.csv](12v/best.csv) | [best.svg](12v/best.svg) | [min.svg](12v/min.svg) |
+| 5 V APA102 | [spec.md](5v/spec.md)  | [min.csv](5v/min.csv) · [best.csv](5v/best.csv)   | [best.svg](5v/best.svg)  | [min.svg](5v/min.svg)  |
+
+The generated `min.csv` and `best.csv` shopping lists are compatible with DigiKey’s [Upload a List](https://www.digikey.ca/en/mylists/) feature.
 
 ## 12 V PCB
 

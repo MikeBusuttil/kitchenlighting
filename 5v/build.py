@@ -2,7 +2,7 @@
 """Generate two 5 V APA102 diagrams using only Python's standard library.
 
 Run from the project root: python3 5v/build.py
-Writes best.svg, min.svg and shopping.html beside this script.
+Writes best.svg, min.svg and DigiKey-compatible best.csv/min.csv beside this script.
 The in-memory wiring and occupied mappings support independent connectivity checks.
 """
 from html import escape
@@ -328,6 +328,7 @@ if __name__=='__main__':
     build()
     build_minimum()
     import sys
-    sys.path.insert(0,str(OUT.parent/'12v'/'pcb'))
-    from browser_exports import export_csv_view
-    export_csv_view(OUT/'shopping.csv')
+    sys.path.insert(0,str(OUT.parent))
+    from purchasing import export_purchase_csvs
+    for path in export_purchase_csvs(OUT):
+        print(f'Generated {path} for DigiKey Canada upload.')

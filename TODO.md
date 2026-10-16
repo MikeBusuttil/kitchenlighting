@@ -1,5 +1,8 @@
 - generate SVG & HTML as well as PDF
 - dockerize all those random packages
+- is there a way to open HTML files in github readmes?
+- fix the readme so the links all work nice
+- figure out how to make it WAY more economical
 
 ## v1
 

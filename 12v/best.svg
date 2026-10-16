@@ -8,16 +8,24 @@
 <rect x="314" y="233" width="158" height="1680" rx="4" fill="#fdfcf8" stroke="#d2d5d0" stroke-width="2"/>
 <rect x="514" y="233" width="150" height="1680" rx="4" fill="#fdfcf8" stroke="#d2d5d0" stroke-width="2"/>
 <rect x="482" y="241" width="21" height="1660" rx="3" fill="#c6cbc9" stroke="#c6cbc9" stroke-width="2"/>
+<rect x="250" y="251" width="16" height="798" rx="5" fill="#f6ddd3" stroke="none" stroke-width="2"/>
 <line x1="247" y1="248" x2="247" y2="1052" stroke="#c57979" stroke-width="2"/>
+<rect x="250" y="1109" width="16" height="798" rx="5" fill="#f6ddd3" stroke="none" stroke-width="2"/>
 <line x1="247" y1="1106" x2="247" y2="1910" stroke="#c57979" stroke-width="2"/>
 <text x="258" y="228" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#c57979" text-anchor="middle">+</text>
+<rect x="276" y="251" width="16" height="798" rx="5" fill="#dce4ea" stroke="none" stroke-width="2"/>
 <line x1="273" y1="248" x2="273" y2="1052" stroke="#7d9ab8" stroke-width="2"/>
+<rect x="276" y="1109" width="16" height="798" rx="5" fill="#dce4ea" stroke="none" stroke-width="2"/>
 <line x1="273" y1="1106" x2="273" y2="1910" stroke="#7d9ab8" stroke-width="2"/>
 <text x="284" y="228" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#7d9ab8" text-anchor="middle">−</text>
+<rect x="706" y="251" width="16" height="798" rx="5" fill="#f6ddd3" stroke="none" stroke-width="2"/>
 <line x1="703" y1="248" x2="703" y2="1052" stroke="#c57979" stroke-width="2"/>
+<rect x="706" y="1109" width="16" height="798" rx="5" fill="#f6ddd3" stroke="none" stroke-width="2"/>
 <line x1="703" y1="1106" x2="703" y2="1910" stroke="#c57979" stroke-width="2"/>
 <text x="714" y="228" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#c57979" text-anchor="middle">+</text>
+<rect x="732" y="251" width="16" height="798" rx="5" fill="#dce4ea" stroke="none" stroke-width="2"/>
 <line x1="729" y1="248" x2="729" y2="1052" stroke="#7d9ab8" stroke-width="2"/>
+<rect x="732" y="1109" width="16" height="798" rx="5" fill="#dce4ea" stroke="none" stroke-width="2"/>
 <line x1="729" y1="1106" x2="729" y2="1910" stroke="#7d9ab8" stroke-width="2"/>
 <text x="740" y="228" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#7d9ab8" text-anchor="middle">−</text>
 <text x="350" y="228" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#536775" text-anchor="middle">a</text>
@@ -1176,47 +1184,83 @@
 <line x1="532" y1="1040" x2="517" y2="1040" stroke="#b3bec3" stroke-width="5"/>
 <circle cx="532" cy="1040" r="4" fill="#d1bb7a" stroke="#192c3a" stroke-width="1"/>
 <text x="523" y="1044" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="400" fill="#192c3a" text-anchor="start">8</text>
-<g id="jumper-L1" data-start="a26" data-end="a28"><title>Ground jumper</title>
-<polyline points="350,910 350,962" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="350,910 350,962" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="jumper-B1" data-start="L+31" data-end="L+34"><title>Bridge power rail midpoint break</title>
+<polyline points="258,1040 258,1118" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="258,1040 258,1118" fill="none" stroke="#aa5217" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="258" cy="1040" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="1118" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+</g>
+<g id="jumper-B2" data-start="L-31" data-end="L-34"><title>Bridge power rail midpoint break</title>
+<polyline points="284,1040 284,1118" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="284,1040 284,1118" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="284" cy="1040" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1118" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+</g>
+<g id="jumper-B3" data-start="R+31" data-end="R+34"><title>Bridge power rail midpoint break</title>
+<polyline points="714,1040 714,1118" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="714,1040 714,1118" fill="none" stroke="#aa5217" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="714" cy="1040" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="714" cy="1118" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+</g>
+<g id="jumper-B4" data-start="R-31" data-end="R-34"><title>Bridge power rail midpoint break</title>
+<polyline points="740,1040 740,1118" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="740,1040 740,1118" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="740" cy="1040" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1118" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+</g>
+<g id="jumper-B5" data-start="L+1" data-end="R+1"><title>Link left and right +12 V rails</title>
+<polyline points="258,260 240,260 240,150 700,150 700,260 714,260" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="258,260 240,260 240,150 700,150 700,260 714,260" fill="none" stroke="#aa5217" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="258" cy="260" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="714" cy="260" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+</g>
+<g id="jumper-B6" data-start="L-2" data-end="R-2"><title>Link left and right ground rails</title>
+<polyline points="284,286 272,286 272,174 754,174 754,286 740,286" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="284,286 272,286 272,174 754,174 754,286 740,286" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="284" cy="286" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="286" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+</g>
+<g id="jumper-L1" data-start="a26" data-end="L-26"><title>Ground jumper</title>
+<polyline points="350,910 284,910" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,910 284,910" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="350" cy="910" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="350" cy="962" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="910" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-L2" data-start="e26" data-end="a23"><title>Ground jumper</title>
-<polyline points="454,910 350,832" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="454,910 350,832" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="454" cy="910" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-L2" data-start="a23" data-end="L-23"><title>Ground jumper</title>
+<polyline points="350,832 284,832" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,832 284,832" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="350" cy="832" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="832" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-L3" data-start="d26" data-end="f25"><title>Ground jumper</title>
-<polyline points="428,910 532,884" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="428,910 532,884" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="428" cy="910" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="884" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-L3" data-start="j25" data-end="R-25"><title>Ground jumper</title>
+<polyline points="636,884 740,884" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="636,884 740,884" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="636" cy="884" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="884" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-L4" data-start="a36" data-end="a38"><title>Ground jumper</title>
-<polyline points="350,1170 350,1222" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="350,1170 350,1222" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="jumper-L4" data-start="a36" data-end="L-36"><title>Ground jumper</title>
+<polyline points="350,1170 284,1170" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,1170 284,1170" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="350" cy="1170" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="350" cy="1222" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1170" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-L5" data-start="c36" data-end="a33"><title>Ground jumper</title>
-<polyline points="402,1170 350,1092" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="402,1170 350,1092" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="402" cy="1170" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-L5" data-start="a33" data-end="L-35"><title>Ground jumper</title>
+<polyline points="350,1092 284,1144" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,1092 284,1144" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="350" cy="1092" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1144" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-L6" data-start="d36" data-end="f35"><title>Ground jumper</title>
-<polyline points="428,1170 532,1144" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="428,1170 532,1144" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="428" cy="1170" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1144" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-L6" data-start="j35" data-end="R-35"><title>Ground jumper</title>
+<polyline points="636,1144 740,1144" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="636,1144 740,1144" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="636" cy="1144" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1144" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-L7" data-start="e36" data-end="a34"><title>Ground U2 unused input pin 4</title>
-<polyline points="454,1170 350,1118" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="454,1170 350,1118" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="454" cy="1170" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="350" cy="1118" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-L7" data-start="c33" data-end="c34"><title>Ground U2 unused input pin 4</title>
+<polyline points="402,1092 402,1118" fill="none" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="402,1092 402,1118" fill="none" stroke="#192c3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="402" cy="1092" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="402" cy="1118" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
 <line x1="376" y1="806" x2="376" y2="910" stroke="#c0383c" stroke-width="2"/>
 <rect x="369" y="813" width="14" height="24" rx="2" fill="#edce8c" stroke="#192c3a" stroke-width="2"/>
@@ -1341,11 +1385,11 @@
 <line x1="630" y1="1480" x2="642" y2="1480" stroke="#cc771e" stroke-width="3"/>
 <circle cx="636" cy="1456" r="4" fill="#286bbb" stroke="white" stroke-width="1"/>
 <circle cx="636" cy="1508" r="4" fill="#286bbb" stroke="white" stroke-width="1"/>
-<line x1="584" y1="1794" x2="584" y2="1846" stroke="#aa5217" stroke-width="2"/>
-<rect x="576" y="1805.0" width="16" height="30" rx="4" fill="#23495e" stroke="#192c3a" stroke-width="2"/>
-<line x1="588" y1="1809.0" x2="588" y2="1831.0" stroke="#d2dde3" stroke-width="3"/>
-<circle cx="584" cy="1794" r="4" fill="#aa5217" stroke="white" stroke-width="1"/>
-<circle cx="584" cy="1846" r="4" fill="#aa5217" stroke="white" stroke-width="1"/>
+<line x1="584" y1="1664" x2="584" y2="1716" stroke="#aa5217" stroke-width="2"/>
+<rect x="576" y="1675.0" width="16" height="30" rx="4" fill="#23495e" stroke="#192c3a" stroke-width="2"/>
+<line x1="588" y1="1679.0" x2="588" y2="1701.0" stroke="#d2dde3" stroke-width="3"/>
+<circle cx="584" cy="1664" r="4" fill="#aa5217" stroke="white" stroke-width="1"/>
+<circle cx="584" cy="1716" r="4" fill="#aa5217" stroke="white" stroke-width="1"/>
 <rect x="331" y="1733" width="90" height="145" rx="5" fill="#303a43" stroke="#192c3a" stroke-width="2"/>
 <rect x="348" y="1859" width="56" height="23" rx="4" fill="#141c22" stroke="#53636c" stroke-width="2"/>
 <circle cx="376" cy="1742" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
@@ -1444,83 +1488,77 @@
 <circle cx="584" cy="1482" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1352" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-S1" data-start="d49" data-end="g62"><title>Q1 source → common ground</title>
-<polyline points="428,1508 440,1508 440,1820 558,1820 558,1846" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="428,1508 440,1508 440,1820 558,1820 558,1846" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="428" cy="1508" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="558" cy="1846" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-S1" data-start="b49" data-end="L-49"><title>Q1 source → ground rail</title>
+<polyline points="376,1508 284,1508" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="376,1508 284,1508" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="376" cy="1508" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1508" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-S2" data-start="d54" data-end="i62"><title>Q2 source → common ground</title>
-<polyline points="428,1638 452,1638 452,1833 610,1833 610,1846" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="428,1638 452,1638 452,1833 610,1833 610,1846" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="428" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="610" cy="1846" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-S2" data-start="b54" data-end="L-54"><title>Q2 source → ground rail</title>
+<polyline points="376,1638 284,1638" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="376,1638 284,1638" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="376" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-S3" data-start="h49" data-end="j62"><title>Q3 source → common ground</title>
-<polyline points="584,1508 596,1508 596,1846 636,1846" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="584,1508 596,1508 596,1846 636,1846" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="584" cy="1508" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="636" cy="1846" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-S3" data-start="i49" data-end="R-49"><title>Q3 source → ground rail</title>
+<polyline points="610,1508 740,1508" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="610,1508 740,1508" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="610" cy="1508" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1508" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-V0" data-start="e58" data-end="f58"><title>Jack center +12 V → distribution</title>
-<polyline points="454,1742 532,1742" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="454,1742 532,1742" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="jumper-V0" data-start="e58" data-end="R+58"><title>Jack center → +12 V rail</title>
+<polyline points="454,1742 714,1742" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="454,1742 714,1742" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="454" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="714" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-V1" data-start="g58" data-end="f60"><title>Extend +12 V distribution</title>
-<polyline points="558,1742 558,1768 532,1768 532,1794" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="558,1742 558,1768 532,1768 532,1794" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="558" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1794" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<g id="jumper-V1" data-start="j55" data-end="R+55"><title>+12 V rail → C7 positive</title>
+<polyline points="636,1664 714,1664" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="636,1664 714,1664" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="636" cy="1664" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="714" cy="1664" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-V2" data-start="h58" data-end="a15"><title>+12 V → Nano VIN</title>
-<polyline points="584,1742 584,1729 808,1729 808,650 310,650 310,624 350,624" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="584,1742 584,1729 808,1729 808,650 310,650 310,624 350,624" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="584" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<g id="jumper-V2" data-start="a15" data-end="L+15"><title>+12 V rail → Nano VIN</title>
+<polyline points="350,624 258,624" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,624 258,624" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="350" cy="624" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="624" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-V3" data-start="i58" data-end="j23"><title>+12 V → U1 pin 6</title>
-<polyline points="610,1742 610,1716 796,1716 796,832 636,832" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="610,1742 610,1716 796,1716 796,832 636,832" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="610" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<g id="jumper-V3" data-start="j23" data-end="R+23"><title>+12 V rail → U1 pin 6</title>
+<polyline points="636,832 714,832" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="636,832 714,832" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="636" cy="832" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="714" cy="832" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-V4" data-start="j58" data-end="j33"><title>+12 V → U2 pin 6</title>
-<polyline points="636,1742 636,1755 784,1755 784,1092 636,1092" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="636,1742 636,1755 784,1755 784,1092 636,1092" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="636" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<g id="jumper-V4" data-start="j33" data-end="R+35"><title>+12 V rail → U2 pin 6</title>
+<polyline points="636,1092 714,1144" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="636,1092 714,1144" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="636" cy="1092" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="714" cy="1144" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-N0" data-start="e60" data-end="f56"><title>Jack unswitched sleeve → common ground</title>
-<polyline points="454,1794 478,1794 478,1690 532,1690" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="454,1794 478,1794 478,1690 532,1690" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="jumper-N0" data-start="e60" data-end="R-60"><title>Jack unswitched sleeve → ground rail</title>
+<polyline points="454,1794 740,1794" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="454,1794 740,1794" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="454" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1690" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-N1" data-start="g56" data-end="a14"><title>Common ground → Nano GND</title>
-<polyline points="558,1690 820,1690 820,663 298,663 298,598 350,598" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="558,1690 820,1690 820,663 298,663 298,598 350,598" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="558" cy="1690" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-N1" data-start="a14" data-end="L-14"><title>Nano GND → ground rail</title>
+<polyline points="350,598 284,598" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,598 284,598" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="350" cy="598" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="598" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-N2" data-start="h56" data-end="b28"><title>Common ground → U1 ground bank</title>
-<polyline points="584,1690 584,1677 748,1677 748,988 326,988 326,962 376,962" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="584,1690 584,1677 748,1677 748,988 326,988 326,962 376,962" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="584" cy="1690" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="376" cy="962" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-N2" data-start="a28" data-end="L-28"><title>R2 pulldown → ground rail</title>
+<polyline points="350,962 284,962" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,962 284,962" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="350" cy="962" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="962" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-N3" data-start="i56" data-end="b38"><title>Common ground → U2 ground bank</title>
-<polyline points="610,1690 610,1664 736,1664 736,1235 302,1235 302,1222 376,1222" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="610,1690 610,1664 736,1664 736,1235 302,1235 302,1222 376,1222" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="610" cy="1690" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="376" cy="1222" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-</g>
-<g id="jumper-N4" data-start="j56" data-end="f62"><title>Extend ground to MOSFET sources</title>
-<polyline points="636,1690 760,1690 760,1872 532,1872 532,1846" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="636,1690 760,1690 760,1872 532,1872 532,1846" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="636" cy="1690" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1846" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-N4" data-start="j57" data-end="R-57"><title>C7 negative → ground rail</title>
+<polyline points="636,1716 740,1716" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="636,1716 740,1716" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="636" cy="1716" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1716" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
 <circle cx="610" cy="494" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="806" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
@@ -1540,32 +1578,30 @@
 <circle cx="454" cy="1300" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="584" cy="1482" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1352" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
-<circle cx="428" cy="1508" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="558" cy="1846" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="428" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="610" cy="1846" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="584" cy="1508" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="636" cy="1846" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="376" cy="1508" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1508" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="376" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="610" cy="1508" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1508" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="558" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1794" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="584" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="714" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="636" cy="1664" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="714" cy="1664" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="624" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="610" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="624" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="636" cy="832" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="636" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="714" cy="832" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="636" cy="1092" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="714" cy="1144" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1690" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="558" cy="1690" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="598" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="584" cy="1690" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="376" cy="962" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="610" cy="1690" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="376" cy="1222" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="636" cy="1690" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1846" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="598" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="962" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="962" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="636" cy="1716" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1716" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <text x="363" y="858.0" transform="rotate(-90 363 858.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">10kΩ</text>
 <text x="363" y="858.0" transform="rotate(-90 363 858.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#c0383c">10kΩ</text>
 <text x="389" y="910.0" transform="rotate(-90 389 910.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">10kΩ</text>
@@ -1626,12 +1662,12 @@
 <text x="337" y="1612.0" transform="rotate(-90 337 1612.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#258450">10kΩ</text>
 <text x="623" y="1482.0" transform="rotate(-90 623 1482.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">10kΩ</text>
 <text x="623" y="1482.0" transform="rotate(-90 623 1482.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#286bbb">10kΩ</text>
-<text x="573" y="1804" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">+</text>
-<text x="573" y="1804" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#aa5217">+</text>
-<text x="607" y="1820.0" transform="rotate(-90 607 1820.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">100µF / 25V</text>
-<text x="607" y="1820.0" transform="rotate(-90 607 1820.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#192c3a">100µF / 25V</text>
-<text x="628" y="1820.0" transform="rotate(-90 628 1820.0)" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">optional</text>
-<text x="628" y="1820.0" transform="rotate(-90 628 1820.0)" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#536775">optional</text>
+<text x="573" y="1674" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">+</text>
+<text x="573" y="1674" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#aa5217">+</text>
+<text x="607" y="1690.0" transform="rotate(-90 607 1690.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">100µF / 25V</text>
+<text x="607" y="1690.0" transform="rotate(-90 607 1690.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#192c3a">100µF / 25V</text>
+<text x="628" y="1690.0" transform="rotate(-90 628 1690.0)" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">optional</text>
+<text x="628" y="1690.0" transform="rotate(-90 628 1690.0)" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#536775">optional</text>
 <text x="40" y="2096" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#536775" text-anchor="start">USB programming with 12 V off: disconnect D3, D5 and D6.</text>
 <text x="40" y="2126" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Positive bypass only; RGB returns still use the breadboard. Not a 4 A layout.</text>
 </svg>

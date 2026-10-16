@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="2150" viewBox="0 0 880 2150">
 <title>Kitchen lighting: 5 V APA102 minimum breadboard layout</title>
-<desc>Minimum-component experiment with an Arduino Nano 33 IoT, barrel jack J0, regulated 5 V supply and one to five APA102 pixels. Nano D13 connects directly to CI and D11 directly to DI at 3.3 V. Direct control is not guaranteed to work with every strip. No buffer, resistors or capacitors are fitted. Only the lower right power rails are used, with shared ground and separate USB power for the Nano. All connecting wires are drawn.</desc>
+<desc>Minimum-component experiment with an Arduino Nano 33 IoT, barrel jack J0, regulated 5 V supply and one to five APA102 pixels. Nano D13 connects directly to CI and D11 directly to DI at 3.3 V. Direct control is not guaranteed to work with every strip. No buffer, resistors or capacitors are fitted. The lower right positive rail supplies the strip; both right ground segments are joined across the midpoint break so the Nano ground connects locally at row 12. The Nano has separate USB power. All connecting wires are drawn.</desc>
 <rect x="0" y="0" width="880" height="2150" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
 <text x="40" y="58" font-family="DejaVu Sans,sans-serif" font-size="32" font-weight="700" fill="#192c3a" text-anchor="start">5 V APA102 · Minimum</text>
 <text x="40" y="94" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">1–5 pixels · 0.30 A maximum LED load</text>
@@ -20,6 +20,7 @@
 <line x1="703" y1="248" x2="703" y2="1052" stroke="#c57979" stroke-width="2"/>
 <line x1="703" y1="1106" x2="703" y2="1910" stroke="#c57979" stroke-width="2"/>
 <text x="714" y="228" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#c57979" text-anchor="middle">+</text>
+<rect x="732" y="251" width="16" height="798" rx="5" fill="#dce4ea" stroke="none" stroke-width="2"/>
 <rect x="732" y="1109" width="16" height="798" rx="5" fill="#dce4ea" stroke="none" stroke-width="2"/>
 <line x1="729" y1="248" x2="729" y2="1052" stroke="#7d9ab8" stroke-width="2"/>
 <line x1="729" y1="1106" x2="729" y2="1910" stroke="#7d9ab8" stroke-width="2"/>
@@ -1239,12 +1240,12 @@
 <circle cx="454" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="740" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-N1" data-start="i12" data-end="R-38">
-<title>N1: i12 → R-38. Nano GND (g12 row) → lower right − rail</title>
-<polyline points="610,546 766,546 766,1222 740,1222" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="610,546 766,546 766,1222 740,1222" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="610" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1222" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-N1" data-start="j12" data-end="R-12">
+<title>N1: j12 → R-12. Nano GND (g12 row) → right − rail at row 12</title>
+<polyline points="636,546 740,546" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="636,546 740,546" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="636" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
 <g id="jumper-N2" data-start="e40" data-end="R-40">
 <title>N2: e40 → R-40. Lower right − rail → strip GND</title>
@@ -1252,6 +1253,13 @@
 <polyline points="454,1274 454,1235 740,1235 740,1274" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="454" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="740" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+</g>
+<g id="jumper-B1" data-start="R-31" data-end="R-34">
+<title>B1: R-31 → R-34. Bridge right − rail midpoint break</title>
+<polyline points="740,1040 740,1118" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="740,1040 740,1118" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="740" cy="1040" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1118" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
 <circle cx="350" cy="260" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="376" cy="1300" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
@@ -1263,9 +1271,15 @@
 <circle cx="714" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="740" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="610" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1222" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="636" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="740" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1040" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1118" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="1300" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="1326" r="6" fill="#258450" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <text x="440" y="2072" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#536775" text-anchor="middle">+ rails: 5 V     − rails: GND</text>
 </svg>

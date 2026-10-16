@@ -19,12 +19,12 @@ python3 12v/pcb/pcb.py
 
 ## 12 V PCB
 
-| Drawing                                          | Browser                               | PDF                                 | SVG                                 |
-| ------------------------------------------------ | ------------------------------------- | ----------------------------------- | ----------------------------------- |
-| Schematic                                        | [Open](12v/pcb/pcb.html)              | [PDF](12v/pcb/pcb.pdf)              | [SVG](12v/pcb/pcb.svg)              |
-| Assembly layout, dimensions and component legend | [Open](12v/pcb/pcb-layout.html)       | [PDF](12v/pcb/pcb-layout.pdf)       | [SVG](12v/pcb/pcb-layout.svg)       |
-| Plated drill map                                 | [Open](12v/pcb/pcb-PTH-drl_map.html)  | [PDF](12v/pcb/pcb-PTH-drl_map.pdf)  | [SVG](12v/pcb/pcb-PTH-drl_map.svg)  |
-| Non-plated drill map                             | [Open](12v/pcb/pcb-NPTH-drl_map.html) | [PDF](12v/pcb/pcb-NPTH-drl_map.pdf) | [SVG](12v/pcb/pcb-NPTH-drl_map.svg) |
+| Drawing                                          | PDF                                 | SVG                                 |
+| ------------------------------------------------ | ----------------------------------- | ----------------------------------- |
+| Schematic                                        | [PDF](12v/pcb/pcb.pdf)              | [SVG](12v/pcb/pcb.svg)              |
+| Assembly layout, dimensions and component legend | [PDF](12v/pcb/pcb-layout.pdf)       | [SVG](12v/pcb/pcb-layout.svg)       |
+| Plated drill map                                 | [PDF](12v/pcb/pcb-PTH-drl_map.pdf)  | [SVG](12v/pcb/pcb-PTH-drl_map.svg)  |
+| Non-plated drill map                             | [PDF](12v/pcb/pcb-NPTH-drl_map.pdf) | [SVG](12v/pcb/pcb-NPTH-drl_map.svg) |
 
 | File                                                 | Purpose                             |
 | ---------------------------------------------------- | ----------------------------------- |
@@ -44,10 +44,18 @@ python3 -m unittest discover -s 12v/pcb -p 'test_*.py'
 python3 12v/pcb/browser_exports.py  # refresh browser versions of all repository PDFs
 ```
 
+## Tests
+
+```sh
+python3 -m unittest test_breadboards
+```
+
 ## Contributing
 
 - markdown tables: `|`s should line up
 - diagram preferences:
+  - maximize readability:
+    - shorter wires is better
   - avoid using a legend:
     - label components directly
     - draw all connections

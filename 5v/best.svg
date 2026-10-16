@@ -1248,14 +1248,14 @@
 <g transform="rotate(-90 618 806.0)">
 <text x="618" y="806.0" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="700" fill="#192c3a" text-anchor="middle">100nF</text>
 </g>
-<circle cx="610" cy="1378" r="51" fill="#244b5d" stroke="#192c3a" stroke-width="2"/>
-<path d="M 581 1415 Q 610 1436 639 1415" fill="none" stroke="#d0dce1" stroke-width="10"/>
-<circle cx="610" cy="1352" r="4" fill="#d5c289" stroke="#192c3a" stroke-width="1"/>
-<circle cx="610" cy="1404" r="4" fill="#d5c289" stroke="#192c3a" stroke-width="1"/>
-<text x="610" y="1344" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">+</text>
-<text x="610" y="1425" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">−</text>
-<text x="610" y="1377" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">1000µF</text>
-<text x="610" y="1398" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="white" text-anchor="middle">10V</text>
+<circle cx="402" cy="1456" r="51" fill="#244b5d" stroke="#192c3a" stroke-width="2"/>
+<path d="M 373 1493 Q 402 1514 431 1493" fill="none" stroke="#d0dce1" stroke-width="10"/>
+<circle cx="402" cy="1430" r="4" fill="#d5c289" stroke="#192c3a" stroke-width="1"/>
+<circle cx="402" cy="1482" r="4" fill="#d5c289" stroke="#192c3a" stroke-width="1"/>
+<text x="402" y="1422" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">+</text>
+<text x="402" y="1503" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">−</text>
+<text x="402" y="1455" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">1000µF</text>
+<text x="402" y="1476" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="white" text-anchor="middle">10V</text>
 <rect x="331" y="1733" width="90" height="145" rx="5" fill="#303a43" stroke="#192c3a" stroke-width="2"/>
 <rect x="348" y="1859" width="56" height="23" rx="4" fill="#141c22" stroke="#53636c" stroke-width="2"/>
 <circle cx="376" cy="1742" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
@@ -1349,19 +1349,19 @@
 <circle cx="636" cy="780" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="714" cy="780" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-V2" data-start="b43" data-end="L+44">
-<title>V2: b43 → L+44. +5 V → strip positive</title>
-<polyline points="376,1352 376,1378 258,1378" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="376,1352 376,1378 258,1378" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="jumper-V2" data-start="b43" data-end="L+43">
+<title>V2: b43 → L+43. +5 V → strip positive</title>
+<polyline points="376,1352 258,1352" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="376,1352 258,1352" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="376" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="258" cy="1378" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-V3" data-start="f43" data-end="R+40">
-<title>V3: f43 → R+40. +5 V → C2 positive</title>
-<polyline points="532,1352 532,1274 714,1274" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="532,1352 532,1274 714,1274" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="532" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="714" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<g id="jumper-V3" data-start="a46" data-end="L+46">
+<title>V3: a46 → L+46. +5 V → C2 positive</title>
+<polyline points="350,1430 258,1430" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,1430 258,1430" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="350" cy="1430" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="1430" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
 <g id="jumper-V4" data-start="j22" data-end="R+22">
 <title>V4: j22 → R+22. Disable unused channel 4: pin 13 HIGH</title>
@@ -1398,19 +1398,19 @@
 <circle cx="350" cy="936" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="284" cy="936" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-N3" data-start="b40" data-end="L-39">
-<title>N3: b40 → L-39. Ground → strip GND</title>
-<polyline points="376,1274 376,1248 284,1248" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="376,1274 376,1248 284,1248" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="jumper-N3" data-start="b40" data-end="L-40">
+<title>N3: b40 → L-40. Ground → strip GND</title>
+<polyline points="376,1274 284,1274" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="376,1274 284,1274" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="376" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="284" cy="1248" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-N4" data-start="f45" data-end="R-47">
-<title>N4: f45 → R-47. Ground → C2 negative</title>
-<polyline points="532,1404 532,1456 740,1456" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="532,1404 532,1456 740,1456" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="532" cy="1404" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1456" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-N4" data-start="a48" data-end="L-48">
+<title>N4: a48 → L-48. Ground → C2 negative</title>
+<polyline points="350,1482 284,1482" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,1482 284,1482" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="350" cy="1482" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1482" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
 <g id="jumper-N5" data-start="a24" data-end="L-24">
 <title>N5: a24 → L-24. Enable clock channel: pin 4 LOW</title>
@@ -1495,9 +1495,9 @@
 <circle cx="636" cy="780" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="714" cy="780" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="376" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="258" cy="1378" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="714" cy="1274" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="1430" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="1430" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="636" cy="806" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="714" cy="806" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="636" cy="884" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
@@ -1509,9 +1509,9 @@
 <circle cx="350" cy="936" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="284" cy="936" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="376" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="284" cy="1248" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1404" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1456" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="1482" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1482" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="858" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="284" cy="858" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="780" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
@@ -1532,5 +1532,9 @@
 <circle cx="714" cy="1534" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="284" cy="1586" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="740" cy="1586" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="1300" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="1326" r="6" fill="#258450" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <text x="440" y="2072" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#536775" text-anchor="middle">+ rails: 5 V     − rails: GND</text>
 </svg>

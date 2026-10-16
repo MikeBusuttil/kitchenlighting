@@ -2,8 +2,9 @@
 """Generate best-practice and minimum 12 V kitchen-lighting SVG diagrams.
 
 From the project root: python3 12v/build.py
-Both SVGs are written beside this script. Only Python's standard library is used.
-The minimum uses three TN0702N3-G MOSFETs and the lower right power rails.
+Both SVGs and shopping.html are written beside this script.
+Only Python's standard library is used.
+The minimum uses three TN0702N3-G MOSFETs. Both layouts use linked power rails.
 Both layouts feed strip positive directly from a soldered pigtail on J0 pin 1.
 """
 from html import escape
@@ -120,10 +121,10 @@ def board(minimum=False):
     rect(482,241,21,1660,'#c6cbc9','#c6cbc9',3)
     for col in ['L+','L-','R+','R-']:
         x=COL[col]; color='#c57979' if '+' in col else '#7d9ab8'
-        if minimum and col.startswith('R'):
-            rect(x-8,yy(34)-9,16,yy(64)-yy(34)+18,
+        for start,end in [(1,31),(34,64)]:
+            rect(x-8,yy(start)-9,16,yy(end)-yy(start)+18,
                  '#f6ddd3' if '+' in col else '#dce4ea','none',5)
-        for start,end in [(1,31),(34,64)]: line(x-11,yy(start)-12,x-11,yy(end)+12,color,2)
+            line(x-11,yy(start)-12,x-11,yy(end)+12,color,2)
         text(x,228,'+' if '+' in col else '−',19,color,True,'middle')
     for col in 'abcdefghij': text(COL[col],228,col,19,MUTED,True,'middle')
     for row in range(1,65):
@@ -227,18 +228,6 @@ def draw_best_jumpers():
         'D1': [(466,yy(48)),(466,yy(42))],
         'D2': [(518,yy(53)),(518,yy(41)-13),(454,yy(41)-13)],
         'D3': [(584,yy(48)+13),(506,yy(48)+13),(506,yy(43)-13),(454,yy(43)-13)],
-        'S1': [(440,yy(49)),(440,yy(61)),(558,yy(61))],
-        'S2': [(452,yy(54)),(452,yy(61)+13),(610,yy(61)+13)],
-        'S3': [(596,yy(49)),(596,yy(62))],
-        'V1': [(558,yy(59)),(532,yy(59))],
-        'V2': [(584,yy(58)-13),(808,yy(58)-13),(808,yy(16)),(310,yy(16)),(310,yy(15))],
-        'V3': [(610,yy(57)),(796,yy(57)),(796,yy(23))],
-        'V4': [(636,yy(58)+13),(784,yy(58)+13),(784,yy(33))],
-        'N0': [(478,yy(60)),(478,yy(56))],
-        'N1': [(820,yy(56)),(820,yy(16)+13),(298,yy(16)+13),(298,yy(14))],
-        'N2': [(584,yy(56)-13),(748,yy(56)-13),(748,yy(29)),(326,yy(29)),(326,yy(28))],
-        'N3': [(610,yy(55)),(736,yy(55)),(736,yy(39)-13),(302,yy(39)-13),(302,yy(38))],
-        'N4': [(760,yy(56)),(760,yy(63)),(532,yy(63))],
     }
     for ref,start,end,color in flags:
         note=next(item[3] for item in wiring if item[0]==ref)
@@ -247,6 +236,19 @@ def draw_best_jumpers():
         s.append('</g>')
     for _,start,end,color in flags:
         for endpoint in (start,end): circle(*parse_hole(endpoint),6,color,'white',2)
+
+
+def rail_bridges():
+    """Link matching rails above the Nano and bridge their midpoint breaks."""
+    for label,start,end,color in [
+        ('B1','L+31','L+34',POWER), ('B2','L-31','L-34',INK),
+        ('B3','R+31','R+34',POWER), ('B4','R-31','R-34',INK),
+    ]:
+        local(label,start,end,color,'Bridge power rail midpoint break')
+    local('B5','L+1','R+1',POWER,'Link left and right +12 V rails',
+          via=((240,yy(1)),(240,150),(700,150),(700,yy(1))))
+    local('B6','L-2','R-2',INK,'Link left and right ground rails',
+          via=((272,yy(2)),(272,174),(754,174),(754,yy(2))))
 
 
 def build():
@@ -259,11 +261,11 @@ def build():
     text(40,62,'12 V · Best practice',34,bold=True)
     text(40,108,'RGB strip · ≤25 cm · ≤0.30 A total LED current',20,MUTED)
     board()
-    # Endpoints remain fixed; all jumpers are drawn as continuous paths.
+    rail_bridges()
     paired('P1','i10','a22',RED,'Nano D3 → U1 pin 2 / red; HIGH=ON')
     paired('P2','i8','a24',GREEN,'Nano D5 → U1 pin 4 / green; HIGH=ON')
     paired('P3','i7','a32',BLUE,'Nano D6 → U2 pin 2 / blue; HIGH=ON')
-    for label,start,end in [('L1','a26','a28'),('L2','e26','a23'),('L3','d26','f25'),('L4','a36','a38'),('L5','c36','a33'),('L6','d36','f35'),('L7','e36','a34')]:
+    for label,start,end in [('L1','a26','L-26'),('L2','a23','L-23'),('L3','j25','R-25'),('L4','a36','L-36'),('L5','a33','L-35'),('L6','j35','R-35'),('L7','c33','c34')]:
         local(label,start,end,INK,'Ground jumper' if label!='L7' else 'Ground U2 unused input pin 4')
     component_resistor('R1','b22','b26','10 kΩ',RED)
     component_resistor('R2','c24','c28','10 kΩ',GREEN)
@@ -294,21 +296,20 @@ def build():
         ('D1','e48','e42',RED,'Q1 drain → red strip output'),
         ('D2','e53','e41',GREEN,'Q2 drain → green strip output'),
         ('D3','h48','e43',BLUE,'Q3 drain → blue strip output'),
-        ('S1','d49','g62',INK,'Q1 source → common ground'),
-        ('S2','d54','i62',INK,'Q2 source → common ground'),
-        ('S3','h49','j62',INK,'Q3 source → common ground'),
-        ('V0','e58','f58',POWER,'Jack center +12 V → distribution'),
-        ('V1','g58','f60',POWER,'Extend +12 V distribution'),
-        ('V2','h58','a15',POWER,'+12 V → Nano VIN'),
-        ('V3','i58','j23',POWER,'+12 V → U1 pin 6'),
-        ('V4','j58','j33',POWER,'+12 V → U2 pin 6'),
-        ('N0','e60','f56',INK,'Jack unswitched sleeve → common ground'),
-        ('N1','g56','a14',INK,'Common ground → Nano GND'),
-        ('N2','h56','b28',INK,'Common ground → U1 ground bank'),
-        ('N3','i56','b38',INK,'Common ground → U2 ground bank'),
-        ('N4','j56','f62',INK,'Extend ground to MOSFET sources')]:
+        ('S1','b49','L-49',INK,'Q1 source → ground rail'),
+        ('S2','b54','L-54',INK,'Q2 source → ground rail'),
+        ('S3','i49','R-49',INK,'Q3 source → ground rail'),
+        ('V0','e58','R+58',POWER,'Jack center → +12 V rail'),
+        ('V1','j55','R+55',POWER,'+12 V rail → C7 positive'),
+        ('V2','a15','L+15',POWER,'+12 V rail → Nano VIN'),
+        ('V3','j23','R+23',POWER,'+12 V rail → U1 pin 6'),
+        ('V4','j33','R+35',POWER,'+12 V rail → U2 pin 6'),
+        ('N0','e60','R-60',INK,'Jack unswitched sleeve → ground rail'),
+        ('N1','a14','L-14',INK,'Nano GND → ground rail'),
+        ('N2','a28','L-28',INK,'R2 pulldown → ground rail'),
+        ('N4','j57','R-57',INK,'C7 negative → ground rail')]:
         paired(label,start,end,color,note)
-    cap('C7','h60','h62','100 µF, 25 V',True,True)
+    cap('C7','h55','h57','100 µF, 25 V',True,True)
     barrel_jack()
     led_strip()
     draw_best_jumpers()
@@ -353,9 +354,6 @@ def draw_minimum_jumpers():
         'D1': [(466,yy(49)),(466,yy(42))],
         'D2': [(518,yy(54)),(518,yy(41)-13),(454,yy(41)-13)],
         'D3': [(584,yy(49)+13),(506,yy(49)+13),(506,yy(43)-13),(454,yy(43)-13)],
-        'S1': [(454,yy(45))],
-        'V1': [(310,yy(15)),(310,yy(36))],
-        'N1': [(794,yy(12)),(794,yy(38))],
     }
     for label,start,end,color,note in minimum_jumpers:
         s.append(f'<g id="jumper-{label}" data-start="{start}" data-end="{end}">')
@@ -370,12 +368,13 @@ def build_minimum():
     global s,wiring,occupied
     s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
        '<title>Kitchen lighting: 12 V RGB minimum breadboard layout</title>',
-       '<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three TN0702N3-G logic-level N-channel MOSFETs, and barrel jack J0. Nano D3, D5 and D6 directly control red, green and blue MOSFET gates. No gate drivers, resistors or capacitors are installed. Strip positive connects directly to J0 pin 1 by a soldered pigtail; row 40 is unused. The lower right power rails supply Nano VIN and common ground. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. All wires are drawn.</desc>']
+       '<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three TN0702N3-G logic-level N-channel MOSFETs, and barrel jack J0. Nano D3, D5 and D6 directly control red, green and blue MOSFET gates. No gate drivers, resistors or capacitors are installed. Strip positive connects directly to J0 pin 1 by a soldered pigtail; row 40 is unused. Both +12 V rails and both ground rails are linked at the top, with bridges across all four midpoint breaks. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. All wires are drawn.</desc>']
     wiring=[]; occupied={}; flags.clear(); annotations.clear(); minimum_jumpers.clear()
     rect(0,0,W,H,'#f4f7fa','#f4f7fa',0)
     text(40,62,'12 V · Minimum',34,bold=True)
     text(40,108,'RGB strip · ≤25 cm · ≤0.30 A total LED current',20,MUTED)
     board(minimum=True)
+    rail_bridges()
     output_rows(labelsize=13)
     minimum_mosfets()
     barrel_jack()
@@ -387,13 +386,13 @@ def build_minimum():
         ('D1','e49','e42',RED,'Q1 drain → strip R'),
         ('D2','e54','e41',GREEN,'Q2 drain → strip G'),
         ('D3','h49','e43',BLUE,'Q3 drain → strip B'),
-        ('S1','e47','R-45',INK,'Q1 source → ground rail'),
-        ('S2','e52','R-52',INK,'Q2 source → ground rail'),
+        ('S1','a47','L-47',INK,'Q1 source → ground rail'),
+        ('S2','a52','L-52',INK,'Q2 source → ground rail'),
         ('S3','j47','R-47',INK,'Q3 source → ground rail'),
         ('V0','e58','R+58',POWER,'J0 center → +12 V rail'),
-        ('V1','a15','R+36',POWER,'+12 V rail → Nano VIN'),
+        ('V1','a15','L+15',POWER,'+12 V rail → Nano VIN'),
         ('N0','e60','R-60',INK,'J0 sleeve → ground rail'),
-        ('N1','i12','R-38',INK,'Nano GND → ground rail'),
+        ('N1','j12','R-12',INK,'Nano GND → ground rail'),
     ]:
         record(label,start,end,note)
         minimum_jumpers.append((label,start,end,color,note))
@@ -423,3 +422,7 @@ def check_strip_positive_bypass():
 if __name__ == '__main__':
     build()
     build_minimum()
+    import sys
+    sys.path.insert(0,str(OUT/'pcb'))
+    from browser_exports import export_csv_view
+    export_csv_view(OUT/'shopping.csv')

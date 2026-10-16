@@ -2,7 +2,7 @@
 """Generate two 5 V APA102 diagrams using only Python's standard library.
 
 Run from the project root: python3 5v/build.py
-Writes best.svg and min.svg beside this script.
+Writes best.svg, min.svg and shopping.html beside this script.
 The in-memory wiring and occupied mappings support independent connectivity checks.
 """
 from html import escape
@@ -74,7 +74,7 @@ def board(minimum=False):
     for col in ['L+','L-','R+','R-']:
         x=COL[col]; color='#c57979' if '+' in col else '#7d9ab8'
         for start,end in [(1,31),(34,64)]:
-            if not minimum or (col.startswith('R') and start==34):
+            if not minimum or col=='R-' or (col=='R+' and start==34):
                 rect(x-8,yy(start)-9,16,yy(end)-yy(start)+18,
                      '#f6ddd3' if '+' in col else '#dce4ea','none',5)
         for start,end in [(1,31),(34,64)]: line(x-11,yy(start)-12,x-11,yy(end)+12,color,2)
@@ -113,10 +113,6 @@ def draw_jumpers():
         'P2': [(654,yy(2)),(654,yy(18)),(338,yy(18)),(338,yy(22))],
         'O1': [(454,yy(31)+13),(428,yy(31)+13),(428,yy(41)-13),(454,yy(41)-13)],
         'O2': [(454,yy(28)+13),(441,yy(28)+13),(441,yy(42)-13),(454,yy(42)-13)],
-        'V2': [(376,yy(44))],
-        'V3': [(532,yy(40))],
-        'N3': [(376,yy(39))],
-        'N4': [(532,yy(47))],
     }
     render_jumpers(bends)
 
@@ -130,6 +126,10 @@ def render_jumpers(bends):
     # Restore endpoint dots above insulated crossings.
     for label,start,end,color,note in jumpers:
         for endpoint in (start,end): circle(*parse_hole(endpoint),6,color,'white',2)
+    # Local rail feeds share rows with the outgoing strip leads. Keep the
+    # strip's separate occupied holes visible where those wires overlap.
+    for row,color in [(40,INK),(41,CLOCK),(42,DATA),(43,POWER)]:
+        circle(*hole('a',row),6,color,'white',2)
 
 
 def resistor(label,start,end,value,color):
@@ -231,13 +231,14 @@ def build():
     rect(x-7,(y+y2)/2-13,14,26,'#bb914e','#8d6c35',3)
     for h in ['h21','h23']: circle(*parse_hole(h),4,POWER,'white',1)
     rotated_text(x+34,(y+y2)/2,'100nF',16,INK,True)
-    record('C2','i43','i45','1000 µF, 10 V Panasonic EEU-FC1A102B; From is positive; To is negative; 10 mm diameter, 5 mm lead pitch')
-    x,y=hole('i',44)
+    # Below the strip terminals, both leads can reach the left rails directly.
+    record('C2','c46','c48','1000 µF, 10 V Panasonic EEU-FC1A102B; From is positive; To is negative; 10 mm diameter, 5 mm lead pitch')
+    x,y=hole('c',47)
     circle(x,y,51,'#244b5d',INK,2)
     s.append(f'<path d="M {x-29} {y+37} Q {x} {y+58} {x+29} {y+37}" fill="none" stroke="#d0dce1" stroke-width="10"/>')
-    for h in ['i43','i45']: circle(*parse_hole(h),4,'#d5c289',INK,1)
-    text(x,yy(43)-8,'+',17,'white',True,'middle')
-    text(x,yy(45)+21,'−',17,'white',True,'middle')
+    for h in ['c46','c48']: circle(*parse_hole(h),4,'#d5c289',INK,1)
+    text(x,yy(46)-8,'+',17,'white',True,'middle')
+    text(x,yy(48)+21,'−',17,'white',True,'middle')
     text(x,y-1,'1000µF',17,'white',True,'middle')
     text(x,y+20,'10V',15,'white',False,'middle')
     for label,start,end,color,note in [
@@ -247,15 +248,15 @@ def build():
         ('O2','e28','e42',DATA,'R3 → strip DI / data'),
         ('V0','e58','R+58',POWER,'J0 +5 V → right + rail'),
         ('V1','j21','R+21',POWER,'+5 V → U1 VCC pin 14 / C1'),
-        ('V2','b43','L+44',POWER,'+5 V → strip positive'),
-        ('V3','f43','R+40',POWER,'+5 V → C2 positive'),
+        ('V2','b43','L+43',POWER,'+5 V → strip positive'),
+        ('V3','a46','L+46',POWER,'+5 V → C2 positive'),
         ('V4','j22','R+22',POWER,'Disable unused channel 4: pin 13 HIGH'),
         ('V5','j25','R+25',POWER,'Disable unused channel 3: pin 10 HIGH'),
         ('N0','e60','R-60',INK,'J0 sleeve → right − rail'),
         ('N1','a14','L-14',INK,'Shared ground → Nano GND'),
         ('N2','a27','L-27',INK,'Ground → U1 pin 7'),
-        ('N3','b40','L-39',INK,'Ground → strip GND'),
-        ('N4','f45','R-47',INK,'Ground → C2 negative'),
+        ('N3','b40','L-40',INK,'Ground → strip GND'),
+        ('N4','a48','L-48',INK,'Ground → C2 negative'),
         ('N5','a24','L-24',INK,'Enable clock channel: pin 4 LOW'),
         ('N6','a21','L-21',INK,'Enable data channel: pin 1 LOW'),
         ('N7','j26','R-26',INK,'Unused input pin 9 → ground'),
@@ -285,7 +286,7 @@ def build_minimum():
     global s,wiring,occupied
     s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
        '<title>Kitchen lighting: 5 V APA102 minimum breadboard layout</title>',
-       '<desc>Minimum-component experiment with an Arduino Nano 33 IoT, barrel jack J0, regulated 5 V supply and one to five APA102 pixels. Nano D13 connects directly to CI and D11 directly to DI at 3.3 V. Direct control is not guaranteed to work with every strip. No buffer, resistors or capacitors are fitted. Only the lower right power rails are used, with shared ground and separate USB power for the Nano. All connecting wires are drawn.</desc>']
+       '<desc>Minimum-component experiment with an Arduino Nano 33 IoT, barrel jack J0, regulated 5 V supply and one to five APA102 pixels. Nano D13 connects directly to CI and D11 directly to DI at 3.3 V. Direct control is not guaranteed to work with every strip. No buffer, resistors or capacitors are fitted. The lower right positive rail supplies the strip; both right ground segments are joined across the midpoint break so the Nano ground connects locally at row 12. The Nano has separate USB power. All connecting wires are drawn.</desc>']
     wiring=[]; occupied={}; jumpers.clear()
     rect(0,0,W,H,'#f4f7fa','#f4f7fa',0)
     text(40,58,'5 V APA102 · Minimum',32,bold=True)
@@ -303,14 +304,14 @@ def build_minimum():
         ('V0','e58','R+58',POWER,'J0 center positive → lower right + rail'),
         ('V1','e43','R+43',POWER,'Lower right + rail → strip +5 V'),
         ('N0','e60','R-60',INK,'J0 sleeve → lower right − rail'),
-        ('N1','i12','R-38',INK,'Nano GND (g12 row) → lower right − rail'),
+        ('N1','j12','R-12',INK,'Nano GND (g12 row) → right − rail at row 12'),
         ('N2','e40','R-40',INK,'Lower right − rail → strip GND'),
+        ('B1','R-31','R-34',INK,'Bridge right − rail midpoint break'),
     ]: jumper(label,start,end,color,note)
     render_jumpers({
         'P1': [(326,yy(1)),(326,yy(17)),(376,yy(17))],
         'P2': [(654,yy(2)),(654,yy(18)),(402,yy(18)),(402,yy(42)-13),(376,yy(42)-13)],
         'V1': [(454,yy(43)+13),(688,yy(43)+13),(688,yy(43))],
-        'N1': [(766,yy(12)),(766,yy(38))],
         'N2': [(454,yy(39)-13),(740,yy(39)-13)],
     })
     record('Nano USB power','USB charger or PC','Nano USB socket','Separate USB cable; do not connect Nano VIN or VUSB to the LED positive bus')
@@ -326,3 +327,7 @@ def build_minimum():
 if __name__=='__main__':
     build()
     build_minimum()
+    import sys
+    sys.path.insert(0,str(OUT.parent/'12v'/'pcb'))
+    from browser_exports import export_csv_view
+    export_csv_view(OUT/'shopping.csv')

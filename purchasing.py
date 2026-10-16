@@ -2,7 +2,8 @@
 
 Existing hardware and future full-strip components are excluded. The 12 V best
 list includes C7 as drawn and the economical ten-piece resistor quantities from
-shopping.csv. Both 5 V lists assume the documented USB-A supply connection.
+shopping.csv. The 5 V minimum uses existing Nano USB power; best adds a USB-C
+breakout to power the Nano, LEDs and buffer together.
 """
 
 import csv
@@ -10,11 +11,6 @@ from pathlib import Path
 
 
 # Quantity, DigiKey SKU (individual/cut tape), manufacturer part, references.
-FIVE_VOLT_POWER = (
-    (1, "CP-102AH-ND", "PJ-102AH", "J0"),
-    (1, "1528-2697-ND", "2697", "J0 power cable (USB-A supply)"),
-)
-
 PURCHASE_LISTS = {
     "12v": {
         "min": (
@@ -34,14 +30,15 @@ PURCHASE_LISTS = {
         ),
     },
     "5v": {
-        "min": FIVE_VOLT_POWER,
+        "min": (),
         "best": (
             (1, "296-4655-5-ND", "SN74AHCT125N", "U1"),
             (2, "CF14JT33R0CT-ND", "CF14JT33R0", "R3 R4"),
             (2, "CF14JT10K0CT-ND", "CF14JT10K0", "R1 R2"),
             (1, "BC1101CT-ND", "K104K15X7RF5TH5", "C1"),
             (1, "P19631CT-ND", "EEU-FC1A102B", "C2"),
-        ) + FIVE_VOLT_POWER,
+            (1, "1528-2873-ND", "4090", "J0 USB-C breakout (header included)"),
+        ),
     },
 }
 

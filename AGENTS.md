@@ -1,0 +1,1 @@
+- never stage or commit without express permission

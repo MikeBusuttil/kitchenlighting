@@ -37,6 +37,10 @@ NANO = {
     )
 }
 JACK = {"J0.1", "J0.2", "J0.3"}
+USB_C_BREAKOUT = {
+    "J0." + pin
+    for pin in ("VBUS", "GND", "D-", "D+", "CC1", "CC2", "SBU1", "SBU2")
+}
 MOSFETS = {f"Q{q}.{pin}" for q in range(1, 4) for pin in "GDS"}
 RGB_STRIP = {"Strip +", "Strip R", "Strip G", "Strip B"}
 RJ11_OUTPUTS = {f"J{port}.{pin}" for port in (1, 2) for pin in (2, 3, 4, 5)}
@@ -56,12 +60,12 @@ EXPECTED_TERMINALS = {
     ),
     ("12v", "min"): NANO | JACK | MOSFETS | RJ11_OUTPUTS,
     ("5v", "best"): (
-        NANO | JACK | APA102_STRIP
+        NANO | USB_C_BREAKOUT | APA102_STRIP
         | {f"U1.{pin}" for pin in range(1, 15)}
         | passive_terminals("R", range(1, 5))
         | passive_terminals("C", range(1, 3))
     ),
-    ("5v", "min"): NANO | JACK | APA102_STRIP,
+    ("5v", "min"): NANO | APA102_STRIP,
 }
 KNOWN_TERMINALS = set().union(*EXPECTED_TERMINALS.values())
 
@@ -98,8 +102,8 @@ EXPECTED_CONNECTIONS = {
         ("Q3.D", "J1.5", "J2.5"),
     ],
     ("5v", "best"): [
-        ("C1.1", "C2.1", "J0.1", "Strip +5V", "U1.10", "U1.13", "U1.14"),
-        ("C1.2", "C2.2", "J0.2", "Nano GND", "R1.2", "R2.2", "Strip GND",
+        ("C1.1", "C2.1", "J0.VBUS", "Nano VIN", "Strip +5V", "U1.10", "U1.13", "U1.14"),
+        ("C1.2", "C2.2", "J0.GND", "Nano GND", "R1.2", "R2.2", "Strip GND",
          "U1.1", "U1.12", "U1.4", "U1.7", "U1.9"),
         ("Nano D11 / COPI", "R1.1", "U1.2"),
         ("Nano D13 / SCK", "R2.1", "U1.5"),
@@ -109,8 +113,8 @@ EXPECTED_CONNECTIONS = {
         ("R4.2", "Strip CI"),
     ],
     ("5v", "min"): [
-        ("J0.1", "Strip +5V"),
-        ("J0.2", "Nano GND", "Strip GND"),
+        ("Nano 5V / VUSB", "Strip +5V"),
+        ("Nano GND", "Strip GND"),
         ("Nano D11 / COPI", "Strip DI"),
         ("Nano D13 / SCK", "Strip CI"),
     ],
@@ -252,6 +256,13 @@ class BreadboardTests(unittest.TestCase):
                     direct_connections.find("J0.1"), direct_connections.find(port + ".2")
                 )
 
+    def test_minimum_five_volt_diagram_includes_required_solder_bridge(self):
+        _, svg, _ = self.layouts["5v", "min"]
+        visible_text = " ".join(
+            "".join(element.itertext()) for element in svg.iter(SVG + "text")
+        )
+        self.assertIn("Close VUSB solder bridge", visible_text)
+
 
 class PurchaseExportTests(unittest.TestCase):
     def test_build_clis_generate_digikey_orders_from_another_directory(self):
@@ -271,13 +282,9 @@ class PurchaseExportTests(unittest.TestCase):
                 "ECA-1EM101B": 1,
                 "PJ-102AH": 1,
             },
-            ("5v", "min"): {
-                "PJ-102AH": 1,
-                "2697": 1,
-            },
+            ("5v", "min"): {},
             ("5v", "best"): {
-                "PJ-102AH": 1,
-                "2697": 1,
+                "4090": 1,
                 "SN74AHCT125N": 1,
                 "CF14JT33R0": 2,
                 "CF14JT10K0": 2,
@@ -329,6 +336,10 @@ class PurchaseExportTests(unittest.TestCase):
                                 {row["DigiKey Part Number"] for row in rows},
                                 {"TN0702N3-G-ND", "CP-102AH-ND", "732-3172-ND"},
                             )
+                        if (voltage, layout) == ("5v", "best"):
+                            self.assertIn("1528-2873-ND", {
+                                row["DigiKey Part Number"] for row in rows
+                            })
 
 
 if __name__ == "__main__":

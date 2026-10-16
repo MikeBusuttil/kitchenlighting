@@ -74,7 +74,7 @@ def board(minimum=False):
     for col in ['L+','L-','R+','R-']:
         x=COL[col]; color='#c57979' if '+' in col else '#7d9ab8'
         for start,end in [(1,31),(34,64)]:
-            if not minimum or col=='R-' or (col=='R+' and start==34):
+            if not minimum or col in ('L+', 'L-'):
                 rect(x-8,yy(start)-9,16,yy(end)-yy(start)+18,
                      '#f6ddd3' if '+' in col else '#dce4ea','none',5)
         for start,end in [(1,31),(34,64)]: line(x-11,yy(start)-12,x-11,yy(end)+12,color,2)
@@ -158,25 +158,32 @@ def output_rows():
         text(476,yy(row)+5,label,15,color,True)
 
 
-def barrel_jack():
-    # J0 is rotated toward the bottom edge; plug clears other components.
-    record('J0 pin 1 / center','b58','J0.1','Positive regulated 5 V; verify cable polarity before connecting')
-    record('J0 pin 2 / sleeve','b60','J0.2','Unswitched sleeve / ground; verify with plug inserted')
-    record('J0 pin 3 / switched sleeve','d59','J0.3','Unused; leave all other left-bank row 59 holes empty')
-    rect(331,yy(58)-9,90,145,'#303a43',INK,5)
-    rect(348,yy(58)+117,56,23,'#141c22','#53636c',4)
-    for col,row,label in [('b',58,'1 +'),('b',60,'2 −'),('d',59,'3 NC')]:
-        x,y=hole(col,row); circle(x,y,5,'#c9b680',INK,1)
-        text(x+10,y+5,label,12,'white' if col=='b' else MUTED,True)
-    rect(358,yy(58)+140,36,51,'#363e43',INK,4)
-    line(376,yy(58)+191,376,yy(64)+82,POWER,6)
-    text(440,yy(61)+7,'PJ-102AH',18,INK,True)
-    text(440,yy(61)+31,'5.5 × 2.1 mm',16,MUTED)
-    text(376,yy(64)+110,'5 V · centre positive',18,INK,True,anchor='middle')
+def usb_c_jack():
+    # Adafruit 4090, rotated 90 degrees counterclockwise: opening faces left.
+    # The supplied 8-pin header runs down eight isolated breadboard rows.
+    # CC pull-downs are already fitted on the module; model its external pads.
+    pins = ('GND', 'VBUS', 'SBU2', 'CC1', 'D-', 'D+', 'SBU1', 'CC2')
+    rect(244,yy(54)-13,145,208,'#14627b','#12485b',4)
+    rect(234,yy(56)-8,70,94,'#c4cbce','#60747f',5)
+    rect(229,yy(56)+2,14,74,'#425862','#647b84',5)
+    for row,pin in enumerate(pins,54):
+        record(f'J0 {pin}',f'b{row}',f'J0.{pin}',
+               'Adafruit 4090; solder supplied header; CC1/CC2 have onboard 5.1 kΩ pull-downs')
+        x,y=hole('b',row)
+        circle(x,y,5,'#c9b680',INK,1)
+        text(x-12,y+4,pin,12,'white',True,'end')
+    text(244,yy(54)-24,'J0 · USB-C',19,INK,True)
+    rect(183,yy(56)+10,48,58,'#343f47',INK,5)
+    line(80,yy(56)+39,183,yy(56)+39,INK,8)
+    text(80,yy(56)+85,'5 V USB-C',17,INK,True)
+    rect(420,yy(57)-16,276,112,'#f4f7fa','none',4)
+    text(435,yy(57)+5,'Adafruit 4090',18,INK,True)
+    text(435,yy(58)+5,'2 × 5.1kΩ CC resistors fitted',16,MUTED)
+    text(435,yy(60)+5,'Solder included header',16,MUTED)
 
 
 def nano_usb():
-    # Nano USB socket power path is distinct from the LED positive supply.
+    # The minimum variant also takes LED power from this USB supply via VUSB.
     line(450,218,175,218,'#687a85',3)
     text(167,210,'USB power',18,INK,True,'end')
 
@@ -201,12 +208,12 @@ def build():
     global s,wiring,occupied
     s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
        '<title>Kitchen lighting: 5 V APA102 best-practice breadboard layout</title>',
-       '<desc>Nano 33 IoT powered through its USB socket. J0 supplies the positive and ground rails for an SN74AHCT125N logic buffer and one to five APA102 pixels. Both rail pairs are linked, with wire bridges across all four midpoint breaks. Nano VIN and VUSB are unconnected. Every jumper is drawn from hole to hole; crossings are insulated.</desc>']
+       '<desc>One USB-C input powers the Nano 33 IoT, SN74AHCT125N logic buffer and one to five APA102 pixels. J0 is an Adafruit 4090 USB-C breakout, with onboard CC pull-downs and its supplied header soldered into b54 through b61, socket facing left. VBUS at b55 and GND at b54 supply the rails; the other six pads have no external connections. The Nano VIN header at c15 connects locally through a15 to L+15, and Nano GND connects through a14 to L-14. Both rail pairs are linked, with wire bridges across all four midpoint breaks. Nano VUSB is unconnected; leave its VUSB solder bridge open. The Nano micro-USB socket is only needed for programming. Every jumper is drawn from hole to hole; crossings are insulated.</desc>']
     wiring=[]; occupied={}; jumpers.clear()
     rect(0,0,W,H,'#f4f7fa','#f4f7fa',0)
     text(40,58,'5 V APA102 · Best practice',32,bold=True)
     text(40,94,'1–5 pixels · 0.30 A maximum LED load',19,MUTED)
-    text(40,123,'Regulated 5 V supply · 1 A minimum',19,MUTED)
+    text(40,123,'One USB-C input → Nano VIN + LED/buffer 5 V',19,MUTED)
     board()
     # DIP14 notch up: left pins ascend, right pins descend toward board bottom.
     rect(467,yy(21)-22,50,200,'#253b46','#132c38',5)
@@ -246,13 +253,14 @@ def build():
         ('P2','i2','a22',DATA,'Nano D11 → U1 data input pin 2'),
         ('O1','e31','e41',CLOCK,'R4 → strip CI / clock'),
         ('O2','e28','e42',DATA,'R3 → strip DI / data'),
-        ('V0','e58','R+58',POWER,'J0 +5 V → right + rail'),
+        ('V0','e55','R+55',POWER,'USB-C J0 VBUS → right + rail'),
         ('V1','j21','R+21',POWER,'+5 V → U1 VCC pin 14 / C1'),
         ('V2','b43','L+43',POWER,'+5 V → strip positive'),
         ('V3','a46','L+46',POWER,'+5 V → C2 positive'),
         ('V4','j22','R+22',POWER,'Disable unused channel 4: pin 13 HIGH'),
         ('V5','j25','R+25',POWER,'Disable unused channel 3: pin 10 HIGH'),
-        ('N0','e60','R-60',INK,'J0 sleeve → right − rail'),
+        ('V6','a15','L+15',POWER,'USB-C +5 V → Nano VIN (c15 row)'),
+        ('N0','e54','R-54',INK,'USB-C J0 GND → right − rail'),
         ('N1','a14','L-14',INK,'Shared ground → Nano GND'),
         ('N2','a27','L-27',INK,'Ground → U1 pin 7'),
         ('N3','b40','L-40',INK,'Ground → strip GND'),
@@ -268,12 +276,12 @@ def build():
         ('B5','L+50','R+50',POWER,'Link left and right +5 V rails'),
         ('B6','L-52','R-52',INK,'Link left and right ground rails'),
     ]: jumper(label,start,end,color,note)
-    barrel_jack()
-    nano_usb()
+    usb_c_jack()
     led_strip()
     draw_jumpers()
-    record('Nano USB power','USB charger or PC','Nano USB socket','Separate USB cable; do not connect Nano VIN or VUSB to the LED positive bus')
-    record('J0 power cable','Regulated 5 V USB charger','J0 barrel plug','USB to 5.5 × 2.1 mm barrel; verify center positive and cable rating')
+    record('Nano programming','PC USB','Nano USB socket','Micro-USB is only needed for programming; USB-C J0 supplies normal operating power through VIN')
+    record('J0 power cable','Regulated 5 V USB supply','J0 USB-C socket','USB-C power input; onboard CC1/CC2 pull-downs; no higher-voltage PD request')
+    text(440,2010,'Nano VUSB solder bridge open · 5V / VUSB pin unused',17,MUTED,False,'middle')
     text(440,2072,'+ rails: 5 V     − rails: GND',18,MUTED,True,'middle')
     s.append('</svg>')
     path=OUT/(NAME+'.svg')
@@ -282,40 +290,37 @@ def build():
     return path
 
 def build_minimum():
-    """Direct 3.3 V signals; only the Nano, J0, strip, supply and wires remain."""
+    """Direct 3.3 V signals and USB-fed Nano VUSB power for the short strip."""
     global s,wiring,occupied
     s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
        '<title>Kitchen lighting: 5 V APA102 minimum breadboard layout</title>',
-       '<desc>Minimum-component experiment with an Arduino Nano 33 IoT, barrel jack J0, regulated 5 V supply and one to five APA102 pixels. Nano D13 connects directly to CI and D11 directly to DI at 3.3 V. Direct control is not guaranteed to work with every strip. No buffer, resistors or capacitors are fitted. The lower right positive rail supplies the strip; both right ground segments are joined across the midpoint break so the Nano ground connects locally at row 12. The Nano has separate USB power. All connecting wires are drawn.</desc>']
+       '<desc>Minimum-component experiment with an Arduino Nano 33 IoT and one to five APA102 pixels powered from its USB socket. Close the underside VUSB solder bridge SJ1 to enable USB 5 V at header c12. Feed the left positive rail locally at row 12 and ground at row 14; bridge both left rail midpoint breaks to supply the strip at rows 40 and 43. Nano D13 connects directly to CI and D11 directly to DI at 3.3 V; operation is not guaranteed with every strip. No separate input jack, buffer, resistors or capacitors are fitted. All connecting wires are drawn.</desc>']
     wiring=[]; occupied={}; jumpers.clear()
     rect(0,0,W,H,'#f4f7fa','#f4f7fa',0)
     text(40,58,'5 V APA102 · Minimum',32,bold=True)
     text(40,94,'1–5 pixels · 0.30 A maximum LED load',19,MUTED)
-    text(40,123,'Regulated 5 V supply · 1 A minimum',19,MUTED)
-    text(40,158,'Direct 3.3 V signals: operation is not guaranteed.',18,MUTED)
+    text(40,123,'Nano USB → 5V / VUSB pin → LEDs',19,MUTED)
+    text(40,158,'Close VUSB solder bridge (SJ1, Nano underside).',18,INK,True)
     board(minimum=True)
     output_rows()
-    barrel_jack()
     nano_usb()
     led_strip()
     for label,start,end,color,note in [
         ('P1','a1','b41',CLOCK,'Nano D13 / SCK → strip CI, direct 3.3 V clock'),
         ('P2','i2','b42',DATA,'Nano D11 / COPI → strip DI, direct 3.3 V data'),
-        ('V0','e58','R+58',POWER,'J0 center positive → lower right + rail'),
-        ('V1','e43','R+43',POWER,'Lower right + rail → strip +5 V'),
-        ('N0','e60','R-60',INK,'J0 sleeve → lower right − rail'),
-        ('N1','j12','R-12',INK,'Nano GND (g12 row) → right − rail at row 12'),
-        ('N2','e40','R-40',INK,'Lower right − rail → strip GND'),
-        ('B1','R-31','R-34',INK,'Bridge right − rail midpoint break'),
+        ('V0','a12','L+12',POWER,'Nano USB-fed 5V / VUSB (c12 row) → left + rail; close SJ1'),
+        ('V1','b43','L+43',POWER,'Lower left + rail → strip +5 V'),
+        ('N1','a14','L-14',INK,'Nano GND (c14 row) → left − rail'),
+        ('N2','b40','L-40',INK,'Lower left − rail → strip GND'),
+        ('B1','L+31','L+34',POWER,'Bridge left + rail midpoint break'),
+        ('B2','L-31','L-34',INK,'Bridge left − rail midpoint break'),
     ]: jumper(label,start,end,color,note)
     render_jumpers({
         'P1': [(326,yy(1)),(326,yy(17)),(376,yy(17))],
         'P2': [(654,yy(2)),(654,yy(18)),(402,yy(18)),(402,yy(42)-13),(376,yy(42)-13)],
-        'V1': [(454,yy(43)+13),(688,yy(43)+13),(688,yy(43))],
-        'N2': [(454,yy(39)-13),(740,yy(39)-13)],
     })
-    record('Nano USB power','USB charger or PC','Nano USB socket','Separate USB cable; do not connect Nano VIN or VUSB to the LED positive bus')
-    record('J0 power cable','Regulated 5 V USB charger','J0 barrel plug','USB to 5.5 × 2.1 mm barrel; verify center positive and cable rating')
+    record('Nano USB power','Regulated 5 V USB supply','Nano USB socket','Single USB input powers Nano and short strip through closed VUSB solder bridge SJ1 and header c12')
+    text(440,2010,'Direct 3.3 V signals: operation is not guaranteed.',18,MUTED,False,'middle')
     text(440,2072,'+ rails: 5 V     − rails: GND',18,MUTED,True,'middle')
     s.append('</svg>')
     path=OUT/(MINIMUM_NAME+'.svg')

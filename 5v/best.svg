@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="2150" viewBox="0 0 880 2150">
 <title>Kitchen lighting: 5 V APA102 best-practice breadboard layout</title>
-<desc>Nano 33 IoT powered through its USB socket. J0 supplies the positive and ground rails for an SN74AHCT125N logic buffer and one to five APA102 pixels. Both rail pairs are linked, with wire bridges across all four midpoint breaks. Nano VIN and VUSB are unconnected. Every jumper is drawn from hole to hole; crossings are insulated.</desc>
+<desc>One USB-C input powers the Nano 33 IoT, SN74AHCT125N logic buffer and one to five APA102 pixels. J0 is an Adafruit 4090 USB-C breakout, with onboard CC pull-downs and its supplied header soldered into b54 through b61, socket facing left. VBUS at b55 and GND at b54 supply the rails; the other six pads have no external connections. The Nano VIN header at c15 connects locally through a15 to L+15, and Nano GND connects through a14 to L-14. Both rail pairs are linked, with wire bridges across all four midpoint breaks. Nano VUSB is unconnected; leave its VUSB solder bridge open. The Nano micro-USB socket is only needed for programming. Every jumper is drawn from hole to hole; crossings are insulated.</desc>
 <rect x="0" y="0" width="880" height="2150" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
 <text x="40" y="58" font-family="DejaVu Sans,sans-serif" font-size="32" font-weight="700" fill="#192c3a" text-anchor="start">5 V APA102 · Best practice</text>
 <text x="40" y="94" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">1–5 pixels · 0.30 A maximum LED load</text>
-<text x="40" y="123" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">Regulated 5 V supply · 1 A minimum</text>
+<text x="40" y="123" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">One USB-C input → Nano VIN + LED/buffer 5 V</text>
 <rect x="220" y="214" width="562" height="1717" rx="18" fill="#e8e9e5" stroke="#a9b6ba" stroke-width="2"/>
 <rect x="314" y="233" width="158" height="1680" rx="4" fill="#fdfcf8" stroke="#d2d5d0" stroke-width="2"/>
 <rect x="514" y="233" width="150" height="1680" rx="4" fill="#fdfcf8" stroke="#d2d5d0" stroke-width="2"/>
@@ -1256,21 +1256,33 @@
 <text x="402" y="1503" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">−</text>
 <text x="402" y="1455" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">1000µF</text>
 <text x="402" y="1476" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="white" text-anchor="middle">10V</text>
-<rect x="331" y="1733" width="90" height="145" rx="5" fill="#303a43" stroke="#192c3a" stroke-width="2"/>
-<rect x="348" y="1859" width="56" height="23" rx="4" fill="#141c22" stroke="#53636c" stroke-width="2"/>
+<rect x="244" y="1625" width="145" height="208" rx="4" fill="#14627b" stroke="#12485b" stroke-width="2"/>
+<rect x="234" y="1682" width="70" height="94" rx="5" fill="#c4cbce" stroke="#60747f" stroke-width="2"/>
+<rect x="229" y="1692" width="14" height="74" rx="5" fill="#425862" stroke="#647b84" stroke-width="2"/>
+<circle cx="376" cy="1638" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
+<text x="364" y="1642" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">GND</text>
+<circle cx="376" cy="1664" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
+<text x="364" y="1668" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">VBUS</text>
+<circle cx="376" cy="1690" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
+<text x="364" y="1694" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">SBU2</text>
+<circle cx="376" cy="1716" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
+<text x="364" y="1720" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">CC1</text>
 <circle cx="376" cy="1742" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
-<text x="386" y="1747" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="start">1 +</text>
+<text x="364" y="1746" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">D-</text>
+<circle cx="376" cy="1768" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
+<text x="364" y="1772" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">D+</text>
 <circle cx="376" cy="1794" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
-<text x="386" y="1799" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="start">2 −</text>
-<circle cx="428" cy="1768" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
-<text x="438" y="1773" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#536775" text-anchor="start">3 NC</text>
-<rect x="358" y="1882" width="36" height="51" rx="4" fill="#363e43" stroke="#192c3a" stroke-width="2"/>
-<line x1="376" y1="1933" x2="376" y2="1980" stroke="#aa5217" stroke-width="6"/>
-<text x="440" y="1827" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="start">PJ-102AH</text>
-<text x="440" y="1851" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">5.5 × 2.1 mm</text>
-<text x="376" y="2008" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="middle">5 V · centre positive</text>
-<line x1="450" y1="218" x2="175" y2="218" stroke="#687a85" stroke-width="3"/>
-<text x="167" y="210" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="end">USB power</text>
+<text x="364" y="1798" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">SBU1</text>
+<circle cx="376" cy="1820" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
+<text x="364" y="1824" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">CC2</text>
+<text x="244" y="1614" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">J0 · USB-C</text>
+<rect x="183" y="1700" width="48" height="58" rx="5" fill="#343f47" stroke="#192c3a" stroke-width="2"/>
+<line x1="80" y1="1729" x2="183" y2="1729" stroke="#192c3a" stroke-width="8"/>
+<text x="80" y="1775" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="start">5 V USB-C</text>
+<rect x="420" y="1700" width="276" height="112" rx="4" fill="#f4f7fa" stroke="none" stroke-width="2"/>
+<text x="435" y="1721" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="start">Adafruit 4090</text>
+<text x="435" y="1747" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">2 × 5.1kΩ CC resistors fitted</text>
+<text x="435" y="1799" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Solder included header</text>
 <rect x="62" y="1259" width="103" height="382" rx="4" fill="#f5eee0" stroke="#bbae8f" stroke-width="2"/>
 <text x="112" y="1242" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="700" fill="#192c3a" text-anchor="middle">APA102</text>
 <rect x="137" y="1267" width="23" height="14" rx="2" fill="#c6a764" stroke="#192c3a" stroke-width="2"/>
@@ -1335,12 +1347,12 @@
 <circle cx="454" cy="962" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1326" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-V0" data-start="e58" data-end="R+58">
-<title>V0: e58 → R+58. J0 +5 V → right + rail</title>
-<polyline points="454,1742 714,1742" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="454,1742 714,1742" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="454" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="714" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<g id="jumper-V0" data-start="e55" data-end="R+55">
+<title>V0: e55 → R+55. USB-C J0 VBUS → right + rail</title>
+<polyline points="454,1664 714,1664" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="454,1664 714,1664" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="454" cy="1664" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="714" cy="1664" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
 <g id="jumper-V1" data-start="j21" data-end="R+21">
 <title>V1: j21 → R+21. +5 V → U1 VCC pin 14 / C1</title>
@@ -1377,12 +1389,19 @@
 <circle cx="636" cy="884" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="714" cy="884" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-N0" data-start="e60" data-end="R-60">
-<title>N0: e60 → R-60. J0 sleeve → right − rail</title>
-<polyline points="454,1794 740,1794" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="454,1794 740,1794" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="454" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-V6" data-start="a15" data-end="L+15">
+<title>V6: a15 → L+15. USB-C +5 V → Nano VIN (c15 row)</title>
+<polyline points="350,624 258,624" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,624 258,624" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="350" cy="624" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="624" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+</g>
+<g id="jumper-N0" data-start="e54" data-end="R-54">
+<title>N0: e54 → R-54. USB-C J0 GND → right − rail</title>
+<polyline points="454,1638 740,1638" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="454,1638 740,1638" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="454" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
 <g id="jumper-N1" data-start="a14" data-end="L-14">
 <title>N1: a14 → L-14. Shared ground → Nano GND</title>
@@ -1490,8 +1509,8 @@
 <circle cx="454" cy="1300" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="962" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1326" r="6" fill="#258450" stroke="white" stroke-width="2"/>
-<circle cx="454" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="714" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="454" cy="1664" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="714" cy="1664" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="636" cy="780" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="714" cy="780" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="376" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
@@ -1502,8 +1521,10 @@
 <circle cx="714" cy="806" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="636" cy="884" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="714" cy="884" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="454" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="624" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="624" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="454" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="598" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="284" cy="598" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="936" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
@@ -1536,5 +1557,6 @@
 <circle cx="350" cy="1300" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="1326" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<text x="440" y="2010" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#536775" text-anchor="middle">Nano VUSB solder bridge open · 5V / VUSB pin unused</text>
 <text x="440" y="2072" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#536775" text-anchor="middle">+ rails: 5 V     − rails: GND</text>
 </svg>

@@ -1,27 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="2150" viewBox="0 0 880 2150">
 <title>Kitchen lighting: 5 V APA102 minimum breadboard layout</title>
-<desc>Minimum-component experiment with an Arduino Nano 33 IoT, barrel jack J0, regulated 5 V supply and one to five APA102 pixels. Nano D13 connects directly to CI and D11 directly to DI at 3.3 V. Direct control is not guaranteed to work with every strip. No buffer, resistors or capacitors are fitted. The lower right positive rail supplies the strip; both right ground segments are joined across the midpoint break so the Nano ground connects locally at row 12. The Nano has separate USB power. All connecting wires are drawn.</desc>
+<desc>Minimum-component experiment with an Arduino Nano 33 IoT and one to five APA102 pixels powered from its USB socket. Close the underside VUSB solder bridge SJ1 to enable USB 5 V at header c12. Feed the left positive rail locally at row 12 and ground at row 14; bridge both left rail midpoint breaks to supply the strip at rows 40 and 43. Nano D13 connects directly to CI and D11 directly to DI at 3.3 V; operation is not guaranteed with every strip. No separate input jack, buffer, resistors or capacitors are fitted. All connecting wires are drawn.</desc>
 <rect x="0" y="0" width="880" height="2150" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
 <text x="40" y="58" font-family="DejaVu Sans,sans-serif" font-size="32" font-weight="700" fill="#192c3a" text-anchor="start">5 V APA102 · Minimum</text>
 <text x="40" y="94" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">1–5 pixels · 0.30 A maximum LED load</text>
-<text x="40" y="123" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">Regulated 5 V supply · 1 A minimum</text>
-<text x="40" y="158" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="400" fill="#536775" text-anchor="start">Direct 3.3 V signals: operation is not guaranteed.</text>
+<text x="40" y="123" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#536775" text-anchor="start">Nano USB → 5V / VUSB pin → LEDs</text>
+<text x="40" y="158" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="start">Close VUSB solder bridge (SJ1, Nano underside).</text>
 <rect x="220" y="214" width="562" height="1717" rx="18" fill="#e8e9e5" stroke="#a9b6ba" stroke-width="2"/>
 <rect x="314" y="233" width="158" height="1680" rx="4" fill="#fdfcf8" stroke="#d2d5d0" stroke-width="2"/>
 <rect x="514" y="233" width="150" height="1680" rx="4" fill="#fdfcf8" stroke="#d2d5d0" stroke-width="2"/>
 <rect x="482" y="241" width="21" height="1660" rx="3" fill="#c6cbc9" stroke="#c6cbc9" stroke-width="2"/>
+<rect x="250" y="251" width="16" height="798" rx="5" fill="#f6ddd3" stroke="none" stroke-width="2"/>
+<rect x="250" y="1109" width="16" height="798" rx="5" fill="#f6ddd3" stroke="none" stroke-width="2"/>
 <line x1="247" y1="248" x2="247" y2="1052" stroke="#c57979" stroke-width="2"/>
 <line x1="247" y1="1106" x2="247" y2="1910" stroke="#c57979" stroke-width="2"/>
 <text x="258" y="228" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#c57979" text-anchor="middle">+</text>
+<rect x="276" y="251" width="16" height="798" rx="5" fill="#dce4ea" stroke="none" stroke-width="2"/>
+<rect x="276" y="1109" width="16" height="798" rx="5" fill="#dce4ea" stroke="none" stroke-width="2"/>
 <line x1="273" y1="248" x2="273" y2="1052" stroke="#7d9ab8" stroke-width="2"/>
 <line x1="273" y1="1106" x2="273" y2="1910" stroke="#7d9ab8" stroke-width="2"/>
 <text x="284" y="228" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#7d9ab8" text-anchor="middle">−</text>
-<rect x="706" y="1109" width="16" height="798" rx="5" fill="#f6ddd3" stroke="none" stroke-width="2"/>
 <line x1="703" y1="248" x2="703" y2="1052" stroke="#c57979" stroke-width="2"/>
 <line x1="703" y1="1106" x2="703" y2="1910" stroke="#c57979" stroke-width="2"/>
 <text x="714" y="228" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#c57979" text-anchor="middle">+</text>
-<rect x="732" y="251" width="16" height="798" rx="5" fill="#dce4ea" stroke="none" stroke-width="2"/>
-<rect x="732" y="1109" width="16" height="798" rx="5" fill="#dce4ea" stroke="none" stroke-width="2"/>
 <line x1="729" y1="248" x2="729" y2="1052" stroke="#7d9ab8" stroke-width="2"/>
 <line x1="729" y1="1106" x2="729" y2="1910" stroke="#7d9ab8" stroke-width="2"/>
 <text x="740" y="228" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#7d9ab8" text-anchor="middle">−</text>
@@ -1154,19 +1155,6 @@
 <circle cx="428" cy="1352" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
 <circle cx="454" cy="1352" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
 <text x="476" y="1357" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#aa5217" text-anchor="start">+5 V</text>
-<rect x="331" y="1733" width="90" height="145" rx="5" fill="#303a43" stroke="#192c3a" stroke-width="2"/>
-<rect x="348" y="1859" width="56" height="23" rx="4" fill="#141c22" stroke="#53636c" stroke-width="2"/>
-<circle cx="376" cy="1742" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
-<text x="386" y="1747" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="start">1 +</text>
-<circle cx="376" cy="1794" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
-<text x="386" y="1799" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="start">2 −</text>
-<circle cx="428" cy="1768" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
-<text x="438" y="1773" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#536775" text-anchor="start">3 NC</text>
-<rect x="358" y="1882" width="36" height="51" rx="4" fill="#363e43" stroke="#192c3a" stroke-width="2"/>
-<line x1="376" y1="1933" x2="376" y2="1980" stroke="#aa5217" stroke-width="6"/>
-<text x="440" y="1827" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="start">PJ-102AH</text>
-<text x="440" y="1851" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">5.5 × 2.1 mm</text>
-<text x="376" y="2008" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="middle">5 V · centre positive</text>
 <line x1="450" y1="218" x2="175" y2="218" stroke="#687a85" stroke-width="3"/>
 <text x="167" y="210" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="end">USB power</text>
 <rect x="62" y="1259" width="103" height="382" rx="4" fill="#f5eee0" stroke="#bbae8f" stroke-width="2"/>
@@ -1219,67 +1207,68 @@
 <circle cx="610" cy="286" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="376" cy="1326" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-V0" data-start="e58" data-end="R+58">
-<title>V0: e58 → R+58. J0 center positive → lower right + rail</title>
-<polyline points="454,1742 714,1742" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="454,1742 714,1742" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="454" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="714" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<g id="jumper-V0" data-start="a12" data-end="L+12">
+<title>V0: a12 → L+12. Nano USB-fed 5V / VUSB (c12 row) → left + rail; close SJ1</title>
+<polyline points="350,546 258,546" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,546 258,546" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="350" cy="546" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="546" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-V1" data-start="e43" data-end="R+43">
-<title>V1: e43 → R+43. Lower right + rail → strip +5 V</title>
-<polyline points="454,1352 454,1365 688,1365 688,1352 714,1352" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="454,1352 454,1365 688,1365 688,1352 714,1352" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="454" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="714" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<g id="jumper-V1" data-start="b43" data-end="L+43">
+<title>V1: b43 → L+43. Lower left + rail → strip +5 V</title>
+<polyline points="376,1352 258,1352" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="376,1352 258,1352" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="376" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-N0" data-start="e60" data-end="R-60">
-<title>N0: e60 → R-60. J0 sleeve → lower right − rail</title>
-<polyline points="454,1794 740,1794" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="454,1794 740,1794" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="454" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-N1" data-start="a14" data-end="L-14">
+<title>N1: a14 → L-14. Nano GND (c14 row) → left − rail</title>
+<polyline points="350,598 284,598" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="350,598 284,598" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="350" cy="598" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="598" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-N1" data-start="j12" data-end="R-12">
-<title>N1: j12 → R-12. Nano GND (g12 row) → right − rail at row 12</title>
-<polyline points="636,546 740,546" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="636,546 740,546" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="636" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-N2" data-start="b40" data-end="L-40">
+<title>N2: b40 → L-40. Lower left − rail → strip GND</title>
+<polyline points="376,1274 284,1274" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="376,1274 284,1274" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="376" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-N2" data-start="e40" data-end="R-40">
-<title>N2: e40 → R-40. Lower right − rail → strip GND</title>
-<polyline points="454,1274 454,1235 740,1235 740,1274" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="454,1274 454,1235 740,1235 740,1274" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="454" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-B1" data-start="L+31" data-end="L+34">
+<title>B1: L+31 → L+34. Bridge left + rail midpoint break</title>
+<polyline points="258,1040 258,1118" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="258,1040 258,1118" fill="none" stroke="#aa5217" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="258" cy="1040" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="1118" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-B1" data-start="R-31" data-end="R-34">
-<title>B1: R-31 → R-34. Bridge right − rail midpoint break</title>
-<polyline points="740,1040 740,1118" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="740,1040 740,1118" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="740" cy="1040" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1118" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-B2" data-start="L-31" data-end="L-34">
+<title>B2: L-31 → L-34. Bridge left − rail midpoint break</title>
+<polyline points="284,1040 284,1118" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="284,1040 284,1118" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="284" cy="1040" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1118" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
 <circle cx="350" cy="260" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="376" cy="1300" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="610" cy="286" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="376" cy="1326" r="6" fill="#258450" stroke="white" stroke-width="2"/>
-<circle cx="454" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="714" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="454" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="714" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
-<circle cx="454" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="636" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="454" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1040" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1118" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="546" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="546" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="376" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="350" cy="598" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="598" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="376" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="1040" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="258" cy="1118" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1040" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="284" cy="1118" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="1274" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="1300" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="1326" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="1352" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
+<text x="440" y="2010" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="400" fill="#536775" text-anchor="middle">Direct 3.3 V signals: operation is not guaranteed.</text>
 <text x="440" y="2072" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#536775" text-anchor="middle">+ rails: 5 V     − rails: GND</text>
 </svg>

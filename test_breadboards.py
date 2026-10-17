@@ -42,6 +42,10 @@ USB_C_BREAKOUT = {
     for pin in ("VBUS", "GND", "D-", "D+", "CC1", "CC2", "SBU1", "SBU2")
 }
 MOSFETS = {f"Q{q}.{pin}" for q in range(1, 4) for pin in "GDS"}
+ADAPTER_UNUSED = {
+    f"A{q}.{pin}" for q in range(1, 4)
+    for pin in ("NC_LT", "NC_LB", "NC_RM")
+}
 RGB_STRIP = {"Strip +", "Strip R", "Strip G", "Strip B"}
 RJ11_OUTPUTS = {f"J{port}.{pin}" for port in (1, 2) for pin in (2, 3, 4, 5)}
 APA102_STRIP = {"Strip +5V", "Strip GND", "Strip CI", "Strip DI"}
@@ -59,7 +63,7 @@ EXPECTED_TERMINALS = {
         | passive_terminals("C", range(3, 8))
     ),
     ("12v", "min"): (
-        NANO | JACK | MOSFETS | RJ11_OUTPUTS
+        NANO | JACK | MOSFETS | RJ11_OUTPUTS | ADAPTER_UNUSED
         | passive_terminals("R", range(1, 4))
     ),
     ("5v", "best"): (
@@ -262,6 +266,43 @@ class BreadboardTests(unittest.TestCase):
                     direct_connections.find("J0.1"), direct_connections.find(port + ".2")
                 )
 
+    def test_minimum_sot23_adapters_match_physical_leads(self):
+        wiring, _, module = self.layouts["12v", "min"]
+        leads = {}
+        for _, start, end, _ in wiring:
+            if start in MOSFETS | ADAPTER_UNUSED and HOLE.fullmatch(end):
+                leads[start] = end
+            elif end in MOSFETS | ADAPTER_UNUSED and HOLE.fullmatch(start):
+                leads[end] = start
+
+        # AO3400A datasheet top view, with its sole drain lead facing left:
+        # source is upper-right, gate lower-right. The SparkFun board fans
+        # each pad out to the same side and order, at 2.54 mm header pitch
+        # with 7.62 mm between banks. Use positions, not adapter silkscreen
+        # numbering, which differs between its Eagle file and product photo.
+        # https://www.aosmd.com/res/data_sheets/AO3400A.pdf (page 1)
+        # https://github.com/sparkfun/SOT23_DIP_Adapter/tree/master/Hardware
+        circuit = Circuit(wiring)
+        for q in range(1, 4):
+            with self.subTest(mosfet=q):
+                source = HOLE.fullmatch(leads[f"Q{q}.S"])
+                self.assertEqual(source[1], "f")
+                first = int(source[2])
+                self.assertEqual(leads[f"Q{q}.G"], f"f{first + 2}")
+                self.assertEqual(leads[f"Q{q}.D"], f"e{first + 1}")
+                unused = {
+                    f"A{q}.NC_LT": f"e{first}",
+                    f"A{q}.NC_LB": f"e{first + 2}",
+                    f"A{q}.NC_RM": f"f{first + 1}",
+                }
+                for terminal, hole in unused.items():
+                    self.assertEqual(leads[terminal], hole)
+                    self.assertIn(frozenset((terminal,)), circuit.terminal_nets())
+                left = module.parse_hole(f"e{first}")
+                right = module.parse_hole(f"f{first}")
+                below = module.parse_hole(f"e{first + 1}")
+                self.assertEqual(right[0] - left[0], 3 * (below[1] - left[1]))
+
     def test_minimum_five_volt_diagram_includes_required_solder_bridge(self):
         _, svg, _ = self.layouts["5v", "min"]
         visible_text = " ".join(
@@ -275,6 +316,8 @@ class PurchaseExportTests(unittest.TestCase):
         expected_parts = {
             ("12v", "min"): {
                 "AO3400A": 3,
+                "00717": 3,
+                "61300311121": 6,
                 "CF14JT2K20": 10,
                 "PJ-102AH": 1,
                 "615004144121": 2,
@@ -342,7 +385,8 @@ class PurchaseExportTests(unittest.TestCase):
                             self.assertEqual(
                                 {row["DigiKey Part Number"] for row in rows},
                                 {"785-1000-1-ND", "CF14JT2K20CT-ND",
-                                 "CP-102AH-ND", "732-3172-ND"},
+                                 "CP-102AH-ND", "732-3172-ND",
+                                 "1568-00717-ND", "732-5316-ND"},
                             )
                         if (voltage, layout) == ("5v", "best"):
                             self.assertIn("1528-2873-ND", {

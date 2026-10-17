@@ -5,8 +5,8 @@ From the project root: python3 12v/build.py
 Both SVGs and min.csv/best.csv (DigiKey purchase lists) are written beside this script.
 Only Python's standard library is used.
 Best uses IRFZ44NPBF MOSFETs with TC4427ACPA gate drivers.
-Minimum uses AO3400A MOSFETs on 0.1-inch SIP adapters with 2.2 kohm series
-gate resistors and no pulldowns. It stacks the adapters on the right and routes
+Minimum uses AO3400A MOSFETs on SparkFun 00717 DIP adapters with 2.2 kohm series
+gate resistors and no pulldowns. The adapters span the centre gap; it routes
 Nano PWM outside the rails; drivers and their bypass capacitors are best-only.
 Both layouts feed output positive from a soldered pigtail on J0 pin 1.
 The minimum adds two parallel RJ11 outputs with conceptual breadboard mounting.
@@ -391,36 +391,54 @@ def minimum_rj11_outputs():
 
 
 def minimum_mosfets():
-    # SIPK03-1 breaks SOT-23 pins 1/3/2 out in header order G-D-S.
-    # Assemble its included right-angle header so the adapter stands upright.
-    # The small face illustration is schematic; the header holes are exact.
-    # Keep one common part-number label with three non-electrical leaders.
-    s.append('<g id="mosfet-label">')
-    rect(COL['c']-50,yy(51)-14,100,28,'#f4f7fa','none',2)
-    text(COL['c'],yy(51)+6,'AO3400A',17,'#000000',True,'middle')
-    leaders = [
-        ('Q1',[(454,yy(51)),(547,yy(44)+5)]),
-        ('Q2',[(454,yy(51)),(547,yy(50)+5)]),
-        ('Q3',[(454,yy(51)),(547,yy(56)+5)]),
-    ]
-    for ref,points in leaders:
-        pts=' '.join(f'{x},{y}' for x,y in points)
-        s.append(f'<polyline data-target="{ref}" points="{pts}" fill="none" stroke="#000000" stroke-width="1.5"/>')
-    s.append('</g>')
-    for q,col,first,color in [('Q1','g',44,RED),('Q2','g',50,GREEN),('Q3','g',56,BLUE)]:
-        x=COL[col]
-        s.append(f'<g id="mosfet-{q}" data-part="AO3400A" data-adapter="SIPK03-1">')
-        s.append('<title>AO3400A soldered to an upright SIPK03-1 adapter. Header order G-D-S; SOT-23 pins 1=G, 2=S, 3=D. Adapter face illustrated schematically; header holes are exact.</title>')
-        rect(x-11,yy(first)-13,45,80,'#23796a','#145346',3)
-        rect(x+8,yy(first)+15,17,25,'#27343a',INK,2)
-        for k,(pin,package_pin) in enumerate((('G',1),('D',3),('S',2))):
-            endpoint=f'{col}{first+k}'
-            record(f'{q} {pin}',endpoint,f'{q}.{pin}',
-                   f'AO3400A SOT-23 pin {package_pin} on SIPK03-1; upright adapter header top-to-bottom G-D-S; solder MOSFET and included right-angle header before plugging in')
-            line(x,yy(first+k),x+8,yy(first)+20+k*6,'#d1b86d',2)
-            circle(*parse_hole(endpoint),4,'#cfb982',INK,1)
-            component_label(x+43,yy(first+k)+4,pin,11,color)
-        component_label(x,yy(first)-32,q,13,color,'middle')
+    # Top view, single drain lead faces left: S upper-right, G lower-right.
+    # SparkFun's six-pad footprint numbers are not AO3400A package numbers.
+    # Use physical positions (also for unused pins), independent of silkscreen
+    # numbering differences between the published Eagle board and product photo.
+    # https://github.com/sparkfun/SOT23_DIP_Adapter/tree/master/Hardware
+    # https://www.aosmd.com/res/data_sheets/AO3400A.pdf (top-view pinout)
+    # The two headers have 0.1-inch pitch and are 0.3 inches apart: columns e/f.
+    for index,first,color in [(1,42,RED),(2,48,GREEN),(3,54,BLUE)]:
+        q,adapter=f'Q{index}',f'A{index}'
+        left,right=COL['e'],COL['f']
+        center=(left+right)/2
+        y=yy(first)
+        s.append(f'<g id="mosfet-{q}" data-part="AO3400A" data-adapter="00717">')
+        s.append(f'<title>{q} on {adapter}, SparkFun 00717 / BOB-00717. Component-side top view; sole drain lead faces left. Source upper-right, gate lower-right, drain middle-left. Two 61300311121 headers underneath; all six pins occupy holes. Unused pins remain isolated.</title>')
+        rect(left-13,y-13,right-left+26,78,'#aa3034','#78232b',3)
+        # Copper fan-out to all six header holes; three surface pads stay empty.
+        for col,offset,pad_dy,pin,package_pin,nc in [
+            ('e',0,16,None,None,'LT'),
+            ('e',1,26,'D',3,None),
+            ('e',2,36,None,None,'LB'),
+            ('f',0,16,'S',2,None),
+            ('f',1,26,None,None,'RM'),
+            ('f',2,36,'G',1,None),
+        ]:
+            endpoint=f'{col}{first+offset}'
+            px=center+(-16 if col=='e' else 16)
+            hx,hy=parse_hole(endpoint)
+            line(hx,hy,px,y+pad_dy,'#d4b766',2)
+            rect(px-3,y+pad_dy-3,6,6,'#d1b86d','none',0)
+            circle(hx,hy,4,'#cfb982',INK,1)
+            if pin:
+                record(f'{q} {pin}',endpoint,f'{q}.{pin}',
+                       f'AO3400A package pin {package_pin}; {adapter} SparkFun 00717, top view with sole drain lead left; two 61300311121 headers underneath')
+                text(hx+(10 if col=='e' else -10),hy+4,pin,12,'white',True,
+                     'start' if col=='e' else 'end')
+            else:
+                record(f'{adapter} unused {nc}',endpoint,f'{adapter}.NC_{nc}',
+                       'Header pin connects only to an unpopulated adapter pad; leave this breadboard bank/row unused')
+                text(hx+(10 if col=='e' else -10),hy+4,'×',12,'#ecd4d4',False,
+                     'start' if col=='e' else 'end')
+        # AO3400A body and its three physical leads. No lead on the other pads.
+        line(center-16,y+26,center-7,y+26,'#ddd9c9',3)
+        for dy in (16,36): line(center+7,y+dy,center+16,y+dy,'#ddd9c9',3)
+        rect(center-7,y+12,14,28,'#25313c','#151e27',1)
+        component_label(center,y-20,f'{q} · AO3400A',14,color,'middle')
+        text(center,y+60,f'{adapter} · 00717',10,'white',True,'middle')
+        component_label(left-25,y+70,f'H{index*2-1}',10,MUTED,'middle')
+        component_label(right+25,y+70,f'H{index*2}',10,MUTED,'middle')
         s.append('</g>')
 
 
@@ -430,9 +448,9 @@ def draw_minimum_jumpers():
         'P1': [(800,yy(10)),(800,yy(41))],
         'P2': [(812,yy(8)),(812,yy(47))],
         'P3': [(824,yy(7)),(824,yy(53))],
-        'D1': [(506,yy(45)),(506,yy(36))],
-        'D2': [(494,yy(51)),(494,yy(35))],
-        'D3': [(482,yy(57)),(482,yy(37))],
+        'D1': [(338,yy(43)),(338,yy(36))],
+        'D2': [(326,yy(49)),(326,yy(35))],
+        'D3': [(314,yy(55)),(314,yy(37))],
     }
     for label,start,end,color,note in minimum_jumpers:
         s.append(f'<g id="jumper-{label}" data-start="{start}" data-end="{end}">')
@@ -447,7 +465,7 @@ def build_minimum():
     global s,wiring,occupied
     s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
        '<title>Kitchen lighting: 12 V RGB minimum breadboard layout</title>',
-       '<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three AO3400A SOT-23 MOSFETs soldered to upright SIPK03-1 adapters stacked on the right, barrel jack J0, and two Würth 615004144121 female RJ11 output jacks J1/J2. Adapter header holes are exact; adapter faces and RJ11 mounting/pin fan-outs are conceptual illustrations. AO3400A package pins are 1=gate, 2=source, 3=drain; SIPK03-1 header order is gate-drain-source, occupying separate breadboard rows. Both jacks connect in parallel: pin 2 positive, pin 3 red, pin 4 green, pin 5 blue. Nano D3, D5 and D6 run in parallel outside the right power rails, each through a 2.2 kohm series resistor to its MOSFET gate. No gate drivers, bypass capacitors or pulldown resistors are fitted. Gates can float during Nano startup/reset; initialize the PWM outputs LOW before enabling the lights. Series resistors limit initial nominal GPIO gate-charge current to about 1.5 mA; use ordinary low-frequency PWM. Output positive connects to J0 pin 1 by soldered pigtails, bypassing breadboard contacts; row 40 is unused. J0 is shifted one column right, with its positive and ground jumpers connected to the left rails. The left positive rail and right ground rail have midpoint bridges; the lower ground rails are linked at row 39. Both right positive rail halves and the upper-left ground rail are unused. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. The two ports share a combined 25 cm / 0.30 A LED load limit. All wires are drawn.</desc>']
+       '<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three AO3400A SOT-23 MOSFETs soldered to SparkFun 00717 adapters spanning the centre gap at rows 42–44, 48–50 and 54–56, barrel jack J0, and two Würth 615004144121 female RJ11 output jacks J1/J2. Each adapter has two separately purchased 61300311121 three-pin headers underneath, in columns e/f. Component-side top view: the single drain lead faces left; source is upper-right, gate lower-right, drain middle-left. AO3400A package pins are 1=gate, 2=source, 3=drain; these are not the adapter pad numbers. All six header holes are occupied; the three unused pad/header connections remain isolated. RJ11 mounting/pin fan-outs are conceptual illustrations. Both jacks connect in parallel: pin 2 positive, pin 3 red, pin 4 green, pin 5 blue. Nano D3, D5 and D6 run in parallel outside the right power rails, each through a 2.2 kohm series resistor to its MOSFET gate. No gate drivers, bypass capacitors or pulldown resistors are fitted. Gates can float during Nano startup/reset; initialize the PWM outputs LOW before enabling the lights. Series resistors limit initial nominal GPIO gate-charge current to about 1.5 mA; use ordinary low-frequency PWM. Output positive connects to J0 pin 1 by soldered pigtails, bypassing breadboard contacts; row 40 is unused. J0 is shifted one column right, with its positive and ground jumpers connected to the left rails. The left positive rail and right ground rail have midpoint bridges; the lower ground rails are linked at row 39. Both right positive rail halves and the upper-left ground rail are unused. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. The two ports share a combined 25 cm / 0.30 A LED load limit. All wires are drawn.</desc>']
     wiring=[]; occupied={}; flags.clear(); annotations.clear(); minimum_jumpers.clear()
     rect(0,0,W,H,'#f4f7fa','#f4f7fa',0)
     text(40,62,'12 V · Minimum',34,bold=True)
@@ -459,24 +477,24 @@ def build_minimum():
     minimum_rj11_outputs()
     minimum_mosfets()
     for ref,start,end,value,color in [
-        ('R1','j41','j44','2.2 kΩ',RED),
-        ('R2','j47','j50','2.2 kΩ',GREEN),
-        ('R3','j53','j56','2.2 kΩ',BLUE),
+        ('R1','h41','h44','2.2 kΩ',RED),
+        ('R2','h47','h50','2.2 kΩ',GREEN),
+        ('R3','h53','h56','2.2 kΩ',BLUE),
     ]:
         component_resistor(ref,start,end,value,color)
     for label,start,end,color,note in [
         ('P1','i10','i41',RED,'Nano D3 → R1 → Q1 gate / red; HIGH=ON'),
         ('P2','i8','i47',GREEN,'Nano D5 → R2 → Q2 gate / green; HIGH=ON'),
         ('P3','i7','i53',BLUE,'Nano D6 → R3 → Q3 gate / blue; HIGH=ON'),
-        ('D1','f45','e36',RED,'Q1 drain → strip R'),
-        ('D2','f51','e35',GREEN,'Q2 drain → strip G'),
-        ('D3','f57','e37',BLUE,'Q3 drain → strip B'),
+        ('D1','d43','e36',RED,'Q1 drain → strip R'),
+        ('D2','d49','e35',GREEN,'Q2 drain → strip G'),
+        ('D3','d55','e37',BLUE,'Q3 drain → strip B'),
         ('O1','d36','f36',RED,'Link both RJ11 red outputs'),
         ('O2','d35','f35',GREEN,'Link both RJ11 green outputs'),
         ('O3','c37','f37',BLUE,'Link both RJ11 blue outputs'),
-        ('S1','j46','R-46',INK,'Q1 source → ground rail'),
-        ('S2','j52','R-52',INK,'Q2 source → ground rail'),
-        ('S3','j58','R-58',INK,'Q3 source → ground rail'),
+        ('S1','j42','R-42',INK,'Q1 source → ground rail'),
+        ('S2','j48','R-48',INK,'Q2 source → ground rail'),
+        ('S3','j54','R-54',INK,'Q3 source → ground rail'),
         ('V0','a58','L+58',POWER,'J0 center → left +12 V rail'),
         ('V1','a15','L+15',POWER,'+12 V rail → Nano VIN'),
         ('N0','a60','L-60',INK,'J0 sleeve → left ground rail'),
@@ -486,15 +504,16 @@ def build_minimum():
         minimum_jumpers.append((label,start,end,color,note))
     draw_minimum_jumpers()
     s.extend(annotations)
-    text(40,2036,'Solder AO3400As to SIPK03-1 adapters; fit their included 0.1″ headers.',16,MUTED)
-    text(40,2066,'No pull-downs: gates may float during startup/reset. Set PWM LOW first.',16,MUTED)
-    text(40,2096,'Upright adapter faces and RJ11 mounting are illustrated schematically.',16,MUTED)
-    text(40,2126,'Positive bypass only; RGB returns use the breadboard. 0.30 A combined.',16,MUTED)
+    text(40,2034,'A1–A3: SparkFun 00717; H1–H6: 61300311121 headers underneath.',15,MUTED)
+    text(40,2058,'Top view: solder each AO3400A with its single drain lead facing left.',15,MUTED)
+    text(40,2082,'× = unused adapter pad/header; leave its breadboard bank/row clear.',15,MUTED)
+    text(40,2106,'No pull-downs: gates may float at reset. RJ11 mounting is conceptual.',15,MUTED)
+    text(40,2130,'Positive bypass only; RGB returns use the breadboard. 0.30 A combined.',15,MUTED)
     record('Load limit','12 V 6 A PSU','One cut segment initially; no more than 25 cm across both RJ11 ports','14.4 W/m × 0.25 m ÷ 12 V = 0.30 A combined LED current; about 0.10 A per colour. Adding a second port does not increase this limit.')
     record('J0 polarity check','PSU plug center','Positive 12 V relative to sleeve','Check before connecting; J0 feeds Nano VIN and strip + in parallel')
     record('Startup / reset','No pulldowns fitted','Gates can float until Nano drives them','Set PWM outputs LOW first in firmware; this does not guarantee off during reset or before firmware starts.')
     record('Gate drive','Nano 3.3 V PWM','2.2 kohm in series with each gate','About 1.5 mA initial nominal gate-charge current; ordinary low-frequency PWM. No separate gate-driver supply or bypass capacitors.')
-    record('Mechanical fit','AO3400A SOT-23 on SIPK03-1','Solder MOSFET and included right-angle header; stand adapter upright','Header order G-D-S occupies separate rows. Package pins 1=G, 2=S, 3=D. Header holes are exact; adapter faces and RJ11 mounting are schematic. Higher-current MOSFETs do not increase the breadboard load limit.')
+    record('Mechanical fit','AO3400A SOT-23 on SparkFun 00717','Solder two 61300311121 headers underneath each adapter; span centre gap in columns e/f','Top view with sole drain lead facing left: upper-right source, lower-right gate, middle-left drain. Package pins 1=G, 2=S, 3=D; adapter six-pad numbering is different. Q1 rows 42–44; Q2 rows 48–50; Q3 rows 54–56. Leave other pads and their breadboard bank/rows unused. Check continuity after assembly. RJ11 mounting is conceptual. Breadboard load limit remains 0.30 A combined.')
     check_strip_positive_bypass(rj11=True)
     s.append('</svg>')
     target=OUT/(MINIMUM_NAME+'.svg')

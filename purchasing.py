@@ -2,8 +2,8 @@
 
 Existing hardware and future full-strip components are excluded. The 12 V
 minimum uses AO3400A MOSFETs and series gate resistors, plus two RJ11 outputs.
-Its SIPK03-1 adapters (headers included) are ordered separately from the
-manufacturer; see 12v/shopping.csv. Best retains its gate drivers, gate resistors,
+Its SparkFun 00717 adapters and six separate 3-pin headers are included in the
+DigiKey list; see 12v/shopping.csv. Best retains its gate drivers, gate resistors,
 pulldowns, bypass capacitors and optional C7. The 12 V resistor orders use economical
 ten-piece quantities from shopping.csv. The 5 V minimum uses existing Nano USB
 power; best adds a USB-C breakout to power the Nano, LEDs and buffer together.
@@ -18,6 +18,8 @@ PURCHASE_LISTS = {
     "12v": {
         "min": (
             (3, "785-1000-1-ND", "AO3400A", "Q1 Q2 Q3"),
+            (3, "1568-00717-ND", "00717", "A1 A2 A3"),
+            (6, "732-5316-ND", "61300311121", "H1 H2 H3 H4 H5 H6"),
             (10, "CF14JT2K20CT-ND", "CF14JT2K20", "R1 R2 R3"),
             (1, "CP-102AH-ND", "PJ-102AH", "J0"),
             (2, "732-3172-ND", "615004144121", "J1 J2"),

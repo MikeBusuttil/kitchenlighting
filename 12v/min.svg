@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="2150" viewBox="0 0 880 2150">
 <title>Kitchen lighting: 12 V RGB minimum breadboard layout</title>
-<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three AO3400A SOT-23 MOSFETs soldered to upright SIPK03-1 adapters stacked on the right, barrel jack J0, and two Würth 615004144121 female RJ11 output jacks J1/J2. Adapter header holes are exact; adapter faces and RJ11 mounting/pin fan-outs are conceptual illustrations. AO3400A package pins are 1=gate, 2=source, 3=drain; SIPK03-1 header order is gate-drain-source, occupying separate breadboard rows. Both jacks connect in parallel: pin 2 positive, pin 3 red, pin 4 green, pin 5 blue. Nano D3, D5 and D6 run in parallel outside the right power rails, each through a 2.2 kohm series resistor to its MOSFET gate. No gate drivers, bypass capacitors or pulldown resistors are fitted. Gates can float during Nano startup/reset; initialize the PWM outputs LOW before enabling the lights. Series resistors limit initial nominal GPIO gate-charge current to about 1.5 mA; use ordinary low-frequency PWM. Output positive connects to J0 pin 1 by soldered pigtails, bypassing breadboard contacts; row 40 is unused. J0 is shifted one column right, with its positive and ground jumpers connected to the left rails. The left positive rail and right ground rail have midpoint bridges; the lower ground rails are linked at row 39. Both right positive rail halves and the upper-left ground rail are unused. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. The two ports share a combined 25 cm / 0.30 A LED load limit. All wires are drawn.</desc>
+<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three AO3400A SOT-23 MOSFETs soldered to SparkFun 00717 adapters spanning the centre gap at rows 42–44, 48–50 and 54–56, barrel jack J0, and two Würth 615004144121 female RJ11 output jacks J1/J2. Each adapter has two separately purchased 61300311121 three-pin headers underneath, in columns e/f. Component-side top view: the single drain lead faces left; source is upper-right, gate lower-right, drain middle-left. AO3400A package pins are 1=gate, 2=source, 3=drain; these are not the adapter pad numbers. All six header holes are occupied; the three unused pad/header connections remain isolated. RJ11 mounting/pin fan-outs are conceptual illustrations. Both jacks connect in parallel: pin 2 positive, pin 3 red, pin 4 green, pin 5 blue. Nano D3, D5 and D6 run in parallel outside the right power rails, each through a 2.2 kohm series resistor to its MOSFET gate. No gate drivers, bypass capacitors or pulldown resistors are fitted. Gates can float during Nano startup/reset; initialize the PWM outputs LOW before enabling the lights. Series resistors limit initial nominal GPIO gate-charge current to about 1.5 mA; use ordinary low-frequency PWM. Output positive connects to J0 pin 1 by soldered pigtails, bypassing breadboard contacts; row 40 is unused. J0 is shifted one column right, with its positive and ground jumpers connected to the left rails. The left positive rail and right ground rail have midpoint bridges; the lower ground rails are linked at row 39. Both right positive rail halves and the upper-left ground rail are unused. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. The two ports share a combined 25 cm / 0.30 A LED load limit. All wires are drawn.</desc>
 <rect x="0" y="0" width="880" height="2150" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
 <text x="40" y="62" font-family="DejaVu Sans,sans-serif" font-size="34" font-weight="700" fill="#192c3a" text-anchor="start">12 V · Minimum</text>
 <text x="40" y="108" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">RGB outputs · ≤25 cm combined · ≤0.30 A total</text>
@@ -1271,67 +1271,126 @@
 <circle cx="368" cy="1131" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="550" cy="1131" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 </g>
-<g id="mosfet-label">
-<rect x="352" y="1546" width="100" height="28" rx="2" fill="#f4f7fa" stroke="none" stroke-width="2"/>
-<text x="402" y="1566" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#000000" text-anchor="middle">AO3400A</text>
-<polyline data-target="Q1" points="454,1560 547,1383" fill="none" stroke="#000000" stroke-width="1.5"/>
-<polyline data-target="Q2" points="454,1560 547,1539" fill="none" stroke="#000000" stroke-width="1.5"/>
-<polyline data-target="Q3" points="454,1560 547,1695" fill="none" stroke="#000000" stroke-width="1.5"/>
+<g id="mosfet-Q1" data-part="AO3400A" data-adapter="00717">
+<title>Q1 on A1, SparkFun 00717 / BOB-00717. Component-side top view; sole drain lead faces left. Source upper-right, gate lower-right, drain middle-left. Two 61300311121 headers underneath; all six pins occupy holes. Unused pins remain isolated.</title>
+<rect x="441" y="1313" width="104" height="78" rx="3" fill="#aa3034" stroke="#78232b" stroke-width="2"/>
+<line x1="454" y1="1326" x2="477.0" y2="1342" stroke="#d4b766" stroke-width="2"/>
+<rect x="474.0" y="1339" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="454" cy="1326" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="464" y="1330" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#ecd4d4" text-anchor="start">×</text>
+<line x1="454" y1="1352" x2="477.0" y2="1352" stroke="#d4b766" stroke-width="2"/>
+<rect x="474.0" y="1349" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="454" cy="1352" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="464" y="1356" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="start">D</text>
+<line x1="454" y1="1378" x2="477.0" y2="1362" stroke="#d4b766" stroke-width="2"/>
+<rect x="474.0" y="1359" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="454" cy="1378" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="464" y="1382" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#ecd4d4" text-anchor="start">×</text>
+<line x1="532" y1="1326" x2="509.0" y2="1342" stroke="#d4b766" stroke-width="2"/>
+<rect x="506.0" y="1339" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="532" cy="1326" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="522" y="1330" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">S</text>
+<line x1="532" y1="1352" x2="509.0" y2="1352" stroke="#d4b766" stroke-width="2"/>
+<rect x="506.0" y="1349" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="532" cy="1352" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="522" y="1356" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#ecd4d4" text-anchor="end">×</text>
+<line x1="532" y1="1378" x2="509.0" y2="1362" stroke="#d4b766" stroke-width="2"/>
+<rect x="506.0" y="1359" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="532" cy="1378" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="522" y="1382" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">G</text>
+<line x1="477.0" y1="1352" x2="486.0" y2="1352" stroke="#ddd9c9" stroke-width="3"/>
+<line x1="500.0" y1="1342" x2="509.0" y2="1342" stroke="#ddd9c9" stroke-width="3"/>
+<line x1="500.0" y1="1362" x2="509.0" y2="1362" stroke="#ddd9c9" stroke-width="3"/>
+<rect x="486.0" y="1338" width="14" height="28" rx="1" fill="#25313c" stroke="#151e27" stroke-width="2"/>
+<text x="493.0" y="1386" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">A1 · 00717</text>
 </g>
-<g id="mosfet-Q1" data-part="AO3400A" data-adapter="SIPK03-1">
-<title>AO3400A soldered to an upright SIPK03-1 adapter. Header order G-D-S; SOT-23 pins 1=G, 2=S, 3=D. Adapter face illustrated schematically; header holes are exact.</title>
-<rect x="547" y="1365" width="45" height="80" rx="3" fill="#23796a" stroke="#145346" stroke-width="2"/>
-<rect x="566" y="1393" width="17" height="25" rx="2" fill="#27343a" stroke="#192c3a" stroke-width="2"/>
-<line x1="558" y1="1378" x2="566" y2="1398" stroke="#d1b86d" stroke-width="2"/>
-<circle cx="558" cy="1378" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
-<line x1="558" y1="1404" x2="566" y2="1404" stroke="#d1b86d" stroke-width="2"/>
-<circle cx="558" cy="1404" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
-<line x1="558" y1="1430" x2="566" y2="1410" stroke="#d1b86d" stroke-width="2"/>
-<circle cx="558" cy="1430" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<g id="mosfet-Q2" data-part="AO3400A" data-adapter="00717">
+<title>Q2 on A2, SparkFun 00717 / BOB-00717. Component-side top view; sole drain lead faces left. Source upper-right, gate lower-right, drain middle-left. Two 61300311121 headers underneath; all six pins occupy holes. Unused pins remain isolated.</title>
+<rect x="441" y="1469" width="104" height="78" rx="3" fill="#aa3034" stroke="#78232b" stroke-width="2"/>
+<line x1="454" y1="1482" x2="477.0" y2="1498" stroke="#d4b766" stroke-width="2"/>
+<rect x="474.0" y="1495" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="454" cy="1482" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="464" y="1486" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#ecd4d4" text-anchor="start">×</text>
+<line x1="454" y1="1508" x2="477.0" y2="1508" stroke="#d4b766" stroke-width="2"/>
+<rect x="474.0" y="1505" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="454" cy="1508" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="464" y="1512" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="start">D</text>
+<line x1="454" y1="1534" x2="477.0" y2="1518" stroke="#d4b766" stroke-width="2"/>
+<rect x="474.0" y="1515" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="454" cy="1534" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="464" y="1538" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#ecd4d4" text-anchor="start">×</text>
+<line x1="532" y1="1482" x2="509.0" y2="1498" stroke="#d4b766" stroke-width="2"/>
+<rect x="506.0" y="1495" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="532" cy="1482" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="522" y="1486" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">S</text>
+<line x1="532" y1="1508" x2="509.0" y2="1508" stroke="#d4b766" stroke-width="2"/>
+<rect x="506.0" y="1505" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="532" cy="1508" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="522" y="1512" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#ecd4d4" text-anchor="end">×</text>
+<line x1="532" y1="1534" x2="509.0" y2="1518" stroke="#d4b766" stroke-width="2"/>
+<rect x="506.0" y="1515" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="532" cy="1534" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="522" y="1538" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">G</text>
+<line x1="477.0" y1="1508" x2="486.0" y2="1508" stroke="#ddd9c9" stroke-width="3"/>
+<line x1="500.0" y1="1498" x2="509.0" y2="1498" stroke="#ddd9c9" stroke-width="3"/>
+<line x1="500.0" y1="1518" x2="509.0" y2="1518" stroke="#ddd9c9" stroke-width="3"/>
+<rect x="486.0" y="1494" width="14" height="28" rx="1" fill="#25313c" stroke="#151e27" stroke-width="2"/>
+<text x="493.0" y="1542" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">A2 · 00717</text>
 </g>
-<g id="mosfet-Q2" data-part="AO3400A" data-adapter="SIPK03-1">
-<title>AO3400A soldered to an upright SIPK03-1 adapter. Header order G-D-S; SOT-23 pins 1=G, 2=S, 3=D. Adapter face illustrated schematically; header holes are exact.</title>
-<rect x="547" y="1521" width="45" height="80" rx="3" fill="#23796a" stroke="#145346" stroke-width="2"/>
-<rect x="566" y="1549" width="17" height="25" rx="2" fill="#27343a" stroke="#192c3a" stroke-width="2"/>
-<line x1="558" y1="1534" x2="566" y2="1554" stroke="#d1b86d" stroke-width="2"/>
-<circle cx="558" cy="1534" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
-<line x1="558" y1="1560" x2="566" y2="1560" stroke="#d1b86d" stroke-width="2"/>
-<circle cx="558" cy="1560" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
-<line x1="558" y1="1586" x2="566" y2="1566" stroke="#d1b86d" stroke-width="2"/>
-<circle cx="558" cy="1586" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<g id="mosfet-Q3" data-part="AO3400A" data-adapter="00717">
+<title>Q3 on A3, SparkFun 00717 / BOB-00717. Component-side top view; sole drain lead faces left. Source upper-right, gate lower-right, drain middle-left. Two 61300311121 headers underneath; all six pins occupy holes. Unused pins remain isolated.</title>
+<rect x="441" y="1625" width="104" height="78" rx="3" fill="#aa3034" stroke="#78232b" stroke-width="2"/>
+<line x1="454" y1="1638" x2="477.0" y2="1654" stroke="#d4b766" stroke-width="2"/>
+<rect x="474.0" y="1651" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="454" cy="1638" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="464" y="1642" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#ecd4d4" text-anchor="start">×</text>
+<line x1="454" y1="1664" x2="477.0" y2="1664" stroke="#d4b766" stroke-width="2"/>
+<rect x="474.0" y="1661" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="454" cy="1664" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="464" y="1668" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="start">D</text>
+<line x1="454" y1="1690" x2="477.0" y2="1674" stroke="#d4b766" stroke-width="2"/>
+<rect x="474.0" y="1671" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="454" cy="1690" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="464" y="1694" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#ecd4d4" text-anchor="start">×</text>
+<line x1="532" y1="1638" x2="509.0" y2="1654" stroke="#d4b766" stroke-width="2"/>
+<rect x="506.0" y="1651" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="532" cy="1638" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="522" y="1642" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">S</text>
+<line x1="532" y1="1664" x2="509.0" y2="1664" stroke="#d4b766" stroke-width="2"/>
+<rect x="506.0" y="1661" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="532" cy="1664" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="522" y="1668" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#ecd4d4" text-anchor="end">×</text>
+<line x1="532" y1="1690" x2="509.0" y2="1674" stroke="#d4b766" stroke-width="2"/>
+<rect x="506.0" y="1671" width="6" height="6" rx="0" fill="#d1b86d" stroke="none" stroke-width="2"/>
+<circle cx="532" cy="1690" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<text x="522" y="1694" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">G</text>
+<line x1="477.0" y1="1664" x2="486.0" y2="1664" stroke="#ddd9c9" stroke-width="3"/>
+<line x1="500.0" y1="1654" x2="509.0" y2="1654" stroke="#ddd9c9" stroke-width="3"/>
+<line x1="500.0" y1="1674" x2="509.0" y2="1674" stroke="#ddd9c9" stroke-width="3"/>
+<rect x="486.0" y="1650" width="14" height="28" rx="1" fill="#25313c" stroke="#151e27" stroke-width="2"/>
+<text x="493.0" y="1698" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">A3 · 00717</text>
 </g>
-<g id="mosfet-Q3" data-part="AO3400A" data-adapter="SIPK03-1">
-<title>AO3400A soldered to an upright SIPK03-1 adapter. Header order G-D-S; SOT-23 pins 1=G, 2=S, 3=D. Adapter face illustrated schematically; header holes are exact.</title>
-<rect x="547" y="1677" width="45" height="80" rx="3" fill="#23796a" stroke="#145346" stroke-width="2"/>
-<rect x="566" y="1705" width="17" height="25" rx="2" fill="#27343a" stroke="#192c3a" stroke-width="2"/>
-<line x1="558" y1="1690" x2="566" y2="1710" stroke="#d1b86d" stroke-width="2"/>
-<circle cx="558" cy="1690" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
-<line x1="558" y1="1716" x2="566" y2="1716" stroke="#d1b86d" stroke-width="2"/>
-<circle cx="558" cy="1716" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
-<line x1="558" y1="1742" x2="566" y2="1722" stroke="#d1b86d" stroke-width="2"/>
-<circle cx="558" cy="1742" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
-</g>
-<line x1="636" y1="1300" x2="636" y2="1378" stroke="#c0383c" stroke-width="2"/>
-<rect x="629" y="1307" width="14" height="24" rx="2" fill="#edce8c" stroke="#192c3a" stroke-width="2"/>
-<line x1="630" y1="1312" x2="642" y2="1312" stroke="#c0383c" stroke-width="3"/>
-<line x1="630" y1="1318" x2="642" y2="1318" stroke="#c0383c" stroke-width="3"/>
-<line x1="630" y1="1324" x2="642" y2="1324" stroke="#c0383c" stroke-width="3"/>
-<circle cx="636" cy="1300" r="4" fill="#c0383c" stroke="white" stroke-width="1"/>
-<circle cx="636" cy="1378" r="4" fill="#c0383c" stroke="white" stroke-width="1"/>
-<line x1="636" y1="1456" x2="636" y2="1534" stroke="#258450" stroke-width="2"/>
-<rect x="629" y="1463" width="14" height="24" rx="2" fill="#edce8c" stroke="#192c3a" stroke-width="2"/>
-<line x1="630" y1="1468" x2="642" y2="1468" stroke="#c0383c" stroke-width="3"/>
-<line x1="630" y1="1474" x2="642" y2="1474" stroke="#c0383c" stroke-width="3"/>
-<line x1="630" y1="1480" x2="642" y2="1480" stroke="#c0383c" stroke-width="3"/>
-<circle cx="636" cy="1456" r="4" fill="#258450" stroke="white" stroke-width="1"/>
-<circle cx="636" cy="1534" r="4" fill="#258450" stroke="white" stroke-width="1"/>
-<line x1="636" y1="1612" x2="636" y2="1690" stroke="#286bbb" stroke-width="2"/>
-<rect x="629" y="1619" width="14" height="24" rx="2" fill="#edce8c" stroke="#192c3a" stroke-width="2"/>
-<line x1="630" y1="1624" x2="642" y2="1624" stroke="#c0383c" stroke-width="3"/>
-<line x1="630" y1="1630" x2="642" y2="1630" stroke="#c0383c" stroke-width="3"/>
-<line x1="630" y1="1636" x2="642" y2="1636" stroke="#c0383c" stroke-width="3"/>
-<circle cx="636" cy="1612" r="4" fill="#286bbb" stroke="white" stroke-width="1"/>
-<circle cx="636" cy="1690" r="4" fill="#286bbb" stroke="white" stroke-width="1"/>
+<line x1="584" y1="1300" x2="584" y2="1378" stroke="#c0383c" stroke-width="2"/>
+<rect x="577" y="1307" width="14" height="24" rx="2" fill="#edce8c" stroke="#192c3a" stroke-width="2"/>
+<line x1="578" y1="1312" x2="590" y2="1312" stroke="#c0383c" stroke-width="3"/>
+<line x1="578" y1="1318" x2="590" y2="1318" stroke="#c0383c" stroke-width="3"/>
+<line x1="578" y1="1324" x2="590" y2="1324" stroke="#c0383c" stroke-width="3"/>
+<circle cx="584" cy="1300" r="4" fill="#c0383c" stroke="white" stroke-width="1"/>
+<circle cx="584" cy="1378" r="4" fill="#c0383c" stroke="white" stroke-width="1"/>
+<line x1="584" y1="1456" x2="584" y2="1534" stroke="#258450" stroke-width="2"/>
+<rect x="577" y="1463" width="14" height="24" rx="2" fill="#edce8c" stroke="#192c3a" stroke-width="2"/>
+<line x1="578" y1="1468" x2="590" y2="1468" stroke="#c0383c" stroke-width="3"/>
+<line x1="578" y1="1474" x2="590" y2="1474" stroke="#c0383c" stroke-width="3"/>
+<line x1="578" y1="1480" x2="590" y2="1480" stroke="#c0383c" stroke-width="3"/>
+<circle cx="584" cy="1456" r="4" fill="#258450" stroke="white" stroke-width="1"/>
+<circle cx="584" cy="1534" r="4" fill="#258450" stroke="white" stroke-width="1"/>
+<line x1="584" y1="1612" x2="584" y2="1690" stroke="#286bbb" stroke-width="2"/>
+<rect x="577" y="1619" width="14" height="24" rx="2" fill="#edce8c" stroke="#192c3a" stroke-width="2"/>
+<line x1="578" y1="1624" x2="590" y2="1624" stroke="#c0383c" stroke-width="3"/>
+<line x1="578" y1="1630" x2="590" y2="1630" stroke="#c0383c" stroke-width="3"/>
+<line x1="578" y1="1636" x2="590" y2="1636" stroke="#c0383c" stroke-width="3"/>
+<circle cx="584" cy="1612" r="4" fill="#286bbb" stroke="white" stroke-width="1"/>
+<circle cx="584" cy="1690" r="4" fill="#286bbb" stroke="white" stroke-width="1"/>
 <g id="jumper-P1" data-start="i10" data-end="i41">
 <title>P1: i10 → i41. Nano D3 → R1 → Q1 gate / red; HIGH=ON</title>
 <polyline points="610,494 800,494 800,1300 610,1300" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1353,25 +1412,25 @@
 <circle cx="610" cy="416" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="610" cy="1612" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-D1" data-start="f45" data-end="e36">
-<title>D1: f45 → e36. Q1 drain → strip R</title>
-<polyline points="532,1404 506,1404 506,1170 454,1170" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="532,1404 506,1404 506,1170 454,1170" fill="none" stroke="#c0383c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="532" cy="1404" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
+<g id="jumper-D1" data-start="d43" data-end="e36">
+<title>D1: d43 → e36. Q1 drain → strip R</title>
+<polyline points="428,1352 338,1352 338,1170 454,1170" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="428,1352 338,1352 338,1170 454,1170" fill="none" stroke="#c0383c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="428" cy="1352" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1170" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-D2" data-start="f51" data-end="e35">
-<title>D2: f51 → e35. Q2 drain → strip G</title>
-<polyline points="532,1560 494,1560 494,1144 454,1144" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="532,1560 494,1560 494,1144 454,1144" fill="none" stroke="#258450" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="532" cy="1560" r="6" fill="#258450" stroke="white" stroke-width="2"/>
+<g id="jumper-D2" data-start="d49" data-end="e35">
+<title>D2: d49 → e35. Q2 drain → strip G</title>
+<polyline points="428,1508 326,1508 326,1144 454,1144" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="428,1508 326,1508 326,1144 454,1144" fill="none" stroke="#258450" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="428" cy="1508" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1144" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-D3" data-start="f57" data-end="e37">
-<title>D3: f57 → e37. Q3 drain → strip B</title>
-<polyline points="532,1716 482,1716 482,1196 454,1196" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="532,1716 482,1716 482,1196 454,1196" fill="none" stroke="#286bbb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="532" cy="1716" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+<g id="jumper-D3" data-start="d55" data-end="e37">
+<title>D3: d55 → e37. Q3 drain → strip B</title>
+<polyline points="428,1664 314,1664 314,1196 454,1196" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="428,1664 314,1664 314,1196 454,1196" fill="none" stroke="#286bbb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="428" cy="1664" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1196" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 </g>
 <g id="jumper-O1" data-start="d36" data-end="f36">
@@ -1395,26 +1454,26 @@
 <circle cx="402" cy="1196" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="532" cy="1196" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-S1" data-start="j46" data-end="R-46">
-<title>S1: j46 → R-46. Q1 source → ground rail</title>
-<polyline points="636,1430 740,1430" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="636,1430 740,1430" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="636" cy="1430" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1430" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-S1" data-start="j42" data-end="R-42">
+<title>S1: j42 → R-42. Q1 source → ground rail</title>
+<polyline points="636,1326 740,1326" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="636,1326 740,1326" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="636" cy="1326" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1326" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-S2" data-start="j52" data-end="R-52">
-<title>S2: j52 → R-52. Q2 source → ground rail</title>
-<polyline points="636,1586 740,1586" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="636,1586 740,1586" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="636" cy="1586" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1586" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-S2" data-start="j48" data-end="R-48">
+<title>S2: j48 → R-48. Q2 source → ground rail</title>
+<polyline points="636,1482 740,1482" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="636,1482 740,1482" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="636" cy="1482" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1482" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
-<g id="jumper-S3" data-start="j58" data-end="R-58">
-<title>S3: j58 → R-58. Q3 source → ground rail</title>
-<polyline points="636,1742 740,1742" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<polyline points="636,1742 740,1742" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="636" cy="1742" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1742" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<g id="jumper-S3" data-start="j54" data-end="R-54">
+<title>S3: j54 → R-54. Q3 source → ground rail</title>
+<polyline points="636,1638 740,1638" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="636,1638 740,1638" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="636" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
 <g id="jumper-V0" data-start="a58" data-end="L+58">
 <title>V0: a58 → L+58. J0 center → left +12 V rail</title>
@@ -1450,11 +1509,11 @@
 <circle cx="610" cy="1456" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="610" cy="416" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="610" cy="1612" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1404" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
+<circle cx="428" cy="1352" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1170" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1560" r="6" fill="#258450" stroke="white" stroke-width="2"/>
+<circle cx="428" cy="1508" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1144" r="6" fill="#258450" stroke="white" stroke-width="2"/>
-<circle cx="532" cy="1716" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+<circle cx="428" cy="1664" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1196" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="428" cy="1170" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
 <circle cx="532" cy="1170" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
@@ -1462,12 +1521,12 @@
 <circle cx="532" cy="1144" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="402" cy="1196" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="532" cy="1196" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
-<circle cx="636" cy="1430" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1430" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="636" cy="1586" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1586" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="636" cy="1742" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<circle cx="740" cy="1742" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="636" cy="1326" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1326" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="636" cy="1482" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1482" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="636" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="1638" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="258" cy="1742" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
 <circle cx="350" cy="624" r="6" fill="#aa5217" stroke="white" stroke-width="2"/>
@@ -1492,38 +1551,33 @@
 <text x="602" y="1123" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#258450">4 G</text>
 <text x="628" y="1123" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">5 B</text>
 <text x="628" y="1123" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#286bbb">5 B</text>
-<text x="601" y="1382" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">G</text>
-<text x="601" y="1382" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#c0383c">G</text>
-<text x="601" y="1408" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">D</text>
-<text x="601" y="1408" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#c0383c">D</text>
-<text x="601" y="1434" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">S</text>
-<text x="601" y="1434" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#c0383c">S</text>
-<text x="558" y="1346" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">Q1</text>
-<text x="558" y="1346" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#c0383c">Q1</text>
-<text x="601" y="1538" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">G</text>
-<text x="601" y="1538" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#258450">G</text>
-<text x="601" y="1564" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">D</text>
-<text x="601" y="1564" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#258450">D</text>
-<text x="601" y="1590" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">S</text>
-<text x="601" y="1590" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#258450">S</text>
-<text x="558" y="1502" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">Q2</text>
-<text x="558" y="1502" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#258450">Q2</text>
-<text x="601" y="1694" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">G</text>
-<text x="601" y="1694" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#286bbb">G</text>
-<text x="601" y="1720" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">D</text>
-<text x="601" y="1720" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#286bbb">D</text>
-<text x="601" y="1746" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">S</text>
-<text x="601" y="1746" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="start" fill="#286bbb">S</text>
-<text x="558" y="1658" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">Q3</text>
-<text x="558" y="1658" font-family="DejaVu Sans,sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#286bbb">Q3</text>
-<text x="623" y="1339.0" transform="rotate(-90 623 1339.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2.2kΩ</text>
-<text x="623" y="1339.0" transform="rotate(-90 623 1339.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#c0383c">2.2kΩ</text>
-<text x="623" y="1495.0" transform="rotate(-90 623 1495.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2.2kΩ</text>
-<text x="623" y="1495.0" transform="rotate(-90 623 1495.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#258450">2.2kΩ</text>
-<text x="623" y="1651.0" transform="rotate(-90 623 1651.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2.2kΩ</text>
-<text x="623" y="1651.0" transform="rotate(-90 623 1651.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#286bbb">2.2kΩ</text>
-<text x="40" y="2036" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Solder AO3400As to SIPK03-1 adapters; fit their included 0.1″ headers.</text>
-<text x="40" y="2066" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">No pull-downs: gates may float during startup/reset. Set PWM LOW first.</text>
-<text x="40" y="2096" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Upright adapter faces and RJ11 mounting are illustrated schematically.</text>
-<text x="40" y="2126" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Positive bypass only; RGB returns use the breadboard. 0.30 A combined.</text>
+<text x="493.0" y="1306" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">Q1 · AO3400A</text>
+<text x="493.0" y="1306" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#c0383c">Q1 · AO3400A</text>
+<text x="429" y="1396" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">H1</text>
+<text x="429" y="1396" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#536775">H1</text>
+<text x="557" y="1396" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">H2</text>
+<text x="557" y="1396" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#536775">H2</text>
+<text x="493.0" y="1462" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">Q2 · AO3400A</text>
+<text x="493.0" y="1462" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#258450">Q2 · AO3400A</text>
+<text x="429" y="1552" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">H3</text>
+<text x="429" y="1552" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#536775">H3</text>
+<text x="557" y="1552" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">H4</text>
+<text x="557" y="1552" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#536775">H4</text>
+<text x="493.0" y="1618" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">Q3 · AO3400A</text>
+<text x="493.0" y="1618" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#286bbb">Q3 · AO3400A</text>
+<text x="429" y="1708" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">H5</text>
+<text x="429" y="1708" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#536775">H5</text>
+<text x="557" y="1708" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">H6</text>
+<text x="557" y="1708" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#536775">H6</text>
+<text x="571" y="1339.0" transform="rotate(-90 571 1339.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2.2kΩ</text>
+<text x="571" y="1339.0" transform="rotate(-90 571 1339.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#c0383c">2.2kΩ</text>
+<text x="571" y="1495.0" transform="rotate(-90 571 1495.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2.2kΩ</text>
+<text x="571" y="1495.0" transform="rotate(-90 571 1495.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#258450">2.2kΩ</text>
+<text x="571" y="1651.0" transform="rotate(-90 571 1651.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2.2kΩ</text>
+<text x="571" y="1651.0" transform="rotate(-90 571 1651.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#286bbb">2.2kΩ</text>
+<text x="40" y="2034" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="#536775" text-anchor="start">A1–A3: SparkFun 00717; H1–H6: 61300311121 headers underneath.</text>
+<text x="40" y="2058" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="#536775" text-anchor="start">Top view: solder each AO3400A with its single drain lead facing left.</text>
+<text x="40" y="2082" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="#536775" text-anchor="start">× = unused adapter pad/header; leave its breadboard bank/row clear.</text>
+<text x="40" y="2106" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="#536775" text-anchor="start">No pull-downs: gates may float at reset. RJ11 mounting is conceptual.</text>
+<text x="40" y="2130" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="#536775" text-anchor="start">Positive bypass only; RGB returns use the breadboard. 0.30 A combined.</text>
 </svg>

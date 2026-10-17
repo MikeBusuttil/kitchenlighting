@@ -1,8 +1,3 @@
-Create a sketch (or whatever the file is called that gets uploaded to the Nano) for 12v/min that has 3 states toggled by the button on the nano.  It starts in:
-1. full brightness state where RGB is all at full brightness, 
-2. mood lighting where the color is softer and the brightness is toned down
-3. trippy mode where the lights cycle through all colors of the rainbow (at some period ~5s for the whole rainbow) while the brightness cycles between full and off at some other period (~9s)
-
 - build it
   - assemble all parts
     - get magnet for breadboard
@@ -14,7 +9,6 @@ Create a sketch (or whatever the file is called that gets uploaded to the Nano) 
     - fix the readme so the links all work nice
       - is there a way to open HTML files in github readmes?
   - dockerize all those random packages
-- The HTML links below use GitHub Pages for rendered diagrams. One-time setup: in the repository’s **Settings → Pages → Build and deployment**, set **Source** to **Deploy from a branch**, choose **master** and **/ (root)**, then click **Save**. The links become available after the files are pushed and the Pages deployment succeeds.
 
 ## v1
 

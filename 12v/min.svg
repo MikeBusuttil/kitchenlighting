@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="2010" viewBox="0 0 880 2010">
 <title>Kitchen lighting: 12 V RGB minimum breadboard layout</title>
-<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three AO3400A SOT-23 MOSFETs soldered to SparkFun 00717 adapters spanning the centre gap at rows 42–44, 48–50 and 54–56, barrel jack J0, and two Würth 615004144121 female RJ11 output jacks J1/J2. Each adapter has two separately purchased 61300311121 three-pin headers underneath, in columns e/f. Component-side top view: the single drain lead faces left; source is upper-right, gate lower-right, drain middle-left. AO3400A package pins are 1=gate, 2=source, 3=drain; these are not the adapter pad numbers. All six header holes are occupied; the three unused pad/header connections remain isolated. RJ11 mounting/pin fan-outs are conceptual illustrations. Both jacks connect in parallel: pin 2 positive, pin 3 red, pin 4 green, pin 5 blue. Nano D3, D5 and D6 run in parallel outside the right power rails, each through a 2.2 kohm series resistor to its MOSFET gate. No gate drivers, bypass capacitors or pulldown resistors are fitted. Gates can float during Nano startup/reset; initialize the PWM outputs LOW before enabling the lights. Series resistors limit initial nominal GPIO gate-charge current to about 1.5 mA; use ordinary low-frequency PWM. Output positive connects to J0 pin 1 by soldered pigtails, bypassing breadboard contacts; row 40 is unused. J0 is shifted one column right, with its positive and ground jumpers connected to the left rails. The left positive rail and right ground rail have midpoint bridges; the lower ground rails are linked at row 39. Both right positive rail halves and the upper-left ground rail are unused. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. The two ports share a combined 25 cm / 0.30 A LED load limit. All wires are drawn.</desc>
+<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three AO3400A SOT-23 MOSFETs soldered to SparkFun 00717 adapters spanning the centre gap at rows 42–44, 48–50 and 54–56, barrel jack J0, and two Würth 615004144121 female RJ11 output jacks J1/J2. Existing normally-open mode button SW1 spans the centre gap at rows 20/22: Nano D2 connects j11 to j20, and b22 connects to the right ground rail at row 24. The sketch uses INPUT_PULLUP, so pressing SW1 reads LOW. The illustrated four-leg package is an assumption; verify the actual switch is open when released and closed when pressed between the two wired contacts. Each adapter has two separately purchased 61300311121 three-pin headers underneath, in columns e/f. Component-side top view: the single drain lead faces left; source is upper-right, gate lower-right, drain middle-left. AO3400A package pins are 1=gate, 2=source, 3=drain; these are not the adapter pad numbers. All six header holes are occupied; the three unused pad/header connections remain isolated. RJ11 mounting/pin fan-outs are conceptual illustrations. Both jacks connect in parallel: pin 2 positive, pin 3 red, pin 4 green, pin 5 blue. Nano D3, D5 and D6 run in parallel outside the right power rails, each through a 2.2 kohm series resistor to its MOSFET gate. No gate drivers, bypass capacitors or pulldown resistors are fitted. Gates can float during Nano startup/reset; initialize the PWM outputs LOW before enabling the lights. Series resistors limit initial nominal GPIO gate-charge current to about 1.5 mA; use ordinary low-frequency PWM. Output positive connects to J0 pin 1 by soldered pigtails, bypassing breadboard contacts; row 40 is unused. J0 is shifted one column right, with its positive and ground jumpers connected to the left rails. The left positive rail and right ground rail have midpoint bridges; the lower ground rails are linked at row 39. Both right positive rail halves and the upper-left ground rail are unused. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. The two ports share a combined 25 cm / 0.30 A LED load limit. All wires are drawn.</desc>
 <rect x="0" y="0" width="880" height="2010" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
 <text x="40" y="62" font-family="DejaVu Sans,sans-serif" font-size="34" font-weight="700" fill="#192c3a" text-anchor="start">12 V · Minimum</text>
 <text x="40" y="108" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">RGB outputs · ≤25 cm combined · ≤0.30 A total</text>
@@ -1148,6 +1148,19 @@
 <circle cx="284" cy="1248" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="740" cy="1248" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 </g>
+<g id="button-SW1" data-part="existing-normally-open-pushbutton">
+<title>SW1: existing normally-open momentary mode button. Typical four-leg placement in e20/f20/e22/f22; actual package may differ. Connect diagonally opposite contacts: j20 to Nano D2 and b22 to ground. Check with power disconnected that these contacts are open when released and connected only while pressed. The sketch uses INPUT_PULLUP; no external pull-up is needed.</title>
+<rect x="469" y="745" width="48" height="70" rx="4" fill="#c5cbd0" stroke="#192c3a" stroke-width="2"/>
+<line x1="454" y1="754" x2="469" y2="754" stroke="#a9aeb0" stroke-width="5"/>
+<circle cx="454" cy="754" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<line x1="532" y1="754" x2="517" y2="754" stroke="#a9aeb0" stroke-width="5"/>
+<circle cx="532" cy="754" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<line x1="454" y1="806" x2="469" y2="806" stroke="#a9aeb0" stroke-width="5"/>
+<circle cx="454" cy="806" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<line x1="532" y1="806" x2="517" y2="806" stroke="#a9aeb0" stroke-width="5"/>
+<circle cx="532" cy="806" r="4" fill="#cfb982" stroke="#192c3a" stroke-width="1"/>
+<circle cx="493.0" cy="780" r="17" fill="#283c48" stroke="#152833" stroke-width="2"/>
+</g>
 <rect x="333" y="1133" width="139" height="22" rx="3" fill="#fff0ce" stroke="#258450" stroke-width="2"/>
 <circle cx="350" cy="1144" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
 <circle cx="376" cy="1144" r="3.8" fill="#636d6e" stroke="#a1aaa9" stroke-width="1"/>
@@ -1424,6 +1437,20 @@
 <circle cx="610" cy="416" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="610" cy="1612" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 </g>
+<g id="jumper-SW-D2" data-start="j11" data-end="j20">
+<title>SW-D2: j11 → j20. Nano D2 → SW1; INPUT_PULLUP; pressed=LOW</title>
+<polyline points="636,520 650,520 650,754 636,754" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="636,520 650,520 650,754 636,754" fill="none" stroke="#75518f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="636" cy="520" r="6" fill="#75518f" stroke="white" stroke-width="2"/>
+<circle cx="636" cy="754" r="6" fill="#75518f" stroke="white" stroke-width="2"/>
+</g>
+<g id="jumper-SW-GND" data-start="b22" data-end="R-24">
+<title>SW-GND: b22 → R-24. SW1 opposite contact → common ground; no connection to +12 V</title>
+<polyline points="376,806 376,858 740,858" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="376,806 376,858 740,858" fill="none" stroke="#192c3a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="376" cy="806" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="858" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+</g>
 <g id="jumper-D1" data-start="d43" data-end="e36">
 <title>D1: d43 → e36. Q1 drain → strip R</title>
 <polyline points="428,1352 338,1352 338,1170 454,1170" fill="none" stroke="#f5f7fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1521,6 +1548,10 @@
 <circle cx="610" cy="1456" r="6" fill="#258450" stroke="white" stroke-width="2"/>
 <circle cx="610" cy="416" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
 <circle cx="610" cy="1612" r="6" fill="#286bbb" stroke="white" stroke-width="2"/>
+<circle cx="636" cy="520" r="6" fill="#75518f" stroke="white" stroke-width="2"/>
+<circle cx="636" cy="754" r="6" fill="#75518f" stroke="white" stroke-width="2"/>
+<circle cx="376" cy="806" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<circle cx="740" cy="858" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="428" cy="1352" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
 <circle cx="454" cy="1170" r="6" fill="#c0383c" stroke="white" stroke-width="2"/>
 <circle cx="428" cy="1508" r="6" fill="#258450" stroke="white" stroke-width="2"/>
@@ -1547,6 +1578,10 @@
 <circle cx="284" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="636" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="740" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
+<text x="493.0" y="707" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">SW1 · mode button</text>
+<text x="493.0" y="707" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#192c3a">SW1 · mode button</text>
+<text x="493.0" y="889" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">D2 ↔ GND · press for next mode</text>
+<text x="493.0" y="889" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#192c3a">D2 ↔ GND · press for next mode</text>
 <text x="368" y="1123" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2 +</text>
 <text x="368" y="1123" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#aa5217">2 +</text>
 <text x="394" y="1123" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">3 R</text>

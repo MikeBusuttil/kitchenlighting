@@ -1,13 +1,33 @@
 # Kitchen lighting
 
+| 12 V minimum wiring                                                          | PCB layout                                                                                |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| [<img src="12v/min.svg" alt="12 V minimum wiring" width="160">](12v/min.svg) | [<img src="12v/pcb/pcb-layout.svg" alt="PCB layout" width="520">](12v/pcb/pcb-layout.svg) |
+
 ## Getting started
 
-```bash
+- install prerequisites
+```sh
 sudo apt install kicad kicad-symbols kicad-footprints poppler-utils python3-venv
+arduino-cli core install arduino:samd
+```
 
+- build artifacts
+```sh
 python3 12v/build.py
 python3 5v/build.py
 python3 12v/pcb/pcb.py
+
+mkdir -p 12vRGB
+cp 12v/min.ino 12vRGB/12vRGB.ino
+arduino-cli compile --fqbn arduino:samd:nano_33_iot --output-dir 12vRGB/build 12vRGB
+```
+
+- upload sketch to the nano
+```sh
+arduino-cli board list
+nano_port=/dev/ttyACM0  # Replace with your Nano's port from the list above.
+arduino-cli upload --fqbn arduino:samd:nano_33_iot  --port "$nano_port" --input-dir 12vRGB/build 12vRGB
 ```
 
 ## Project files
@@ -50,6 +70,8 @@ python3 12v/pcb/browser_exports.py  # refresh browser versions of all repository
 
 ```sh
 python3 -m unittest discover -s .utils -p 'test_*.py'
+g++ -std=c++11 -Wall -Wextra -Werror -I12v/tests 12v/tests/test_min.cpp -o /tmp/kitchenlighting-test-min
+/tmp/kitchenlighting-test-min
 ```
 
 ## Contributing

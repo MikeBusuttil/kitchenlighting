@@ -10,7 +10,8 @@ Minimum uses AO3400A MOSFETs on SparkFun 00717 DIP adapters with 2.2 kohm series
 gate resistors and no pulldowns. The adapters span the centre gap; it routes
 Nano PWM outside the rails; drivers and their bypass capacitors are best-only.
 Both layouts feed output positive from a soldered pigtail on J0 pin 1.
-The minimum adds two parallel RJ11 outputs with conceptual breadboard mounting.
+The minimum adds two parallel RJ11 outputs with conceptual breadboard mounting
+and an existing normally-open mode pushbutton from Nano D2 to ground.
 """
 from html import escape
 from pathlib import Path
@@ -356,6 +357,27 @@ def build():
 minimum_jumpers=[]
 
 
+def minimum_mode_button():
+    """Show a typical four-leg button; check the user's actual contact pairs."""
+    left,right=COL['e'],COL['f']
+    center=(left+right)/2
+    y=yy(20)
+    s.append('<g id="button-SW1" data-part="existing-normally-open-pushbutton">')
+    s.append('<title>SW1: existing normally-open momentary mode button. Typical four-leg placement in e20/f20/e22/f22; actual package may differ. Connect diagonally opposite contacts: j20 to Nano D2 and b22 to ground. Check with power disconnected that these contacts are open when released and connected only while pressed. The sketch uses INPUT_PULLUP; no external pull-up is needed.</title>')
+    rect(left+15,y-9,right-left-30,70,'#c5cbd0',INK,4)
+    for terminal,col,row in [('L1','e',20),('R1','f',20),('L2','e',22),('R2','f',22)]:
+        endpoint=f'{col}{row}'
+        x,py=parse_hole(endpoint)
+        line(x,py,left+15 if col=='e' else right-15,py,'#a9aeb0',5)
+        circle(x,py,4,'#cfb982',INK,1)
+        record(f'SW1 leg {terminal}',endpoint,f'SW1.{terminal}',
+               'Existing normally-open momentary button; typical four-leg footprint only. Verify contact pairs and form leads gently or use jumper leads if the package differs.')
+    circle(center,y+26,17,'#283c48','#152833',2)
+    component_label(center,yy(18)+5,'SW1 · mode button',17,INK,'middle')
+    component_label(center,yy(25)+5,'D2 ↔ GND · press for next mode',14,INK,'middle')
+    s.append('</g>')
+
+
 def minimum_rj11_outputs():
     """Draw two top-entry jacks; their pin fan-outs are conceptual, not footprints."""
     # Contact numbering matches the PCB: 2=+12 V, 3=R, 4=G, 5=B.
@@ -462,6 +484,8 @@ def draw_minimum_jumpers():
         'P1': [(800,yy(10)),(800,yy(41))],
         'P2': [(812,yy(8)),(812,yy(47))],
         'P3': [(824,yy(7)),(824,yy(53))],
+        'SW-D2': [(650,yy(11)),(650,yy(20))],
+        'SW-GND': [(COL['b'],yy(24))],
         'D1': [(338,yy(43)),(338,yy(36))],
         'D2': [(326,yy(49)),(326,yy(35))],
         'D3': [(314,yy(55)),(314,yy(37))],
@@ -479,13 +503,14 @@ def build_minimum():
     global s,wiring,occupied
     s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
        '<title>Kitchen lighting: 12 V RGB minimum breadboard layout</title>',
-       '<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three AO3400A SOT-23 MOSFETs soldered to SparkFun 00717 adapters spanning the centre gap at rows 42–44, 48–50 and 54–56, barrel jack J0, and two Würth 615004144121 female RJ11 output jacks J1/J2. Each adapter has two separately purchased 61300311121 three-pin headers underneath, in columns e/f. Component-side top view: the single drain lead faces left; source is upper-right, gate lower-right, drain middle-left. AO3400A package pins are 1=gate, 2=source, 3=drain; these are not the adapter pad numbers. All six header holes are occupied; the three unused pad/header connections remain isolated. RJ11 mounting/pin fan-outs are conceptual illustrations. Both jacks connect in parallel: pin 2 positive, pin 3 red, pin 4 green, pin 5 blue. Nano D3, D5 and D6 run in parallel outside the right power rails, each through a 2.2 kohm series resistor to its MOSFET gate. No gate drivers, bypass capacitors or pulldown resistors are fitted. Gates can float during Nano startup/reset; initialize the PWM outputs LOW before enabling the lights. Series resistors limit initial nominal GPIO gate-charge current to about 1.5 mA; use ordinary low-frequency PWM. Output positive connects to J0 pin 1 by soldered pigtails, bypassing breadboard contacts; row 40 is unused. J0 is shifted one column right, with its positive and ground jumpers connected to the left rails. The left positive rail and right ground rail have midpoint bridges; the lower ground rails are linked at row 39. Both right positive rail halves and the upper-left ground rail are unused. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. The two ports share a combined 25 cm / 0.30 A LED load limit. All wires are drawn.</desc>']
+       '<desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three AO3400A SOT-23 MOSFETs soldered to SparkFun 00717 adapters spanning the centre gap at rows 42–44, 48–50 and 54–56, barrel jack J0, and two Würth 615004144121 female RJ11 output jacks J1/J2. Existing normally-open mode button SW1 spans the centre gap at rows 20/22: Nano D2 connects j11 to j20, and b22 connects to the right ground rail at row 24. The sketch uses INPUT_PULLUP, so pressing SW1 reads LOW. The illustrated four-leg package is an assumption; verify the actual switch is open when released and closed when pressed between the two wired contacts. Each adapter has two separately purchased 61300311121 three-pin headers underneath, in columns e/f. Component-side top view: the single drain lead faces left; source is upper-right, gate lower-right, drain middle-left. AO3400A package pins are 1=gate, 2=source, 3=drain; these are not the adapter pad numbers. All six header holes are occupied; the three unused pad/header connections remain isolated. RJ11 mounting/pin fan-outs are conceptual illustrations. Both jacks connect in parallel: pin 2 positive, pin 3 red, pin 4 green, pin 5 blue. Nano D3, D5 and D6 run in parallel outside the right power rails, each through a 2.2 kohm series resistor to its MOSFET gate. No gate drivers, bypass capacitors or pulldown resistors are fitted. Gates can float during Nano startup/reset; initialize the PWM outputs LOW before enabling the lights. Series resistors limit initial nominal GPIO gate-charge current to about 1.5 mA; use ordinary low-frequency PWM. Output positive connects to J0 pin 1 by soldered pigtails, bypassing breadboard contacts; row 40 is unused. J0 is shifted one column right, with its positive and ground jumpers connected to the left rails. The left positive rail and right ground rail have midpoint bridges; the lower ground rails are linked at row 39. Both right positive rail halves and the upper-left ground rail are unused. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. The two ports share a combined 25 cm / 0.30 A LED load limit. All wires are drawn.</desc>']
     wiring=[]; occupied={}; flags.clear(); annotations.clear(); minimum_jumpers.clear()
     rect(0,0,W,H,'#f4f7fa','#f4f7fa',0)
     text(40,62,'12 V · Minimum',34,bold=True)
     text(40,108,'RGB outputs · ≤25 cm combined · ≤0.30 A total',20,MUTED)
     board(minimum=True)
     rail_bridges(minimum=True)
+    minimum_mode_button()
     output_rows(labelsize=13,rows=((35,'G',GREEN),(36,'R',RED),(37,'B',BLUE)),show_unused=False)
     barrel_jack(shift_right=True)
     minimum_rj11_outputs()
@@ -500,6 +525,8 @@ def build_minimum():
         ('P1','i10','i41',RED,'Nano D3 → R1 → Q1 gate / red; HIGH=ON'),
         ('P2','i8','i47',GREEN,'Nano D5 → R2 → Q2 gate / green; HIGH=ON'),
         ('P3','i7','i53',BLUE,'Nano D6 → R3 → Q3 gate / blue; HIGH=ON'),
+        ('SW-D2','j11','j20','#75518f','Nano D2 → SW1; INPUT_PULLUP; pressed=LOW'),
+        ('SW-GND','b22','R-24',INK,'SW1 opposite contact → common ground; no connection to +12 V'),
         ('D1','d43','e36',RED,'Q1 drain → strip R'),
         ('D2','d49','e35',GREEN,'Q2 drain → strip G'),
         ('D3','d55','e37',BLUE,'Q3 drain → strip B'),

@@ -10,3 +10,4 @@ venv/
 12v/pcb/pcb.dsn
 12v/pcb/pcb.ses
 logs/
+/12vRGB/

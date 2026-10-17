@@ -49,6 +49,7 @@ ADAPTER_UNUSED = {
 }
 RGB_STRIP = {"Strip +", "Strip R", "Strip G", "Strip B"}
 RJ11_OUTPUTS = {f"J{port}.{pin}" for port in (1, 2) for pin in (2, 3, 4, 5)}
+MODE_BUTTON = {f"SW1.{pin}" for pin in ("L1", "L2", "R1", "R2")}
 APA102_STRIP = {"Strip +5V", "Strip GND", "Strip CI", "Strip DI"}
 
 
@@ -64,7 +65,7 @@ EXPECTED_TERMINALS = {
         | passive_terminals("C", range(3, 8))
     ),
     ("12v", "min"): (
-        NANO | JACK | MOSFETS | RJ11_OUTPUTS | ADAPTER_UNUSED
+        NANO | JACK | MOSFETS | RJ11_OUTPUTS | ADAPTER_UNUSED | MODE_BUTTON
         | passive_terminals("R", range(1, 4))
     ),
     ("5v", "best"): (
@@ -101,7 +102,8 @@ EXPECTED_CONNECTIONS = {
     ],
     ("12v", "min"): [
         ("J0.1", "Nano VIN", "J1.2", "J2.2"),
-        ("J0.2", "Nano GND", "Q1.S", "Q2.S", "Q3.S"),
+        ("J0.2", "Nano GND", "Q1.S", "Q2.S", "Q3.S", "SW1.L2"),
+        ("Nano D2", "SW1.R1"),
         ("Nano D3", "R1.1"),
         ("Nano D5", "R2.1"),
         ("Nano D6", "R3.1"),
@@ -266,6 +268,26 @@ class BreadboardTests(unittest.TestCase):
                 self.assertEqual(
                     direct_connections.find("J0.1"), direct_connections.find(port + ".2")
                 )
+
+    def test_minimum_mode_button_opens_and_closes_d2_to_ground(self):
+        wiring, _, _ = self.layouts["12v", "min"]
+        # The user's existing switch package is unknown. Connecting opposite
+        # corners works for either orientation of an ordinary four-leg switch:
+        # add its permanent contact pairs separately from the breadboard wiring.
+        for internal_pairs in (
+            (("L1", "L2"), ("R1", "R2")),
+            (("L1", "R1"), ("L2", "R2")),
+        ):
+            with self.subTest(internal_pairs=internal_pairs):
+                circuit = Circuit(wiring)
+                for first, second in internal_pairs:
+                    circuit.connect("SW1." + first, "SW1." + second)
+                self.assertNotEqual(circuit.find("Nano D2"), circuit.find("Nano GND"))
+                self.assertNotEqual(circuit.find("Nano D2"), circuit.find("J0.1"))
+                # The moving contact joins both pairs only while pressed.
+                circuit.connect("SW1.L2", "SW1.R1")
+                self.assertEqual(circuit.find("Nano D2"), circuit.find("Nano GND"))
+                self.assertNotEqual(circuit.find("Nano D2"), circuit.find("J0.1"))
 
     def test_minimum_sot23_adapters_match_physical_leads(self):
         wiring, _, module = self.layouts["12v", "min"]

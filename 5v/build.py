@@ -177,7 +177,7 @@ def usb_c_jack():
         x,y=hole('b',row)
         circle(x,y,5,'#c9b680',INK,1)
         text(x-12,y+4,pin,12,'white',True,'end')
-    text(244,yy(54)-24,'J0 · USB-C',19,INK,True)
+    text(244,yy(54)-24,'USB-C',19,INK,True)
     rect(183,yy(56)+10,48,58,'#343f47',INK,5)
     line(80,yy(56)+39,183,yy(56)+39,INK,8)
     text(80,yy(56)+85,'5 V USB-C',17,INK,True)

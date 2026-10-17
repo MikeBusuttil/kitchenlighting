@@ -373,8 +373,6 @@ def minimum_mode_button():
         record(f'SW1 leg {terminal}',endpoint,f'SW1.{terminal}',
                'Existing normally-open momentary button; typical four-leg footprint only. Verify contact pairs and form leads gently or use jumper leads if the package differs.')
     circle(center,y+26,17,'#283c48','#152833',2)
-    component_label(center,yy(18)+5,'SW1 · mode button',17,INK,'middle')
-    component_label(center,yy(25)+5,'D2 ↔ GND · press for next mode',14,INK,'middle')
     s.append('</g>')
 
 
@@ -391,7 +389,7 @@ def minimum_rj11_outputs():
     ]:
         s.append(f'<g id="connector-{ref}" data-part="615004144121" data-mounting="conceptual">')
         s.append('<title>Würth 615004144121 top-entry 6P4C female RJ11; conceptual breadboard placement and pin fan-out</title>')
-        text(x+53,yy(28)-9,f'{ref} · RJ11',17,INK,True,'middle')
+        text(x+53,yy(28)-9,'RJ11',17,INK,True,'middle')
         text(x+53,yy(29)-10,'615004144121',12,MUTED,anchor='middle')
         rect(x,yy(29),106,122,'#deddd6','#69777f',5)
         rect(x+12,yy(29)+12,82,83,'#29353b','#63747c',3)
@@ -471,10 +469,8 @@ def minimum_mosfets():
         line(center-16,y+26,center-7,y+26,'#ddd9c9',3)
         for dy in (16,36): line(center+7,y+dy,center+16,y+dy,'#ddd9c9',3)
         rect(center-7,y+12,14,28,'#25313c','#151e27',1)
-        component_label(center,y-20,f'{q} · AO3400A',14,color,'middle')
-        text(center,y+60,f'{adapter} · 00717',10,'white',True,'middle')
-        component_label(left-25,y+70,f'H{index*2-1}',10,MUTED,'middle')
-        component_label(right+25,y+70,f'H{index*2}',10,MUTED,'middle')
+        component_label(center,y-20,'AO3400A',14,color,'middle')
+        text(center,y+60,'00717',10,'white',True,'middle')
         s.append('</g>')
 
 

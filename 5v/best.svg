@@ -1275,7 +1275,7 @@
 <text x="364" y="1798" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">SBU1</text>
 <circle cx="376" cy="1820" r="5" fill="#c9b680" stroke="#192c3a" stroke-width="1"/>
 <text x="364" y="1824" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="end">CC2</text>
-<text x="244" y="1614" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">J0 · USB-C</text>
+<text x="244" y="1614" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#192c3a" text-anchor="start">USB-C</text>
 <rect x="183" y="1700" width="48" height="58" rx="5" fill="#343f47" stroke="#192c3a" stroke-width="2"/>
 <line x1="80" y1="1729" x2="183" y2="1729" stroke="#192c3a" stroke-width="8"/>
 <text x="80" y="1775" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="start">5 V USB-C</text>

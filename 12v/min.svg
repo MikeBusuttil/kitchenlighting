@@ -1208,7 +1208,7 @@
 </svg>
 <g id="connector-J1" data-part="615004144121" data-mounting="conceptual">
 <title>Würth 615004144121 top-entry 6P4C female RJ11; conceptual breadboard placement and pin fan-out</title>
-<text x="407" y="953" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="middle">J1 · RJ11</text>
+<text x="407" y="953" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="middle">RJ11</text>
 <text x="407" y="978" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#536775" text-anchor="middle">615004144121</text>
 <rect x="354" y="988" width="106" height="122" rx="5" fill="#deddd6" stroke="#69777f" stroke-width="2"/>
 <rect x="366" y="1000" width="82" height="83" rx="3" fill="#29353b" stroke="#63747c" stroke-width="2"/>
@@ -1246,7 +1246,7 @@
 </g>
 <g id="connector-J2" data-part="615004144121" data-mounting="conceptual">
 <title>Würth 615004144121 top-entry 6P4C female RJ11; conceptual breadboard placement and pin fan-out</title>
-<text x="589" y="953" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="middle">J2 · RJ11</text>
+<text x="589" y="953" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="middle">RJ11</text>
 <text x="589" y="978" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="400" fill="#536775" text-anchor="middle">615004144121</text>
 <rect x="536" y="988" width="106" height="122" rx="5" fill="#deddd6" stroke="#69777f" stroke-width="2"/>
 <rect x="548" y="1000" width="82" height="83" rx="3" fill="#29353b" stroke="#63747c" stroke-width="2"/>
@@ -1327,7 +1327,7 @@
 <line x1="500.0" y1="1342" x2="509.0" y2="1342" stroke="#ddd9c9" stroke-width="3"/>
 <line x1="500.0" y1="1362" x2="509.0" y2="1362" stroke="#ddd9c9" stroke-width="3"/>
 <rect x="486.0" y="1338" width="14" height="28" rx="1" fill="#25313c" stroke="#151e27" stroke-width="2"/>
-<text x="493.0" y="1386" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">A1 · 00717</text>
+<text x="493.0" y="1386" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">00717</text>
 </g>
 <g id="mosfet-Q2" data-part="AO3400A" data-adapter="00717">
 <title>Q2 on A2, SparkFun 00717 / BOB-00717. Component-side top view; sole drain lead faces left. Source upper-right, gate lower-right, drain middle-left. Two 61300311121 headers underneath; all six pins occupy holes. Unused pins remain isolated.</title>
@@ -1360,7 +1360,7 @@
 <line x1="500.0" y1="1498" x2="509.0" y2="1498" stroke="#ddd9c9" stroke-width="3"/>
 <line x1="500.0" y1="1518" x2="509.0" y2="1518" stroke="#ddd9c9" stroke-width="3"/>
 <rect x="486.0" y="1494" width="14" height="28" rx="1" fill="#25313c" stroke="#151e27" stroke-width="2"/>
-<text x="493.0" y="1542" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">A2 · 00717</text>
+<text x="493.0" y="1542" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">00717</text>
 </g>
 <g id="mosfet-Q3" data-part="AO3400A" data-adapter="00717">
 <title>Q3 on A3, SparkFun 00717 / BOB-00717. Component-side top view; sole drain lead faces left. Source upper-right, gate lower-right, drain middle-left. Two 61300311121 headers underneath; all six pins occupy holes. Unused pins remain isolated.</title>
@@ -1393,7 +1393,7 @@
 <line x1="500.0" y1="1654" x2="509.0" y2="1654" stroke="#ddd9c9" stroke-width="3"/>
 <line x1="500.0" y1="1674" x2="509.0" y2="1674" stroke="#ddd9c9" stroke-width="3"/>
 <rect x="486.0" y="1650" width="14" height="28" rx="1" fill="#25313c" stroke="#151e27" stroke-width="2"/>
-<text x="493.0" y="1698" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">A3 · 00717</text>
+<text x="493.0" y="1698" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">00717</text>
 </g>
 <line x1="584" y1="1300" x2="584" y2="1378" stroke="#c0383c" stroke-width="2"/>
 <rect x="577" y="1307" width="14" height="24" rx="2" fill="#edce8c" stroke="#192c3a" stroke-width="2"/>
@@ -1578,10 +1578,6 @@
 <circle cx="284" cy="1794" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="636" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
 <circle cx="740" cy="546" r="6" fill="#192c3a" stroke="white" stroke-width="2"/>
-<text x="493.0" y="707" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">SW1 · mode button</text>
-<text x="493.0" y="707" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#192c3a">SW1 · mode button</text>
-<text x="493.0" y="889" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">D2 ↔ GND · press for next mode</text>
-<text x="493.0" y="889" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#192c3a">D2 ↔ GND · press for next mode</text>
 <text x="368" y="1123" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2 +</text>
 <text x="368" y="1123" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#aa5217">2 +</text>
 <text x="394" y="1123" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">3 R</text>
@@ -1598,24 +1594,12 @@
 <text x="602" y="1123" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#258450">4 G</text>
 <text x="628" y="1123" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">5 B</text>
 <text x="628" y="1123" font-family="DejaVu Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#286bbb">5 B</text>
-<text x="493.0" y="1306" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">Q1 · AO3400A</text>
-<text x="493.0" y="1306" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#c0383c">Q1 · AO3400A</text>
-<text x="429" y="1396" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">H1</text>
-<text x="429" y="1396" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#536775">H1</text>
-<text x="557" y="1396" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">H2</text>
-<text x="557" y="1396" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#536775">H2</text>
-<text x="493.0" y="1462" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">Q2 · AO3400A</text>
-<text x="493.0" y="1462" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#258450">Q2 · AO3400A</text>
-<text x="429" y="1552" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">H3</text>
-<text x="429" y="1552" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#536775">H3</text>
-<text x="557" y="1552" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">H4</text>
-<text x="557" y="1552" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#536775">H4</text>
-<text x="493.0" y="1618" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">Q3 · AO3400A</text>
-<text x="493.0" y="1618" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#286bbb">Q3 · AO3400A</text>
-<text x="429" y="1708" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">H5</text>
-<text x="429" y="1708" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#536775">H5</text>
-<text x="557" y="1708" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">H6</text>
-<text x="557" y="1708" font-family="DejaVu Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle" fill="#536775">H6</text>
+<text x="493.0" y="1306" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">AO3400A</text>
+<text x="493.0" y="1306" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#c0383c">AO3400A</text>
+<text x="493.0" y="1462" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">AO3400A</text>
+<text x="493.0" y="1462" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#258450">AO3400A</text>
+<text x="493.0" y="1618" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">AO3400A</text>
+<text x="493.0" y="1618" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="#286bbb">AO3400A</text>
 <text x="571" y="1339.0" transform="rotate(-90 571 1339.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2.2kΩ</text>
 <text x="571" y="1339.0" transform="rotate(-90 571 1339.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#c0383c">2.2kΩ</text>
 <text x="571" y="1495.0" transform="rotate(-90 571 1495.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2.2kΩ</text>

@@ -78,6 +78,7 @@ g++ -std=c++11 -Wall -Wextra -Werror -I12v/tests 12v/tests/test_min.cpp -o /tmp/
 
 - markdown tables: `|`s should line up
 - diagram preferences:
+  - show part numbers; avoid reference codes
   - maximize readability:
     - shorter wires is better
   - avoid using a legend:

@@ -131,7 +131,7 @@
     const route = targets.get(target.url.href)?.route;
     if (!route || !location.hash || targetFromHash().url.href !== target.url.href) return;
     const url = new URL(originalURL);
-    url.hash = route;
+    url.hash = target.url.href === originalURL.href ? '' : route;
     if (url.href !== location.href) history.replaceState(history.state, '', url);
   }
 
@@ -141,7 +141,7 @@
       return;
     }
     const url = new URL(originalURL);
-    url.hash = target.route;
+    url.hash = target.url.href === originalURL.href ? '' : target.route;
     history.pushState(null, '', url);
   }
 
@@ -187,7 +187,11 @@
   }
 
   if (nav) {
+    // Drawing navigation keeps the current pan. A full reload must instead
+    // restore it alongside Firefox's retained native pinch zoom.
     history.scrollRestoration = 'manual';
+    window.addEventListener('pagehide', () => { history.scrollRestoration = 'auto'; });
+    window.addEventListener('pageshow', () => { history.scrollRestoration = 'manual'; });
     nav.addEventListener('click', event => {
       const link = event.target.closest('a[href]');
       if (!link || event.defaultPrevented || event.button !== 0

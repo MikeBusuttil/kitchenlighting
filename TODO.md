@@ -1,14 +1,12 @@
 - build it
-  - assemble all parts
-    - get magnet for breadboard
-      - see where Im gonna mount it
   - measure current at full brightness to see if its going to be a problem
     - Measure combined length required & cut excess
-- design control circuit
-  - generate SVG & HTML as well as PDF
-    - fix the readme so the links all work nice
-      - is there a way to open HTML files in github readmes?
-  - dockerize all those random packages
+    - assemble all parts
+      - get magnet for breadboard
+        - see where Im gonna mount it
+  - upload the sketch
+    - test those commands
+      - dockerize all those random packages
 
 ## v1
 

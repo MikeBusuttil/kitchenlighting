@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="2150" viewBox="0 0 880 2150">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="2010" viewBox="0 0 880 2010">
 <title>Kitchen lighting: 12 V RGB best-practice breadboard proof of concept</title>
 <desc>Nano 33 IoT, two TC4427ACPA drivers, three IRFZ44NPBF MOSFETs and barrel jack J0. A soldered pigtail connects J0 pin 1 directly to strip positive, bypassing all breadboard contacts. Row 40 is unused; a41 green, a42 red and a43 blue are the strip returns. Return current still passes through the breadboard; only a short strip segment is connected.</desc>
-<rect x="0" y="0" width="880" height="2150" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
+<rect x="0" y="0" width="880" height="2010" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
 <text x="40" y="62" font-family="DejaVu Sans,sans-serif" font-size="34" font-weight="700" fill="#192c3a" text-anchor="start">12 V · Best practice</text>
 <text x="40" y="108" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">RGB strip · ≤25 cm · ≤0.30 A total LED current</text>
 <rect x="220" y="214" width="562" height="1717" rx="18" fill="#e8e9e5" stroke="#a9b6ba" stroke-width="2"/>
@@ -1400,8 +1400,20 @@
 <text x="438" y="1773" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#536775" text-anchor="start">3 NC</text>
 <rect x="358" y="1882" width="36" height="51" rx="4" fill="#363e43" stroke="#192c3a" stroke-width="2"/>
 <line x1="376" y1="1933" x2="376" y2="1981" stroke="#192c3a" stroke-width="6"/>
-<text x="444" y="1940" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="start">PJ-102AH</text>
-<text x="376" y="2007" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="middle">12 V · centre positive</text>
+<text x="376" y="1817" font-family="DejaVu Sans,sans-serif" font-size="9.5" font-weight="700" fill="white" text-anchor="middle">PJ-102AH (12V)</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="66" height="22" viewBox="0 0 120 40" role="img" aria-labelledby="center-positive-title center-positive-description" id="jack-center-positive" x="343" y="1826">
+  <title id="center-positive-title">Centre-positive DC connector</title>
+  <desc id="center-positive-description">The minus sign connects to the outer sleeve, and the plus sign connects to the centre pin.</desc>
+  <g fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="16" cy="20" r="13" />
+    <path d="M 10 20 H 22 M 29 20 H 47" />
+    <path d="M 69.2 10.8 A 13 13 0 1 0 69.2 29.2" />
+    <path d="M 60 20 H 91" />
+    <circle cx="104" cy="20" r="13" />
+    <path d="M 98 20 H 110 M 104 14 V 26" />
+  </g>
+  <circle cx="60" cy="20" r="4" fill="white" />
+</svg>
 <rect x="65" y="1259" width="101" height="224" rx="4" fill="#f5eee0" stroke="#bbae8f" stroke-width="2"/>
 <text x="115" y="1242" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="middle">RGB strip</text>
 <rect x="137" y="1267" width="23" height="14" rx="2" fill="#c6a764" stroke="#aa5217" stroke-width="2"/>
@@ -1668,6 +1680,5 @@
 <text x="607" y="1690.0" transform="rotate(-90 607 1690.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#192c3a">100µF / 25V</text>
 <text x="628" y="1690.0" transform="rotate(-90 628 1690.0)" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">optional</text>
 <text x="628" y="1690.0" transform="rotate(-90 628 1690.0)" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#536775">optional</text>
-<text x="40" y="2096" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#536775" text-anchor="start">USB programming with 12 V off: disconnect D3, D5 and D6.</text>
-<text x="40" y="2126" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="start">Positive bypass only; RGB returns still use the breadboard. Not a 4 A layout.</text>
+<script id="viewer-svg-bridge" href="../.utils/browser_viewer.js"></script>
 </svg>

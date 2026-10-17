@@ -2,7 +2,8 @@
 """Generate best-practice and minimum 12 V kitchen-lighting SVG diagrams.
 
 From the project root: python3 12v/build.py
-Both SVGs and min.csv/best.csv (DigiKey purchase lists) are written beside this script.
+Both SVGs, their HTML viewers and min.csv/best.csv (DigiKey purchase lists)
+are written beside this script.
 Only Python's standard library is used.
 Best uses IRFZ44NPBF MOSFETs with TC4427ACPA gate drivers.
 Minimum uses AO3400A MOSFETs on SparkFun 00717 DIP adapters with 2.2 kohm series
@@ -14,11 +15,16 @@ The minimum adds two parallel RJ11 outputs with conceptual breadboard mounting.
 from html import escape
 from pathlib import Path
 import re
+import sys
+import xml.etree.ElementTree as ET
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / '.utils'))
+from browser_viewer import export_svg_view
 
 OUT = Path(__file__).resolve().parent
 NAME = 'best'
 MINIMUM_NAME = 'min'
-W, H = 880, 2150
+W, H = 880, 2010
 INK, MUTED, BORDER = '#192c3a', '#536775', '#d2dce3'
 RED, GREEN, BLUE, POWER = '#c0383c', '#258450', '#286bbb', '#aa5217'
 COL = dict(zip('abcde', range(350, 455, 26)))
@@ -188,8 +194,17 @@ def barrel_jack(shift_right=False):
         text(x+10,y+5,label,12,'white' if col==main_col else MUTED,True)
     rect(358+dx,yy(58)+140,36,51,'#363e43',INK,4)
     line(376+dx,yy(58)+191,376+dx,yy(64)+83,INK,6)
-    text(444+dx,yy(64)+42,'PJ-102AH',18,INK,True)
-    text(376+dx,yy(64)+109,'12 V · centre positive',16,MUTED,anchor='middle')
+    text(376+dx,yy(60)+23,'PJ-102AH (12V)',9.5,'white',True,'middle')
+    polarity = ET.parse(Path(__file__).with_name('center-positive.svg')).getroot()
+    for script in polarity.findall('{http://www.w3.org/2000/svg}script'):
+        polarity.remove(script)
+    polarity.attrib.update(id='jack-center-positive', x=str(343+dx),
+                           y=str(yy(60)+32), width='66', height='22')
+    for element in polarity.iter():
+        for attribute in ('fill', 'stroke'):
+            if element.get(attribute) not in (None, 'none'):
+                element.set(attribute, 'white')
+    s.append(ET.tostring(polarity, encoding='unicode'))
 
 
 def led_strip():
@@ -326,8 +341,6 @@ def build():
     led_strip()
     draw_best_jumpers()
     s.extend(annotations)
-    text(40,2096,'USB programming with 12 V off: disconnect D3, D5 and D6.',17,MUTED)
-    text(40,2126,'Positive bypass only; RGB returns still use the breadboard. Not a 4 A layout.',16,MUTED)
     record('Load limit','12 V 6 A PSU','One cut segment initially; no more than 25 cm','14.4 W/m × 0.25 m ÷ 12 V = 0.30 A LED current; plus Nano/drivers. PSU capacity is not fault protection. Verify actual current.')
     record('USB-only programming','12 V off','Unplug i10 / i8 / i7','Avoid driving unpowered TC4427A inputs')
     record('J0 polarity check','PSU plug center','Positive 12 V relative to sleeve','Check with meter before connection; reverse-polarity adapters cannot be used as drawn')
@@ -336,6 +349,7 @@ def build():
     s.append('</svg>')
     target = OUT / (NAME + '.svg')
     target.write_text('\n'.join(s), encoding='utf-8')
+    print(f'Generated {export_svg_view(target, navigation=True)}.')
     print(f'Generated {target}; {len(occupied)} unique occupied holes checked.')
 
 
@@ -504,11 +518,6 @@ def build_minimum():
         minimum_jumpers.append((label,start,end,color,note))
     draw_minimum_jumpers()
     s.extend(annotations)
-    text(40,2034,'A1–A3: SparkFun 00717; H1–H6: 61300311121 headers underneath.',15,MUTED)
-    text(40,2058,'Top view: solder each AO3400A with its single drain lead facing left.',15,MUTED)
-    text(40,2082,'× = unused adapter pad/header; leave its breadboard bank/row clear.',15,MUTED)
-    text(40,2106,'No pull-downs: gates may float at reset. RJ11 mounting is conceptual.',15,MUTED)
-    text(40,2130,'Positive bypass only; RGB returns use the breadboard. 0.30 A combined.',15,MUTED)
     record('Load limit','12 V 6 A PSU','One cut segment initially; no more than 25 cm across both RJ11 ports','14.4 W/m × 0.25 m ÷ 12 V = 0.30 A combined LED current; about 0.10 A per colour. Adding a second port does not increase this limit.')
     record('J0 polarity check','PSU plug center','Positive 12 V relative to sleeve','Check before connecting; J0 feeds Nano VIN and strip + in parallel')
     record('Startup / reset','No pulldowns fitted','Gates can float until Nano drives them','Set PWM outputs LOW first in firmware; this does not guarantee off during reset or before firmware starts.')
@@ -518,6 +527,7 @@ def build_minimum():
     s.append('</svg>')
     target=OUT/(MINIMUM_NAME+'.svg')
     target.write_text('\n'.join(s),encoding='utf-8')
+    print(f'Generated {export_svg_view(target, navigation=True)}.')
     print(f'Generated {target}; {len(occupied)} unique occupied holes checked.')
     return target
 
@@ -540,8 +550,7 @@ def check_strip_positive_bypass(rj11=False):
 if __name__ == '__main__':
     build()
     build_minimum()
-    import sys
-    sys.path.insert(0,str(OUT.parent))
+    print(f'Generated {export_svg_view(Path(__file__).with_name("center-positive.svg"))}.')
     from purchasing import export_purchase_csvs
     for path in export_purchase_csvs(OUT):
         print(f'Generated {path} for DigiKey Canada upload.')

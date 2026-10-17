@@ -2,12 +2,17 @@
 """Generate two 5 V APA102 diagrams using only Python's standard library.
 
 Run from the project root: python3 5v/build.py
-Writes best.svg, min.svg and DigiKey-compatible best.csv/min.csv beside this script.
+Writes best.svg, min.svg, matching HTML viewers and DigiKey-compatible
+best.csv/min.csv beside this script.
 The in-memory wiring and occupied mappings support independent connectivity checks.
 """
 from html import escape
 from pathlib import Path
 import re
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / '.utils'))
+from browser_viewer import export_svg_view
 
 OUT = Path(__file__).resolve().parent
 NAME = 'best'
@@ -286,6 +291,7 @@ def build():
     s.append('</svg>')
     path=OUT/(NAME+'.svg')
     path.write_text('\n'.join(s),encoding='utf-8')
+    print(f'Wrote {export_svg_view(path, navigation=True)}.')
     print(f'Wrote {path}; {len(occupied)} distinct occupied holes.')
     return path
 
@@ -325,6 +331,7 @@ def build_minimum():
     s.append('</svg>')
     path=OUT/(MINIMUM_NAME+'.svg')
     path.write_text('\n'.join(s),encoding='utf-8')
+    print(f'Wrote {export_svg_view(path, navigation=True)}.')
     print(f'Wrote {path}; {len(occupied)} distinct occupied holes.')
     return path
 
@@ -332,8 +339,6 @@ def build_minimum():
 if __name__=='__main__':
     build()
     build_minimum()
-    import sys
-    sys.path.insert(0,str(OUT.parent))
     from purchasing import export_purchase_csvs
     for path in export_purchase_csvs(OUT):
         print(f'Generated {path} for DigiKey Canada upload.')

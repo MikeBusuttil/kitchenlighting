@@ -1695,4 +1695,5 @@
 <path fill="none" stroke-width="78.7404" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 66741.164911 28677.952798 L 66703.142568 28752.911131 " transform="matrix(0.0071915, 0, 0, -0.0071915, 0.445289, 594.592832)"/>
 <path fill="none" stroke-width="78.7404" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 66703.142568 28752.911131 L 66628.184235 28865.348631 " transform="matrix(0.0071915, 0, 0, -0.0071915, 0.445289, 594.592832)"/>
 <path fill="none" stroke-width="78.7404" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 66628.184235 28865.348631 L 66590.705069 28903.370974 " transform="matrix(0.0071915, 0, 0, -0.0071915, 0.445289, 594.592832)"/>
+<script id="viewer-svg-bridge" href="../../.utils/browser_viewer.js"></script>
 </svg>

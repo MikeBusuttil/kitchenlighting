@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="2150" viewBox="0 0 880 2150">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="2010" viewBox="0 0 880 2010">
 <title>Kitchen lighting: 12 V RGB minimum breadboard layout</title>
 <desc>Minimum short-strip experiment using an Arduino Nano 33 IoT, three AO3400A SOT-23 MOSFETs soldered to SparkFun 00717 adapters spanning the centre gap at rows 42–44, 48–50 and 54–56, barrel jack J0, and two Würth 615004144121 female RJ11 output jacks J1/J2. Each adapter has two separately purchased 61300311121 three-pin headers underneath, in columns e/f. Component-side top view: the single drain lead faces left; source is upper-right, gate lower-right, drain middle-left. AO3400A package pins are 1=gate, 2=source, 3=drain; these are not the adapter pad numbers. All six header holes are occupied; the three unused pad/header connections remain isolated. RJ11 mounting/pin fan-outs are conceptual illustrations. Both jacks connect in parallel: pin 2 positive, pin 3 red, pin 4 green, pin 5 blue. Nano D3, D5 and D6 run in parallel outside the right power rails, each through a 2.2 kohm series resistor to its MOSFET gate. No gate drivers, bypass capacitors or pulldown resistors are fitted. Gates can float during Nano startup/reset; initialize the PWM outputs LOW before enabling the lights. Series resistors limit initial nominal GPIO gate-charge current to about 1.5 mA; use ordinary low-frequency PWM. Output positive connects to J0 pin 1 by soldered pigtails, bypassing breadboard contacts; row 40 is unused. J0 is shifted one column right, with its positive and ground jumpers connected to the left rails. The left positive rail and right ground rail have midpoint bridges; the lower ground rails are linked at row 39. Both right positive rail halves and the upper-left ground rail are unused. Nano VIN connects to the left + rail at row 15; Nano GND connects to the right - rail at row 12. Strip returns still pass through breadboard contacts and MOSFETs, never through Nano GPIO. The two ports share a combined 25 cm / 0.30 A LED load limit. All wires are drawn.</desc>
-<rect x="0" y="0" width="880" height="2150" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
+<rect x="0" y="0" width="880" height="2010" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
 <text x="40" y="62" font-family="DejaVu Sans,sans-serif" font-size="34" font-weight="700" fill="#192c3a" text-anchor="start">12 V · Minimum</text>
 <text x="40" y="108" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#536775" text-anchor="start">RGB outputs · ≤25 cm combined · ≤0.30 A total</text>
 <rect x="220" y="214" width="562" height="1717" rx="18" fill="#e8e9e5" stroke="#a9b6ba" stroke-width="2"/>
@@ -1179,8 +1179,20 @@
 <text x="464" y="1773" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="700" fill="#536775" text-anchor="start">3 NC</text>
 <rect x="384" y="1882" width="36" height="51" rx="4" fill="#363e43" stroke="#192c3a" stroke-width="2"/>
 <line x1="402" y1="1933" x2="402" y2="1981" stroke="#192c3a" stroke-width="6"/>
-<text x="470" y="1940" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="700" fill="#192c3a" text-anchor="start">PJ-102AH</text>
-<text x="402" y="2007" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="400" fill="#536775" text-anchor="middle">12 V · centre positive</text>
+<text x="402" y="1817" font-family="DejaVu Sans,sans-serif" font-size="9.5" font-weight="700" fill="white" text-anchor="middle">PJ-102AH (12V)</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="66" height="22" viewBox="0 0 120 40" role="img" aria-labelledby="center-positive-title center-positive-description" id="jack-center-positive" x="369" y="1826">
+  <title id="center-positive-title">Centre-positive DC connector</title>
+  <desc id="center-positive-description">The minus sign connects to the outer sleeve, and the plus sign connects to the centre pin.</desc>
+  <g fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="16" cy="20" r="13" />
+    <path d="M 10 20 H 22 M 29 20 H 47" />
+    <path d="M 69.2 10.8 A 13 13 0 1 0 69.2 29.2" />
+    <path d="M 60 20 H 91" />
+    <circle cx="104" cy="20" r="13" />
+    <path d="M 98 20 H 110 M 104 14 V 26" />
+  </g>
+  <circle cx="60" cy="20" r="4" fill="white" />
+</svg>
 <g id="connector-J1" data-part="615004144121" data-mounting="conceptual">
 <title>Würth 615004144121 top-entry 6P4C female RJ11; conceptual breadboard placement and pin fan-out</title>
 <text x="407" y="953" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="700" fill="#192c3a" text-anchor="middle">J1 · RJ11</text>
@@ -1575,9 +1587,5 @@
 <text x="571" y="1495.0" transform="rotate(-90 571 1495.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#258450">2.2kΩ</text>
 <text x="571" y="1651.0" transform="rotate(-90 571 1651.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round" aria-hidden="true">2.2kΩ</text>
 <text x="571" y="1651.0" transform="rotate(-90 571 1651.0)" font-family="DejaVu Sans,sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#286bbb">2.2kΩ</text>
-<text x="40" y="2034" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="#536775" text-anchor="start">A1–A3: SparkFun 00717; H1–H6: 61300311121 headers underneath.</text>
-<text x="40" y="2058" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="#536775" text-anchor="start">Top view: solder each AO3400A with its single drain lead facing left.</text>
-<text x="40" y="2082" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="#536775" text-anchor="start">× = unused adapter pad/header; leave its breadboard bank/row clear.</text>
-<text x="40" y="2106" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="#536775" text-anchor="start">No pull-downs: gates may float at reset. RJ11 mounting is conceptual.</text>
-<text x="40" y="2130" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="400" fill="#536775" text-anchor="start">Positive bypass only; RGB returns use the breadboard. 0.30 A combined.</text>
+<script id="viewer-svg-bridge" href="../.utils/browser_viewer.js"></script>
 </svg>

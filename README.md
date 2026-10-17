@@ -12,21 +12,21 @@ python3 12v/pcb/pcb.py
 
 ## Project files
 
-| Design     | Spec                   | Shopping lists                                    | Best practice            | Minimum                |
-| ---------- | ---------------------- | ------------------------------------------------- | ------------------------ | ---------------------- |
-| 12 V RGB   | [spec.md](12v/spec.md) | [min.csv](12v/min.csv) · [best.csv](12v/best.csv) | [best.svg](12v/best.svg) | [min.svg](12v/min.svg) |
-| 5 V APA102 | [spec.md](5v/spec.md)  | [min.csv](5v/min.csv) · [best.csv](5v/best.csv)   | [best.svg](5v/best.svg)  | [min.svg](5v/min.svg)  |
+| Design     | Spec                   | Shopping lists                                    | Best practice       | Minimum            |
+| ---------- | ---------------------- | ------------------------------------------------- | ------------------- | ------------------ |
+| 12 V RGB   | [spec.md](12v/spec.md) | [min.csv](12v/min.csv) · [best.csv](12v/best.csv) | [SVG](12v/best.svg) | [SVG](12v/min.svg) |
+| 5 V APA102 | [spec.md](5v/spec.md)  | [min.csv](5v/min.csv) · [best.csv](5v/best.csv)   | [SVG](5v/best.svg)  | [SVG](5v/min.svg)  |
 
 The generated `min.csv` and `best.csv` shopping lists are compatible with DigiKey’s [Upload a List](https://www.digikey.ca/en/mylists/) feature.
 
 ## 12 V PCB
 
-| Drawing                                          | PDF                                 | SVG                                 |
-| ------------------------------------------------ | ----------------------------------- | ----------------------------------- |
-| Schematic                                        | [PDF](12v/pcb/pcb.pdf)              | [SVG](12v/pcb/pcb.svg)              |
-| Assembly layout, dimensions and component legend | [PDF](12v/pcb/pcb-layout.pdf)       | [SVG](12v/pcb/pcb-layout.svg)       |
-| Plated drill map                                 | [PDF](12v/pcb/pcb-PTH-drl_map.pdf)  | [SVG](12v/pcb/pcb-PTH-drl_map.svg)  |
-| Non-plated drill map                             | [PDF](12v/pcb/pcb-NPTH-drl_map.pdf) | [SVG](12v/pcb/pcb-NPTH-drl_map.svg) |
+| Drawing                                          | PDF                                 |
+| ------------------------------------------------ | ----------------------------------- |
+| Schematic                                        | [PDF](12v/pcb/pcb.pdf)              |
+| Assembly layout, dimensions and component legend | [PDF](12v/pcb/pcb-layout.pdf)       |
+| Plated drill map                                 | [PDF](12v/pcb/pcb-PTH-drl_map.pdf)  |
+| Non-plated drill map                             | [PDF](12v/pcb/pcb-NPTH-drl_map.pdf) |
 
 | File                                                 | Purpose                             |
 | ---------------------------------------------------- | ----------------------------------- |
@@ -49,7 +49,7 @@ python3 12v/pcb/browser_exports.py  # refresh browser versions of all repository
 ## Tests
 
 ```sh
-python3 -m unittest test_breadboards
+python3 -m unittest discover -s .utils -p 'test_*.py'
 ```
 
 ## Contributing

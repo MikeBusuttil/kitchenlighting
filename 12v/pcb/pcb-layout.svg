@@ -14735,4 +14735,5 @@
 <path fill="none" stroke-width="19.685" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 39369.966644 62994.746752 L 39369.966644 23624.783433 " transform="matrix(0.0071915, 0, 0, -0.0071915, 0.445289, 594.592832)"/>
 <path fill="none" stroke-width="19.685" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 19685.256572 23624.783433 L 19685.256572 62994.746752 " transform="matrix(0.0071915, 0, 0, -0.0071915, 0.445289, 594.592832)"/>
 <path fill="none" stroke-width="19.685" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 39369.966644 23624.783433 L 19685.256572 23624.783433 " transform="matrix(0.0071915, 0, 0, -0.0071915, 0.445289, 594.592832)"/>
+<script id="viewer-svg-bridge" href="../../.utils/browser_viewer.js"></script>
 </svg>

@@ -1,14 +1,18 @@
-"""Integration checks for PDF page preservation and portable browser links."""
+"""Integration checks for PDF page preservation and minimal HTML companions."""
 from html.parser import HTMLParser
+import json
 from pathlib import Path
 import shutil
 import subprocess
 import tempfile
 import unittest
-from urllib.parse import unquote, urlsplit
+from urllib.parse import unquote
 import xml.etree.ElementTree as ET
 
 from browser_exports import discover_pdfs, export_browser_views
+from browser_viewer import export_svg_view, render_viewer
+
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def write_pdf(path, sizes):
@@ -37,23 +41,86 @@ def write_pdf(path, sizes):
     path.write_bytes(result)
 
 
-class Links(HTMLParser):
+class DrawingHTML(HTMLParser):
     def __init__(self):
         super().__init__()
-        self.targets = []
-        self.images = []
+        self.svgs = []
+        self.elements = []
+        self.body_elements = []
+        self.in_body = False
+        self.svg_depth = 0
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
-        if tag == 'a':
-            self.targets.append(attrs['href'])
-        elif tag == 'img':
-            self.images.append(attrs['src'])
+        self.elements.append((tag, attrs))
+        if self.in_body and self.svg_depth == 0:
+            self.body_elements.append(tag)
+        if tag == 'body':
+            self.in_body = True
+        elif tag == 'svg':
+            self.svg_depth += 1
+            self.svgs.append(attrs)
+
+    def handle_endtag(self, tag):
+        if tag == 'svg':
+            self.svg_depth -= 1
+        elif tag == 'body':
+            self.in_body = False
+
+
+class LinkedSvgViewer(unittest.TestCase):
+    def test_html_references_pages_without_copying_the_vector_markup(self):
+        root = ET.fromstring('''<svg xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 300">
+          <defs>
+            <clipPath id="clip-0"><rect width="200" height="300"/></clipPath>
+            <path id="shape-0" d="M 0 0 L 100 100"/>
+          </defs>
+          <g clip-path="url(#clip-0)">
+            <use xlink:href="#shape-0"/>
+            <use href="#shape-0"/>
+          </g>
+        </svg>''')
+        original = ET.tostring(root)
+        document = DrawingHTML()
+        document.feed(render_viewer('Two pages', [root, root],
+                                    svg_names=['one #1.svg', 'two.svg'],
+                                    html_path=ROOT / '12v' / 'pcb' / 'two.html'))
+        self.assertEqual(document.svgs, [])
+        source = next(attrs['data-sources'] for tag, attrs in document.elements
+                      if tag == 'main')
+        self.assertEqual(json.loads(source), ['one%20%231.svg', 'two.svg'])
+        self.assertFalse(any(tag in ('path', 'clippath', 'use') for tag, _ in document.elements))
+        self.assertEqual(ET.tostring(root), original)
+        self.assertNotIn('style', [tag for tag, _ in document.elements])
+        scripts = [attrs for tag, attrs in document.elements if tag == 'script']
+        self.assertEqual(scripts, [{'src': '../../.utils/browser_viewer_styles.js'},
+                                   {'src': '../../.utils/browser_viewer.js', 'defer': None}])
+
+    def test_bridge_is_idempotent_and_leaves_drawing_content_unchanged(self):
+        with tempfile.TemporaryDirectory() as directory:
+            svg = Path(directory) / 'one.svg'
+            original = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 30"><rect width="20" height="30"/></svg>'
+            svg.write_text(original.replace('</svg>',
+                '<script id="viewer-svg-bridge">/* old inline bridge */</script></svg>'))
+            export_svg_view(svg)
+            first = svg.read_bytes()
+            export_svg_view(svg)
+            self.assertEqual(svg.read_bytes(), first)
+            root = ET.parse(svg).getroot()
+            scripts = root.findall('{http://www.w3.org/2000/svg}script')
+            self.assertEqual(len(scripts), 1)
+            self.assertEqual(scripts[0].get('id'), 'viewer-svg-bridge')
+            self.assertIsNone(scripts[0].text)
+            self.assertEqual((svg.parent / unquote(scripts[0].get('href'))).resolve(),
+                             ROOT / '.utils' / 'browser_viewer.js')
+            root.remove(scripts[0])
+            self.assertEqual(ET.tostring(root), ET.tostring(ET.fromstring(original)))
 
 
 @unittest.skipUnless(shutil.which('pdfinfo') and shutil.which('pdftocairo'), 'Poppler is required')
 class BrowserExports(unittest.TestCase):
-    def test_all_pages_keep_their_dimensions_and_have_local_links(self):
+    def test_all_pages_keep_their_dimensions_in_linked_svg_html(self):
         with tempfile.TemporaryDirectory() as directory:
             pdf = Path(directory) / 'two pages #1.pdf'
             sizes = [(200, 300), (400, 200)]
@@ -62,16 +129,20 @@ class BrowserExports(unittest.TestCase):
             self.assertEqual([p.name for p in outputs], [
                 'two pages #1.html', 'two pages #1-page-1.svg', 'two pages #1-page-2.svg'])
             for svg, size in zip(outputs[1:], sizes):
-                bounds = list(map(float, ET.parse(svg).getroot().attrib['viewBox'].split()))
+                root = ET.parse(svg).getroot()
+                bounds = list(map(float, root.attrib['viewBox'].split()))
                 self.assertEqual(bounds[2:], list(size))
-            links = Links()
-            links.feed(outputs[0].read_text())
-            self.assertEqual(len(links.images), 2)
-            for target in links.targets + links.images:
-                parsed = urlsplit(target)
-                self.assertFalse(parsed.scheme, 'Browser viewing must work offline')
-                if parsed.path:
-                    self.assertTrue((pdf.parent / unquote(parsed.path)).is_file(), target)
+                self.assertEqual(len(root.findall('{http://www.w3.org/2000/svg}script')), 1)
+                bridge = root.find('{http://www.w3.org/2000/svg}script')
+                self.assertEqual((svg.parent / unquote(bridge.get('href'))).resolve(),
+                                 ROOT / '.utils' / 'browser_viewer.js')
+            document = DrawingHTML()
+            document.feed(outputs[0].read_text())
+            self.assertEqual(document.svgs, [])
+            source = next(attrs['data-sources'] for tag, attrs in document.elements
+                          if tag == 'main')
+            self.assertEqual(json.loads(source), ['two%20pages%20%231-page-1.svg',
+                                                 'two%20pages%20%231-page-2.svg'])
 
     def test_single_page_and_title_are_safe_in_html(self):
         with tempfile.TemporaryDirectory() as directory:

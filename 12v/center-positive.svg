@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 120 40" role="img" aria-labelledby="center-positive-title center-positive-description">
+  <title id="center-positive-title">Centre-positive DC connector</title>
+  <desc id="center-positive-description">The minus sign connects to the outer sleeve, and the plus sign connects to the centre pin.</desc>
+  <g fill="none" stroke="#536775" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="16" cy="20" r="13"/>
+    <path d="M 10 20 H 22 M 29 20 H 47"/>
+    <path d="M 69.2 10.8 A 13 13 0 1 0 69.2 29.2"/>
+    <path d="M 60 20 H 91"/>
+    <circle cx="104" cy="20" r="13"/>
+    <path d="M 98 20 H 110 M 104 14 V 26"/>
+  </g>
+  <circle cx="60" cy="20" r="4" fill="#536775"/>
+<script id="viewer-svg-bridge" href="../.utils/browser_viewer.js"></script>
+</svg>

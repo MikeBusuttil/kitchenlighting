@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check electrical connectivity independently of the SVG routing.
 
-Run from the project root: python3 -m unittest -v test_breadboards.py
+Run from the project root: python3 -m unittest discover -s .utils -v
 Builds go to a temporary directory and never rewrite the checked-in diagrams.
 The expected terminal nets preserve each circuit, including the two parallel
 RJ11 outputs on the 12 V minimum layout; holes and jumper paths may change.
@@ -21,7 +21,8 @@ import unittest
 import xml.etree.ElementTree as ET
 
 
-ROOT = Path(__file__).resolve().parent
+UTILS = Path(__file__).resolve().parent
+ROOT = UTILS.parent
 HOLE = re.compile(r"([a-j]|[LR][+-])(\d+)$")
 PASSIVE = re.compile(r"[RC]\d+$")
 SVG = "{http://www.w3.org/2000/svg}"
@@ -346,11 +347,14 @@ class PurchaseExportTests(unittest.TestCase):
             root = Path(temporary)
             project = root / "project"
             project.mkdir()
-            shutil.copy2(ROOT / "purchasing.py", project / "purchasing.py")
+            (project / ".utils").mkdir()
+            for name in ("purchasing.py", "browser_viewer.py", "browser_viewer.js", "browser_viewer_styles.js"):
+                shutil.copy2(UTILS / name, project / ".utils" / name)
             # Copy inputs only: checked-in exports must not mask a missing build.
             for voltage in ("12v", "5v"):
                 for source in (ROOT / voltage).rglob("*"):
-                    if source.suffix not in {".py", ".csv"} or source.name in {"min.csv", "best.csv"}:
+                    if (source.suffix not in {".py", ".csv"} and source.name != "center-positive.svg"
+                            or source.name in {"min.csv", "best.csv"}):
                         continue
                     target = project / voltage / source.relative_to(ROOT / voltage)
                     target.parent.mkdir(parents=True, exist_ok=True)
@@ -368,6 +372,18 @@ class PurchaseExportTests(unittest.TestCase):
                 for layout in ("best", "min"):
                     with self.subTest(voltage=voltage, layout=layout):
                         self.assertEqual(ET.parse(copied / f"{layout}.svg").getroot().tag, SVG + "svg")
+                        viewer = (copied / f"{layout}.html").read_text(encoding="utf-8")
+                        self.assertNotIn('<svg ', viewer)
+                        self.assertIn(f'&quot;{layout}.svg&quot;', viewer)
+                        self.assertNotIn('<header', viewer)
+                        self.assertNotIn('<style>', viewer)
+                        self.assertNotIn('<script>', viewer)
+                        self.assertIn('<script src="../.utils/browser_viewer.js" defer></script>', viewer)
+                        self.assertIn('<script src="../.utils/browser_viewer_styles.js"></script>', viewer)
+                        self.assertEqual(re.findall(r'<a href="([^"]+)" aria-label=', viewer), [
+                            '../5v/min.html', '../12v/min.html',
+                            '../5v/best.html', '../12v/best.html',
+                        ])
                         with (copied / f"{layout}.csv").open(encoding="utf-8", newline="") as source:
                             reader = csv.DictReader(source)
                             self.assertIn("Quantity", reader.fieldnames)

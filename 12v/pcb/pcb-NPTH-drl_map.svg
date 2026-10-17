@@ -1194,4 +1194,5 @@
 <path fill="none" stroke-width="78.7404" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 73789.9641 30372.662937 L 73752.484933 30448.164446 " transform="matrix(0.0071915, 0, 0, -0.0071915, 0.445289, 594.592832)"/>
 <path fill="none" stroke-width="78.7404" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 73752.484933 30448.164446 L 73677.5266 30560.601946 " transform="matrix(0.0071915, 0, 0, -0.0071915, 0.445289, 594.592832)"/>
 <path fill="none" stroke-width="78.7404" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 73677.5266 30560.601946 L 73640.047434 30598.081112 " transform="matrix(0.0071915, 0, 0, -0.0071915, 0.445289, 594.592832)"/>
+<script id="viewer-svg-bridge" href="../../.utils/browser_viewer.js"></script>
 </svg>
